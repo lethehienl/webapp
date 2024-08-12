@@ -1,0 +1,6 @@
+# config/routes.yaml
+admin_home_route:
+  path:       /
+  controller: App\Bundle\AdminBundle\Controller\AdminController::test
+
+
