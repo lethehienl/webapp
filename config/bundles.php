@@ -7,4 +7,6 @@ return [
     Twig\Extra\TwigExtraBundle\TwigExtraBundle::class => ['all' => true],
     Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class => ['dev' => true, 'test' => true],
     App\Bundle\AdminBundle\AdminBundle::class => ['all' => true],
+    App\Bundle\HtmlBundle\HtmlBundle::class => ['all' => true],
+    App\Bundle\HomeBundle\HomeBundle::class => ['all' => true],
 ];
