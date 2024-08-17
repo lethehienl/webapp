@@ -1,0 +1,48 @@
+#suggest {
+  @include sectionEffect();
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+  .sectionTitle {
+    hr {
+      width: 320px;
+    }
+  }
+  .suggestMain {
+    padding-top: 15px;
+  }
+  .oneSlider {
+    .oneSliderItem {
+      max-height: 495px;
+      position: relative;
+      overflow: hidden;
+      .oneSliderData {
+        position: absolute;
+        bottom: 0px;
+        margin-bottom: 20px;
+        text-align: center;
+        width: 100%;
+        padding-bottom: 15px;
+        p {
+          font-family: $font_normal;
+          color: #ffffff;
+          font-size: 18px;
+          padding-left: 15px;
+          padding-right: 15px;
+          @include cutRowwLine(3);
+        }
+
+      }
+    }
+  }
+}
+
+@media (max-width: $media_max_767) {
+  #suggest {
+    .sectionTitle {
+      hr {
+        width: 260px;
+      }
+    }
+  }
+}

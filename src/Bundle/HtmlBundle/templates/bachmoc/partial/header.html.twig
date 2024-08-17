@@ -1,0 +1,85 @@
+<style>
+    #header {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url('{{ preload('/bundles/html/bachmoc/images/banner.jpg') }}');
+    }
+
+    @media (max-width: 767px) {
+        #header {
+            background-image: url('{{ preload('/bundles/html/bachmoc/images/banner-mb.jpg') }}');
+        }
+    }
+</style>
+
+<header id="header" class="header" onmousemove="app.moveClouds()">
+    {{ include('@Html/bachmoc/partial/cloud.html.twig') }}
+    <div class="container">
+        <nav class="navbar  navbar-expand-lg">
+
+            <a class="logo" href="/">
+                <img width="230" height="auto" src="{{ preload('/bundles/html/bachmoc/images/logow2.png') }}"
+                     alt="TripU">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto navbarContent">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link active" href="#header-form" id="navbarDropdownMenuLink1" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            Trang chủ
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#highlight" id="navbarDropdownMenuLink1" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            Đặt tour ngay
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#schedule" id="navbarDropdownMenuLink1" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            Điểm đặc sắc
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#service" id="navbarDropdownMenuLink1" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            Lịch trình
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#about" id="navbarDropdownMenuLink1" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            Dịch vụ
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            Về TripU
+                        </a>
+
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="headerFormScroll">
+            <a href="/#header-form" class="bannerDown">
+                {#<i class="fa fa-arrow-circle-down"></i>#}
+                <span class="arrow pulse"></span>
+                <span class="arrow pulse"></span>
+            </a>
+        </div>
+
+    </div>
+</header>

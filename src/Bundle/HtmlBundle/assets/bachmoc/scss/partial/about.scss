@@ -1,0 +1,114 @@
+#about {
+  @include sectionEffect();
+  padding-top: 50px;
+  .sectionTitle {
+    hr {
+      width: 185px;
+    }
+  }
+  .slickSlider .slick-arrow {
+    color: $blue;
+    top: 60px;
+  }
+}
+.aboutMainHead {
+  position: relative;
+  overflow: hidden;
+
+  .aboutMainImg {
+    padding-bottom: 90px;
+  }
+  .aboutMainIntro {
+    width: 84%;
+    background-color: $pinkLight;
+    padding: 30px 40px 10px 40px;
+    position: absolute;
+    bottom: 0px;
+    margin-bottom: 25px;
+    @include border-radius(10px);
+    z-index: 1;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+}
+.aboutMainIcon {
+  .aboutMainIconItemIcon {
+    margin: 0 auto;
+    @include border-radius(8px);
+    background-color: $blue;
+    width: 160px;
+    height: 160px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition-property: background;
+    transition-duration: 0.5s;
+    transition-timing-function: linear;
+
+    &:hover {
+      background-color: $yelloDark;
+    }
+
+  }
+  .aboutMainIconItemData {
+    margin: 0 auto;
+    margin-top: 20px;
+
+    p {
+      text-align: center;
+      width: 170px;
+      margin: 0 auto;
+    }
+  }
+}
+
+@media (max-width: $media_max_991) {
+  .aboutMainHead {
+    .aboutMainImg {
+      padding-bottom: 170px;
+    }
+  }
+}
+@media (max-width: $media_max_767) {
+  #about {
+    .slickSlider .slick-next {
+      right: 1rem;
+    }
+    .slickSlider .slick-prev  {
+      left: 1rem;
+    }
+    .slickSlider .slick-arrow {
+      top: 90px;
+    }
+  }
+
+  .aboutMainHead {
+    .aboutMainIntro {
+      width: 100%;
+
+      padding: 20px 15px 15px 10px;
+      position: initial;
+
+      left: 0%;
+      -webkit-transform: translateX(-0%);
+      -ms-transform: translateX(-0%);
+      transform: translateX(-0%);
+
+    }
+  }
+  .aboutMainIcon {
+    .aboutMainIconItemIcon {
+      width: 200px;
+      height: 200px;
+    }
+    .aboutMainIconItemData p {
+      text-align: center;
+      width: 200px;
+      margin: 0 auto;
+    }
+  }
+}

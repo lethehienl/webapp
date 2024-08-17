@@ -1,0 +1,6 @@
+# config/routes.yaml
+home_route:
+  path:       /
+  controller: App\Bundle\HomeBundle\Controller\HomeController::index
+
+

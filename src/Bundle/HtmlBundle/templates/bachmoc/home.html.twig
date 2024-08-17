@@ -1,0 +1,55 @@
+{% extends '@Html/bachmoc/master.html.twig' %}
+{#
+{% block mainContent %}
+{{ include('AppBundle:front_office:bachmoc/partial/header.html.twig') }}
+
+{% include '@App/front_office/bachmoc/partial/header_form.html.twig' %}
+
+{% include '@App/front_office/bachmoc/partial/highlight.html.twig' %}
+
+{% if resource.place_info is defined and resource.place_info is not empty %}
+{% include '@App/front_office/bachmoc/partial/intro.html.twig' %}
+{% endif %}
+
+{% if resource.schedule is defined and resource.schedule is not empty %}
+{% include '@App/front_office/bachmoc/partial/schedule.html.twig' %}
+{% endif %}
+
+{% if resource.services is defined and resource.services is not empty %}
+{% include '@App/front_office/bachmoc/partial/service.html.twig' %}
+{% endif %}
+
+{% if resource.aboutTripU is defined and resource.aboutTripU is not empty %}
+{% include '@App/front_office/bachmoc/partial/about.html.twig' %}
+{% endif %}
+
+{% if resource.testimonial is defined and resource.testimonial is not empty %}
+{{ include('AppBundle:front_office:bachmoc/partial/testimonial.html.twig') }}
+{% endif %}
+
+{% if resource.suggestion is defined and resource.suggestion is not empty %}
+{% include '@App/front_office/bachmoc/partial/suggest.html.twig' %}
+{% endif %}
+
+{{ include('AppBundle:front_office:bachmoc/partial/footer.html.twig') }}
+{{ include('AppBundle:front_office:bachmoc/partial/button.html.twig') }}
+{{ include('AppBundle:front_office:bachmoc/partial/modal.html.twig') }}
+
+
+
+{% endblock %}#}
+
+{% block MainContent %}
+    {{ include('@Html/bachmoc/partial/header.html.twig') }}
+    {{ include('@Html/bachmoc/partial/header_form.html.twig') }}
+    {% include '@Html/bachmoc/partial/highlight.html.twig' %}
+    {% include '@Html/bachmoc/partial/intro.html.twig' %}
+    {% include '@Html/bachmoc/partial/schedule.html.twig' %}
+    {% include '@Html/bachmoc/partial/service.html.twig' %}
+    {% include '@Html/bachmoc/partial/about.html.twig' %}
+    {% include '@Html/bachmoc/partial/testimonial.html.twig' %}
+    {% include '@Html/bachmoc/partial/suggest.html.twig' %}
+    {{ include('@Html/bachmoc/partial/footer.html.twig') }}
+    {{ include('@Html/bachmoc/partial/button.html.twig') }}
+    {{ include('@Html/bachmoc/partial/modal.html.twig') }}
+{% endblock %}

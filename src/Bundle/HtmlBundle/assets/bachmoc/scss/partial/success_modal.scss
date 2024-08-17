@@ -1,0 +1,83 @@
+#successModal {
+  text-align: center;
+  .modal-dialog {
+    max-width: 370px;
+    margin: 6.75rem auto;
+  }
+  .modal-content {
+    @include border-radius(10px);
+  }
+  .modal-header {
+    border-bottom: none;
+    min-height: 100px;
+    position: relative;
+    .modalHeaderInner {
+      position: absolute;
+      top: 0px;
+      margin-top: -5rem;
+
+    }
+    button.close {
+      opacity: 1;
+      &:hover, &:focus {
+        outline: none;
+        box-shadow: none;
+        border: none;
+      }
+    }
+    .fal {
+      position: absolute;
+      top: 0px;
+      margin-top: -2rem;
+      color: #ffffff;
+      opacity: 0.9 !important;
+      font-weight: 100;
+      margin-right: 0rem;
+      right: -1.5rem;
+      font-size: 23px;
+      &:hover, &:focus {
+        outline: none;
+        box-shadow: none;
+        border: none;
+      }
+    }
+  }
+
+  h2 {
+    font-family: $font_normal;
+    font-size: 30px;
+    color: $blue;
+    text-align: center;
+  }
+  h3{
+    font-family: $font_black;
+    font-size: 30px;
+    font-weight: 900;
+    color: $yelloDark;
+  }
+  p {
+    color: black;
+    font-size: 17px;
+
+  }
+  .buttonGr {
+    text-align: center;
+    button {
+      font-family: $font_semi_bold;
+      font-weight: 600;
+      font-size: 20px;
+
+    }
+  }
+
+}
+
+
+@media (min-width: 576px) {
+  #successModal {
+    .modal-dialog {
+      max-width: 370px;
+      margin: 6.75rem auto;
+    }
+  }
+}

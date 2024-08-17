@@ -1,0 +1,7 @@
+#highlight {
+  @include sectionEffect();
+  margin-top: 50px;
+  .highlightDesc {
+    padding-top: 20px;
+  }
+}

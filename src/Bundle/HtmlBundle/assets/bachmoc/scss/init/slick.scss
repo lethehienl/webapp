@@ -1,0 +1,25 @@
+.slickSlider {
+  margin-left: -1%;
+  margin-right: -1%;
+
+  position: relative;
+  .slick-arrow {
+    position: absolute;
+    top: 45px;
+
+    color: $yelloDark;
+    font-size: 25px;
+  }
+  .slick-prev {
+    left: -0.5rem;
+  }
+  .slick-next {
+    right: -0.5rem;
+  }
+}
+@media (max-width: $media_max_991) {
+
+}
+@media (max-width: $media_max_767) {
+
+}

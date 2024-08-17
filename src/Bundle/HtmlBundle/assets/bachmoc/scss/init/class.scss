@@ -1,0 +1,16 @@
+
+.showMobile {
+  display: none;
+}
+.showDesktop {
+  display: block;
+}
+@media (max-width: $media_max_767) {
+  .showMobile {
+    display: block;
+  }
+  .showDesktop {
+    display: none;
+  }
+
+}

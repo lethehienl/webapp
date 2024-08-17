@@ -1,0 +1,6 @@
+# config/routes.yaml
+html_route:
+  path:       /bachmoc
+  controller: App\Bundle\HtmlBundle\Controller\HtmlController::bachmoc
+
+
