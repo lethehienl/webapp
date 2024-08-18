@@ -1,78 +1,49 @@
 #intro {
-  /*@include sectionEffect();*/
-/*  margin-top: 60px;*/
-/*  padding-top: 100px;*/
-  padding-bottom: 70px;
-}
-.introDataRow {
-  //display: flex;
-  /*justify-content: space-between;
-  width: 100%;*/
-
-  .introItem {
-
-    /*width: 20%;*/
-    text-align: center;
-  }
-  .introItemText {
-    color: white;
-    font-size: 18px;
-    span {
-      font-weight: bold;
+  @include sectionEffect();
+  .sectionTitle {
+    padding-top:15px;
+    hr {
+      width: 185px;
     }
   }
-  .introItemIcon {
-    margin: 0 auto;
-    border: 1px solid #ffffff;
-    @include border-radius(100px);
-    height: 130px;
-    width: 130px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .introItemIconInner {
-      height: 90px;
-      width: 90px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+  .introMainHead {
+    position: relative;
+    overflow: hidden;
 
-      @include border-radius(100px);
-      background-color: #ffffff;
-      transition-property: background;
-      transition-duration: 0.3s;
-      transition-timing-function: linear;
-      i {
-        font-size: 35px;
-        color: $yelloDark;
-
-      }
-    }
-    &:hover {
-      border: 1px solid $yelloDark;
-      .introItemIconInner {
-        background-color: $yelloDark;
-        i {
-          font-size: 35px;
-          color: #ffffff;
-        }
-      }
-    }
   }
 }
 
-@media (max-width: $media_max_767) {
-  #intro {
-    .slickSlider .slick-next {
-      right: 1rem;
+#mission {
+  @include sectionEffect();
+  .sectionTitle {
+    padding-top:15px;
+    hr {
+      width: 185px;
     }
+  }
+  .introMainHead {
+    position: relative;
+    overflow: hidden;
 
-    .slickSlider .slick-prev {
-      left: 1rem;
+    .introMainImg {
+      padding-bottom: 90px;
+      img{
+        width: 100%;
+      }
     }
-
-    /*.slickSlider .slick-arrow {
-      top: 90px;
-    }*/
+    .introMainDesc {
+      width: 84%;
+      background-color: $pinkLight;
+      padding: 30px 40px 10px 40px;
+      position: absolute;
+      bottom: 0px;
+      margin-bottom: 25px;
+      @include border-radius(10px);
+      z-index: 1;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      transform: translateX(-50%);
+    }
   }
 }

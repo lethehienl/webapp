@@ -1,23 +1,31 @@
-<style>
-    #banner {
-        height: 475px;
+<section id="banner">
+	<div class="container">
+		<div class="bannerSlider">
+			<div class="bannerSliderItem">
+				<img src="{{ preload('/bundles/html/thanhhuong/imgs/banner.png') }}" height="475px">
+			</div>
+			<div class="bannerSliderItem">
+				<img src="{{ preload('/bundles/html/thanhhuong/imgs/banner2.jpg') }}" height="475px">
+			</div>
+			<div class="bannerSliderItem">
+				<img src="{{ preload('/bundles/html/thanhhuong/imgs/banner3.jpg') }}" height="475px">
+			</div>
+			<div class="bannerSliderItem">
+				<img src="{{ preload('/bundles/html/thanhhuong/imgs/banner3.jpg') }}" height="475px">
+			</div>
+		</div>
 
-        background: url('/bundles/html/thanhhuong/imgs/bannerbg3.jpg') no-repeat center ;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-    }
-    #banner img {
-		text-align: center;
-        opacity: 0.8;  filter: alpha(opacity=80);
-    }
-
-</style>
-
-<div id="banner">
-	<div class="d-flex justify-content-center">
-		<img src="{{ preload('/bundles/html/thanhhuong/imgs/banner.png') }}" width="auto" height="475px">
+		<div class="smallnav">
+			<div class="smallnavInner">
+				<div class="smallnavItem smallnavItem0 active"><img alt="slide" src="{{ preload('/bundles/html/thanhhuong/imgs/banner.png') }}" data-index="0">
+				</div>
+				<div  class="smallnavItem smallnavItem1"><img alt="slide" src="{{ preload('/bundles/html/thanhhuong/imgs/banner2.jpg') }}" data-index="1">
+				</div>
+				<div  class="smallnavItem smallnavItem2"><img alt="slide" src="{{ preload('/bundles/html/thanhhuong/imgs/banner3.jpg') }}" data-index="2">
+				</div>
+				<div  class="smallnavItem smallnavItem3"><img alt="slide" src="{{ preload('/bundles/html/thanhhuong/imgs/banner3.jpg') }}" data-index="3">
+				</div>
+			</div>
+		</div>
 	</div>
-
-</div>
+</section>

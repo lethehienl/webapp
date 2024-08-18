@@ -1,0 +1,72 @@
+#banner {
+  height: 475px;
+  position: relative;
+
+  background: url('/bundles/html/thanhhuong/imgs/bannerbg3.jpg') no-repeat center ;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  img {
+    text-align: center;
+    opacity: 0.9;  filter: alpha(opacity=90);
+    width: 100%;
+  }
+  .bannerSlider {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    .slick-arrow {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      color: #243c93;
+      font-size: 25px;
+      margin-top: 237px;
+      z-index: 99;
+    }
+    .slick-prev {
+      left: -60px;
+      padding-bottom: 1rem;
+    }
+    .slick-next {
+      right: -56px;
+      padding-bottom: 1rem;
+    }
+
+    .slick-dots {
+      display: none !important;
+    }
+  }
+  .smallnav {
+    @include horizon-align(absolute);
+    margin-top: -110px;
+    .smallnavInner {
+      display: flex;
+      background-color: #ffffff;
+      padding: 10px 11px;
+      border: 2px solid #fff;
+      opacity: 0.7;
+    }
+    .smallnavItem {
+      margin: 0 10px;
+      opacity: 60;
+      cursor: pointer;
+      :hover {
+        border: 3px solid $green;
+      }
+      &.active{
+        border: 3px solid $green;
+      }
+    }
+
+    img {
+      width: 95px;
+      height: 70px;
+    }
+  }
+}
+
+
+

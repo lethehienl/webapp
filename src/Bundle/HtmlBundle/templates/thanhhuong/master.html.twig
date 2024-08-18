@@ -39,12 +39,12 @@
 <div id="loading-animation" class="loading" style="display: none;">Loading…</div>
 
 {#JS#}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="{{ preload('/bundles/html/thanhhuong/lib/bootstrap/bootstrap.bundle.min.js') }}"
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="{{ preload('/bundles/html/thanhhuong/lib/bootstrap/bootstrap.bundle.min.js') }}"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-<script src="{{ preload('/bundles/html/thanhhuong/lib/slick/slick.js') }}"></script>
-<script src="{{ preload('/bundles/html/thanhhuong/js/main.js?version=1') }}"></script>
-<script src="{{ preload('/bundles/html/thanhhuong/js/home.js?version=1') }}"></script>
+<script type="text/javascript" src="{{ preload('/bundles/html/thanhhuong/lib/slick/slick.js') }}"></script>
+{#<script type="text/javascript" src="{{ preload('/bundles/html/thanhhuong/js/main.js?version=1', { nopush: true }) }}"></script>#}
+<script type="text/javascript" src="{{ preload('/bundles/html/thanhhuong/js/index.js?version=14', { nopush: true }) }}"></script>
 </body>
 </html>
