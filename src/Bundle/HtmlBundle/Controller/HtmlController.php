@@ -18,4 +18,13 @@ class HtmlController extends AbstractController
           'number' => $number,
       ]);
   }
+
+    public function thanhhuong(): Response
+    {
+        $number = random_int(0, 100);
+
+        return $this->render('@Html/thanhhuong/home.html.twig', [
+          'number' => $number,
+        ]);
+    }
 }
