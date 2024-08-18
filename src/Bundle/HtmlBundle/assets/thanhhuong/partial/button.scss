@@ -1,0 +1,17 @@
+
+#resigsterbutton {
+  position: fixed;
+  cursor: pointer;
+  width: 180px;
+  height: 90px;
+  top: calc(100vh - 14rem);
+  right: 0px;
+  margin-right: 8%;
+  z-index: 999;
+}
+
+@media (max-width: $media_max_767) {
+  #resigsterbutton {
+    top: calc(100vh - 7rem);
+  }
+}

@@ -1,0 +1,14 @@
+{% extends '@Html/thanhhuong/master.html.twig' %}
+
+{% block MainContent %}
+    {{ include('@Html/thanhhuong/partial/header_top.html.twig') }}
+    {{ include('@Html/thanhhuong/partial/header.html.twig') }}
+    {% include '@Html/thanhhuong/partial/banner.html.twig' %}
+    {% include '@Html/thanhhuong/partial/intro.html.twig' %}
+    {% include '@Html/thanhhuong/partial/product.html.twig' %}
+    {% include '@Html/thanhhuong/partial/service.html.twig' %}
+    {% include '@Html/thanhhuong/partial/about.html.twig' %}
+    {% include '@Html/thanhhuong/partial/footer.html.twig' %}
+    {% include '@Html/thanhhuong/partial/modal.html.twig' %}
+    {{ include('@Html/thanhhuong/partial/button.html.twig') }}
+{% endblock %}

@@ -1,0 +1,14 @@
+.tooltip {
+  .tooltip-inner {
+    max-width: 250px;
+    background-color: #fff;
+    color: #454647;
+    font-family: $font_normal;
+  }
+}
+.bs-tooltip-auto[x-placement^=top] .arrow::before, .bs-tooltip-top .arrow::before {
+  border-top-color: #fff;
+}
+.tooltip.show{
+  opacity: 1;
+}
