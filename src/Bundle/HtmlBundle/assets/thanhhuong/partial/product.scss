@@ -1,76 +1,168 @@
-#intro {
-  /*@include sectionEffect();*/
-
-}
-.introDataRow {
-  //display: flex;
-  /*justify-content: space-between;
-  width: 100%;*/
-
-  .introItem {
-
-    /*width: 20%;*/
-    text-align: center;
-  }
-  .introItemText {
-    color: white;
-    font-size: 18px;
-    span {
-      font-weight: bold;
+#testimonial {
+  @include sectionEffect();
+  margin-top: 50px;
+  margin-bottom: 20px;
+  .sectionTitle {
+    hr {
+      width: 210px;
     }
   }
-  .introItemIcon {
+  .testimonialSlider {
+    width: 86%;
     margin: 0 auto;
-    border: 1px solid #ffffff;
-    @include border-radius(100px);
-    height: 130px;
-    width: 130px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .introItemIconInner {
-      height: 90px;
-      width: 90px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      @include border-radius(100px);
-      background-color: #ffffff;
-      transition-property: background;
-      transition-duration: 0.3s;
-      transition-timing-function: linear;
-      i {
-        font-size: 35px;
-        color: $yelloDark;
-
-      }
+    position: relative;
+    .slick-arrow {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      color: #243c93;
+      font-size: 25px;
+      margin-top: 86px;
+      z-index: 99;
     }
-    &:hover {
-      border: 1px solid $yelloDark;
-      .introItemIconInner {
-        background-color: $yelloDark;
-        i {
-          font-size: 35px;
-          color: #ffffff;
-        }
+    .slick-prev {
+      left: -60px;
+      padding-bottom: 1rem;
+      width: 225px;
+    }
+    .slick-next {
+      right: -56px;
+      padding-bottom: 1rem;
+      width: 225px;
+      text-align: right;
+    }
+    .custom-dots {
+      //bottom: -5rem;
+      margin-bottom: -25px;
+      .dot{
+        border: solid 1px #b7b7b7;
+        background-color: #ffffff;
+        width: 13px;
+        height: 13px;
+      }
+      .slick-active .dot {
+        background-color: #1b3a6a;
+        border: 1px solid $blue;
       }
     }
   }
+  .testimonialContent {
+    position: relative;
+    @include border-radius(4px);
+    border: solid 1px #e0e0e0;
+    background-color: #ffffff;
+    padding: 15px;
+    .testimonialImg {
+      display: inline-block;
+    }
+    .testimonialContentInner {
+      width: calc(100% - 200px);
+      padding-right: 50px;
+      display: inline-block;
+      padding-left: 30px;
+      @include vertical-align(absolute);
+
+      p {
+        font-size: 14px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: italic;
+        line-height: 1.57;
+        letter-spacing: normal;
+        text-align: left;
+        color: #707070;
+      }
+
+      h4 {
+        font-size: 14px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.57;
+        letter-spacing: normal;
+        text-align: left;
+        color: $fontNormalColor;
+
+        span {
+          font-size: 12px;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.83;
+          letter-spacing: normal;
+          text-align: left;
+          color: $yelloDark;
+          padding-left: 40px;
+        }
+        i{
+          display: inline-block;
+          width: 30px;
+          height: 0;
+          border: solid 2px #b7b7b7;
+          margin-right: 10px;
+        }
+
+      }
+    }
+
+    .imgquote {
+      position: absolute;
+      top: -49px;
+      right: 19px;
+    }
+
+  }
+
+  img.aleft, img.aright {
+    margin-top: 27px;
+    cursor: pointer;
+  }
+
 }
+
 
 @media (max-width: $media_max_767) {
-  #intro {
-    .slickSlider .slick-next {
-      right: 1rem;
+  #testimonial {
+    margin-top: 30px;
+    .sectionTitle {
+      hr {
+        width: 170px;
+      }
+    }
+    .testimonialContent {
+      overflow: hidden;
+      .testimonialImg {
+        @include horizon-align();
+      }
+      .testimonialContentInner {
+        padding-left: 0px;
+        padding-right: 0px;
+        position: initial;
+        top: 0;
+        display: block;
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+        width: 100%;
+        margin-top: 30px;
+      }
     }
 
-    .slickSlider .slick-prev {
-      left: 1rem;
-    }
 
-    /*.slickSlider .slick-arrow {
-      top: 90px;
-    }*/
+    .testimonialSlider {
+
+      .slick-prev {
+        left: -5%;
+        padding-bottom: 1rem;
+      }
+
+      .slick-next {
+        right: -5%;
+      }
+
+      .custom-dots {
+        display: none;
+      }
+    }
   }
 }

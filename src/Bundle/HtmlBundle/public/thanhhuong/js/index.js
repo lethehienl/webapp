@@ -90,8 +90,62 @@ var Home = {
         });
     },
 
-    init: function () {
+    testimonialSlider: function() {
 
+        $('.testimonialSlider').slick({
+
+            speed: 700,
+            slidesToShow: 1,
+            arrows: true,
+            prevArrow: '<div class="slick-prev"><i class="fas fa-chevron-circle-left" aria-hidden="true"></i></div>',
+            nextArrow: '<div class="slick-next"><i class="fas fa-chevron-circle-right" aria-hidden="true"></i></div>',
+            dots: true,
+
+            dotsClass: 'custom-dots',
+            customPaging: function (slider, i) {
+                var slideNumber = (i + 1),
+                    totalSlides = slider.slideCount;
+                return '<a class="dot" role="button" title="' + slideNumber + ' of ' + totalSlides + '"><span class="string">' + slideNumber + '/' + totalSlides + '</span></a>';
+            }
+
+        });
+
+        $(".testimonialSlider .aleft").on('click', function (event) {
+            $(".testimonialSlider .slick-prev").click();
+        });
+        $(".testimonialSlider .aright").on('click', function (event) {
+            $(".testimonialSlider .slick-next").click();
+        });
+    },
+
+    threeSlider: function () {
+        $('.threeSlider').slick({
+            speed: 300,
+            slidesToShow: 3,
+            prevArrow: '<div class="slick-prev"><i class="fas fa-chevron-circle-left"></i></div>',
+            nextArrow: '<div class="slick-next"><i class="fas fa-chevron-circle-right"></i></div>',
+            arrows: true,
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 1
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1
+                    }
+                }
+            ]
+        });
+    },
+
+    init: function () {
+        Home.threeSlider();
+        Home.bannerSlider();
+        Home.testimonialSlider();
     }
 };
 
@@ -100,6 +154,5 @@ var Home = {
     Home.bannerSlider();
 })();*/
 $(document).ready(function () {
-    Home.bannerSlider();
-
+    Home.init();
 });

@@ -1,10 +1,18 @@
 #footer{
   position: relative;
   overflow: hidden;
-  background-color: $blue;
+  background-color: #223b05;
   color: #ffffff;
+  margin-top: 80px;
   padding-top: 45px;
   padding-bottom: 35px;
+  .footerLogo{
+    background-color: #ffffff;
+    border-radius: 110px;
+    img {
+      height: 200px;
+    }
+  }
 
   h2 {
     font-size: 18px;
@@ -19,7 +27,8 @@
     }
   }
   .footerMid {
-    margin-top: 15px;
+    margin-top: 30px;
+    margin-left: 70px;
 
   }
 

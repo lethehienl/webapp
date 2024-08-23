@@ -1,86 +1,14 @@
-#service {
+#highlight {
   @include sectionEffect();
-  padding-top: 50px;
+  margin-top: 50px;
+
+  .highlightDesc {
+    padding-top: 20px;
+  }
+
   .sectionTitle {
     hr {
-      width: 170px;
-    }
-  }
-
-  .serviceMain {
-    padding-top: 10px;
-  }
-  .nav-link {
-    color: #ffffff;
-    background-color: $yelloDark;
-    font-size: 17.5px;
-    font-family: $font_bold;
-    font-weight: bold;
-    padding: 15px 15px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    margin-right: 1px;
-    &.active {
-      background-color: $blue;
-    }
-  }
-  .tab-content {
-    border: 1px solid #838383;
-    padding: 30px 40px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-image: url('/bundles/html/bachmoc/images/servicebg.png');
-    .serviceTabContent {
-      max-height: 700px;
-      overflow-y: auto;
-    }
-
-  }
-}
-
-@media (max-width: $media_max_991) {
-  #service {
-    .tab-content {
-      .serviceTabContent {
-        max-height: 600px;
-      }
-    }
-    .sectionTitle {
-      hr {
-        width: 150px;
-      }
-    }
-    .nav-tabs {
-      .nav-link {
-        padding: 10px 10px;
-        font-size: 15px;
-      }
-    }
-  }
-}
-
-
-@media (max-width: $media_max_767) {
-  #service {
-    .tab-content {
-      .serviceTabContent {
-        max-height: 500px;
-      }
-    }
-
-    .sectionTitle {
-      hr {
-        width: 150px;
-      }
-    }
-    .nav-tabs {
-      .nav-link {
-        padding: 8px 4px;
-        font-size: 14px;
-      }
+      width: 300px;
     }
   }
 }
