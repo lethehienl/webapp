@@ -12,11 +12,10 @@ class HomeController extends AbstractController
 {
   public function index(): Response
   {
-      echo 'Home';die;
       $number = random_int(0, 100);
 
-      return $this->render('@Admin/back_office/admin.html.twig', [
-          'number' => $number,
+      return $this->render('@Html/thanhhuong/home.html.twig', [
+        'number' => $number,
       ]);
   }
 }
