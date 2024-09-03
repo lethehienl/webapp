@@ -561,9 +561,10 @@ img {
 }
 #header .shopeeqr {
   display: inline-block;
+  margin-top: 13px;
 }
 #header .shopeeqr img {
-  margin-top: -4px;
+  margin-top: 2px;
 }
 #header .zaloqr {
   display: inline-block;
