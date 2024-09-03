@@ -57,7 +57,8 @@
     /*outline: none;*/
   }
 }
-@media (max-width: $media_max_767) {
+
+@media (max-width: $media_max_991) {
   #header {
     .headerTopSmall{
       display: block;
@@ -81,7 +82,5 @@
         text-align: left;
       }
     }
-
-
   }
 }

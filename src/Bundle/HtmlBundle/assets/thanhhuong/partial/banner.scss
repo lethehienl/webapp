@@ -1,5 +1,5 @@
 #banner {
-  height: 475px;
+  max-height: 475px;
   position: relative;
 
   background: url('/bundles/html/thanhhuong/imgs/bannerbg3.jpg') no-repeat center ;
@@ -69,7 +69,54 @@
       height: 70px;
     }
   }
+  .container {
+    .bannerSlider {
+      .bannerSliderItem {
+        .showOnMobile {
+          display: none;
+        }
+        .showOnLarge {
+          display: block;
+        }
+        img {
+          max-height: 475px;
+        }
+      }
+    }
+  }
 }
 
+@media (max-width: $media_max_991) {
+  #banner {
+    .container {
+      width: 100%;
+      max-width: none;
+      --bs-gutter-x: 0;
+      .smallnav {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: $media_max_767) {
+  #banner {
+    .container {
+      .bannerSlider {
+        .bannerSliderItem {
+          .showOnMobile {
+            display: block;
+          }
+          .showOnLarge {
+            display: none;
+          }
+          img {
+            max-height:400px;
+          }
+        }
+      }
+    }
+  }
+}
 
 

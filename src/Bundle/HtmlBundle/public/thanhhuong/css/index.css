@@ -581,7 +581,7 @@ img {
   /*outline: none;*/
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   #header .headerTopSmall {
     display: block;
   }
@@ -680,7 +680,7 @@ img {
   }
 }
 #banner {
-  height: 475px;
+  max-height: 475px;
   position: relative;
   background: url("/bundles/html/thanhhuong/imgs/bannerbg3.jpg") no-repeat center;
   -webkit-background-size: cover;
@@ -752,7 +752,37 @@ img {
   width: 95px;
   height: 70px;
 }
+#banner .container .bannerSlider .bannerSliderItem .showOnMobile {
+  display: none;
+}
+#banner .container .bannerSlider .bannerSliderItem .showOnLarge {
+  display: block;
+}
+#banner .container .bannerSlider .bannerSliderItem img {
+  max-height: 475px;
+}
 
+@media (max-width: 991px) {
+  #banner .container {
+    width: 100%;
+    max-width: none;
+    --bs-gutter-x: 0;
+  }
+  #banner .container .smallnav {
+    display: none;
+  }
+}
+@media (max-width: 767px) {
+  #banner .container .bannerSlider .bannerSliderItem .showOnMobile {
+    display: block;
+  }
+  #banner .container .bannerSlider .bannerSliderItem .showOnLarge {
+    display: none;
+  }
+  #banner .container .bannerSlider .bannerSliderItem img {
+    max-height: 400px;
+  }
+}
 #intro {
   animation-name: fadeInUp;
   animation-duration: 0.7s;
