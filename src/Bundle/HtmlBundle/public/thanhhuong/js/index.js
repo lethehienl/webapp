@@ -146,6 +146,7 @@ var Home = {
         Home.threeSlider();
         Home.bannerSlider();
         Home.testimonialSlider();
+        Home.dropdown();
     }
 };
 

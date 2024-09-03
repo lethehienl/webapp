@@ -50,6 +50,22 @@
   .fas.fa-phone-alt:before {
     font-size: 11px;
   }
+  .headerTopSmall{
+    display: none;
+  }
+  .headerTopLarge {
+    display: block;
+  }
+}
+@media (max-width: $media_max_767) {
+  #headerTop {
+    .headerTopSmall{
+      display: block;
+    }
+    .headerTopLarge {
+      display: none;
+    }
 
+  }
 }
 

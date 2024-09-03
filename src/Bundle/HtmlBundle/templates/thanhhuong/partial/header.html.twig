@@ -1,18 +1,17 @@
 <header id="header" class="header">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-8 col-left ">
+        <div class="headerTopSmall">
             <nav class="navbar navbar-expand-lg">
                 <a class="navbar-brand" href="#">
                     <img src="{{ preload('/bundles/html/thanhhuong/imgs/logo.png') }}" width="80" height="80" class="d-inline-block align-top" alt="">
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuDropdown" aria-controls="mainMenuDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse text-end" id="navbarleft">
+                <div class="collapse navbar-collapse text-end" id="mainMenuDropdown">
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <li class="nav-item active">
+                        <li class="nav-item first-item active">
                             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
@@ -31,31 +30,78 @@
                             <a class="nav-link" href="#">Liên Hệ</a>
                         </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link" href="/user/login">Đăng nhập</a>
+                        </li>
+
                     </ul>
-
-                </div>
-            </nav>
-            </div>
-            <div class="col-4 col-right text-end">
-                <div class="navbarRight">
-                    <div class="navbar-nav accountManagement">
-                        <div class="group-features">
-                            <div class="account item fs-6">
-                                <a title="Tài khoản" class="active" href="/user/login" aria-current="page"><i class="fal fa-user"></i> Đăng nhập / Đăng ký</a>
-                            </div>
-                        </div>
+                    <div class="qrCode text-center pb-3">
+                        <a class="navbar-brand shopeeqr" target="_blank" href="/https://shopee.vn/dauphongthanhhuong">
+                            <img src="/bundles/html/thanhhuong/imgs/ShopeeQR-Trans.png" width="70" height="70" class="d-inline-block align-top" alt="">
+                        </a>
+                        <a class="navbar-brand zaloqr" href="#">
+                            <img src="/bundles/html/thanhhuong/imgs/ZALO-DPTH_QR.png" width="64" height="64" class="d-inline-block align-top" alt="">
+                        </a>
                     </div>
+                </div>
 
+            </nav>
+        </div>
 
-                <a class="navbar-brand shopeeqr" target="_blank" href="/https://shopee.vn/dauphongthanhhuong">
-                    <img src="/bundles/html/thanhhuong/imgs/ShopeeQR-Trans.png" width="90" height="90" class="d-inline-block align-top" alt="">
-                </a>
-                <a class="navbar-brand zaloqr" href="#">
-                    <img src="/bundles/html/thanhhuong/imgs/ZALO-DPTH_QR.png" width="80" height="80" class="d-inline-block align-top" alt="">
-                </a>
+        <div class="headerTopLarge">
+            <div class="row">
+                <div class="col-9 col-left">
+                    <nav class="navbar navbar-expand-lg">
+                        <a class="navbar-brand" href="#">
+                            <img src="{{ preload('/bundles/html/thanhhuong/imgs/logo.png') }}" width="80" height="80" class="d-inline-block align-top" alt="">
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenuDropdown" aria-controls="mainMenuDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse text-end" id="mainMenuDropdown">
+                            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Giới Thiệu</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Sản Phẩm</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Dịch Vụ</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Về Chúng Tôi</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Liên Hệ</a>
+                                </li>
+
+                                {#<li class="nav-item">
+                                    <a class="nav-link" href="/user/login">Đăng nhập</a>
+                                </li>#}
+
+                            </ul>
+
+                        </div>
+                    </nav>
+                </div>
+                <div class="col-3 col-right text-end">
+                    <div class="navbarRight">
+
+                        <a class="navbar-brand shopeeqr" target="_blank" href="/https://shopee.vn/dauphongthanhhuong">
+                            <img src="/bundles/html/thanhhuong/imgs/ShopeeQR-Trans.png" width="70" height="70" class="d-inline-block align-top" alt="">
+                        </a>
+                        <a class="navbar-brand zaloqr" href="#">
+                            <img src="/bundles/html/thanhhuong/imgs/ZALO-DPTH_QR.png" width="64" height="64" class="d-inline-block align-top" alt="">
+                        </a>
+                    </div>
                 </div>
             </div>
-
         </div>
+
     </div>
 </header>
