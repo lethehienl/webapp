@@ -46,4 +46,22 @@
       transform: translateX(-50%);
     }
   }
+
+  .showMobile{
+    display: none;
+  }
+  .showLarge {
+    display: block;
+  }
+}
+
+@media (max-width: $media_max_991) {
+  #mission {
+    .showMobile{
+      display: block;
+    }
+    .showLarge {
+      display: none;
+    }
+  }
 }

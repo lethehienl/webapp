@@ -7,10 +7,12 @@
   padding-top: 45px;
   padding-bottom: 35px;
   .footerLogo{
-    background-color: #ffffff;
-    border-radius: 110px;
+
+
     img {
-      height: 200px;
+      background-color: #ffffff;
+      max-height: 200px;
+      border-radius: 110px;
     }
   }
 
@@ -62,6 +64,7 @@
   #footer{
     .footerMid {
       padding-top: 0px;
+      margin-left: 0px;
       p {
         line-height: 25px;
       }

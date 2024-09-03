@@ -61,6 +61,7 @@
       display: inline-block;
       padding-left: 30px;
       @include vertical-align(absolute);
+      z-index: 1;
 
       p {
         font-size: 14px;
@@ -107,8 +108,9 @@
 
     .imgquote {
       position: absolute;
-      top: -49px;
-      right: 19px;
+      top: 5px;
+      right: 5px;
+      z-index: 2;
     }
 
   }
@@ -119,7 +121,16 @@
   }
 
 }
+@media (max-width: $media_max_991) {
+  #testimonial {
+    .testimonialSlider {
+      .slick-arrow {
+        top: 40px;
+      }
+    }
 
+  }
+}
 
 @media (max-width: $media_max_767) {
   #testimonial {
@@ -152,12 +163,11 @@
     .testimonialSlider {
 
       .slick-prev {
-        left: -5%;
-        padding-bottom: 1rem;
+        display: none!important;
       }
 
       .slick-next {
-        right: -5%;
+        display: none!important;
       }
 
       .custom-dots {
@@ -166,3 +176,4 @@
     }
   }
 }
+

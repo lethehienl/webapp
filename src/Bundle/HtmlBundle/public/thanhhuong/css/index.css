@@ -610,12 +610,10 @@ img {
   padding-top: 45px;
   padding-bottom: 35px;
 }
-#footer .footerLogo {
-  background-color: #ffffff;
-  border-radius: 110px;
-}
 #footer .footerLogo img {
-  height: 200px;
+  background-color: #ffffff;
+  max-height: 200px;
+  border-radius: 110px;
 }
 #footer h2 {
   font-size: 18px;
@@ -657,6 +655,7 @@ img {
 @media (max-width: 991px) {
   #footer .footerMid {
     padding-top: 0px;
+    margin-left: 0px;
   }
   #footer .footerMid p {
     line-height: 25px;
@@ -838,7 +837,21 @@ img {
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
 }
+#mission .showMobile {
+  display: none;
+}
+#mission .showLarge {
+  display: block;
+}
 
+@media (max-width: 991px) {
+  #mission .showMobile {
+    display: block;
+  }
+  #mission .showLarge {
+    display: none;
+  }
+}
 #testimonial {
   animation-name: fadeInUp;
   animation-duration: 0.7s;
@@ -910,6 +923,7 @@ img {
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
+  z-index: 1;
 }
 #testimonial .testimonialContent .testimonialContentInner p {
   font-size: 14px;
@@ -951,14 +965,20 @@ img {
 }
 #testimonial .testimonialContent .imgquote {
   position: absolute;
-  top: -49px;
-  right: 19px;
+  top: 5px;
+  right: 5px;
+  z-index: 2;
 }
 #testimonial img.aleft, #testimonial img.aright {
   margin-top: 27px;
   cursor: pointer;
 }
 
+@media (max-width: 991px) {
+  #testimonial .testimonialSlider .slick-arrow {
+    top: 40px;
+  }
+}
 @media (max-width: 767px) {
   #testimonial {
     margin-top: 30px;
@@ -989,11 +1009,10 @@ img {
     margin-top: 30px;
   }
   #testimonial .testimonialSlider .slick-prev {
-    left: -5%;
-    padding-bottom: 1rem;
+    display: none !important;
   }
   #testimonial .testimonialSlider .slick-next {
-    right: -5%;
+    display: none !important;
   }
   #testimonial .testimonialSlider .custom-dots {
     display: none;
