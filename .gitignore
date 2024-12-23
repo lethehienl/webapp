@@ -9,6 +9,7 @@
 /vendor/
 .idea
 .idea/
+composer.lock
 ###< symfony/framework-bundle ###
 
 ###> lexik/jwt-authentication-bundle ###

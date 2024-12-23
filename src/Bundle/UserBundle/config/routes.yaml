@@ -1,0 +1,12 @@
+# config/routes.yaml
+api_user_login_route:
+  path:       /api/login
+  controller: App\Bundle\UserBundle\Controller\Api\ApiUserController::login
+
+user_login_route:
+  path:       /user/login
+  controller: App\Bundle\UserBundle\Controller\Admin\UserController::login
+
+api_login_check:
+    path: /api/login_check
+    controller: App\Bundle\UserBundle\Controller\Anonymous\SecurityController::loginCheck
