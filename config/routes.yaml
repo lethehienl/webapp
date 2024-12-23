@@ -16,3 +16,10 @@ admin:
     resource: "@AdminBundle/config/routes.yaml"
     prefix:   /admin
 
+user:
+    resource: "@UserBundle/config/routes.yaml"
+    prefix:   /
+
+#api_login_check:
+#    path: /api/login_check
+
