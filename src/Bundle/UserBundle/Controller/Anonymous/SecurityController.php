@@ -20,6 +20,7 @@
 
         public function loginCheck(): Response
         {
+            throw new \LogicException('This method can be blank - it will be intercepted by the "json_login" authenticator.');
             echo 'api/user/login';die;
 
         }

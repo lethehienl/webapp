@@ -8,5 +8,5 @@ user_login_route:
   controller: App\Bundle\UserBundle\Controller\Admin\UserController::login
 
 api_login_check:
-    path: /api/login_check
+    path: /api/login
     controller: App\Bundle\UserBundle\Controller\Anonymous\SecurityController::loginCheck

@@ -14,4 +14,6 @@ return [
     App\Bundle\HomeBundle\HomeBundle::class => ['all' => true],
     App\Bundle\UserBundle\UserBundle::class => ['all' => true],
     ApiPlatform\Symfony\Bundle\ApiPlatformBundle::class => ['all' => true],
+    Doctrine\Bundle\DoctrineBundle\DoctrineBundle::class => ['all' => true],
+    Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle::class => ['all' => true],
 ];
