@@ -11,7 +11,7 @@
      * User
      *
      * @ORM\Table(name="tbl_user")
-     * @ORM\Entity(repositoryClass="UserBundle\Repository\UserRepository")
+     * @ORM\Entity(repositoryClass="App\Bundle\UserBundle\Repository\UserRepository")
      */
     class User implements UserInterface, PasswordAuthenticatedUserInterface
     {

@@ -10,7 +10,7 @@ security:
             entity:
                 class: App\Bundle\UserBundle\Entity\User
                 property: email
-#        users_in_memory: { memory: null }
+        users_in_memory: { memory: null }
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -28,10 +28,10 @@ security:
         login:
             pattern: ^/api/login
             stateless: true
-            json_login:
-                check_path: /api/login
-                username_path: email
-                password_path: password
+#            json_login:
+#                check_path: /api/login
+#                username_path: email
+#                password_path: password
 #                success_handler: lexik_jwt_authentication.handler.authentication_success
 #                failure_handler: lexik_jwt_authentication.handler.authentication_failure
 
@@ -48,10 +48,10 @@ security:
         - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY  }
         - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
 
-#
+
 #    encoders:
 #        App\Bundle\UserBundle\Entity\User: # Replace with your User entity
-#            algorithm: auto
+#            algorithm: bcrypt
 #
 #        providers:
 #            app_user_provider:
