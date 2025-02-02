@@ -1,0 +1,51 @@
+{{ form_start(form, {'method': 'POST', 'class': 'form-horizontal ng-pristine ng-valid'}) }}
+
+<div class="card card-form">
+  <div class="card-header">Free Amenities</div>
+  <div class="card-body card-body-grid">
+    {% for key, value in amenity %}
+      <div class="form-group">
+        <input class="custom-input-checkbox amenity_update_checkbox amenity_amenityFree_{{ value }}" data-type="amenity_amenityPaid_{{ value }}" data-id="{{ value }}" type="checkbox" id="amenity_amenityFree_{{ value }}" name="amenityFree[{{ value }}]"
+               value="{{ value }}"
+            {% if(value in defaultAmenityFree) %}
+              checked="checked"
+            {% endif %}
+        >
+        <label class="col-form-label control-label label-checkbox"
+               for="amenity_amenityFree_{{ value }}">
+          <div class="custom-checkbox">
+            <div class="custom-checkbox__check"></div>
+            <div class="custom-checkbox__content">{{ key }}</div>
+          </div>
+        </label>
+
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="card card-form">
+  <div class="card-header">Paid Amenities</div>
+  <div class="card-body card-body-grid">
+    {% for key, value in amenity %}
+      <div class="form-group">
+        <input class="custom-input-checkbox amenity_update_checkbox amenity_amenityPaid_{{ value }}" data-type="amenity_amenityFree_{{ value }}" data-id="{{ value }}" type="checkbox" id="amenity_amenityPaid_{{ value }}" name="amenityPaid[{{ value }}]"
+               value="{{ value }}"
+            {% if(value in defaultAmenityPaid) %}
+              checked="checked"
+            {% endif %}
+        >
+        <label class="col-form-label control-label label-checkbox"
+               for="amenity_amenityPaid_{{ value }}">
+          <div class="custom-checkbox">
+            <div class="custom-checkbox__check"></div>
+            <div class="custom-checkbox__content">{{ key }}</div>
+          </div>
+        </label>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% include '@App/authentication/admin/component/actions.html.twig' with {'back_to_list_path': path('property_benefit_management_route')} %}
+{{ form_end(form) }}

@@ -1,0 +1,47 @@
+<div class="card form-lesson">
+    <div class="card-header"><strong>Lesson</strong>
+    </div>
+    {{ form_start(courseLessonForm) }}
+    <div class="card-body">
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label control-label">Type</label>
+            <div class="col-md-9 col-form-label">
+                {% for type in courseLessonForm.type %}
+                    <div class="form-check form-check-inline mr-1">
+                        {{ form_widget(type) }}
+                        <label class="form-check-label ml-1" for="course_status_0">{{ type.vars.label }}</label>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label control-label" for="urlLesson">Url</label>
+            <div class="col-md-9">
+                {{ form_widget(courseLessonForm.url, {'attr': {'class': 'required form-control', 'placeholder': "Enter lesson's url"}}) }}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label control-label" for="durationLesson">Duration</label>
+            <div class="col-md-9">
+                {{ form_widget(courseLessonForm.courseLessonExtraInfo.duration, {'attr': {'class': 'required form-control', 'placeholder': "Enter lesson's duration"}}) }}
+            </div>
+
+            {# <button type="button" id="fetch_duration" class="btn btn-primary">Fetch</button> #}
+        </div>
+
+        <div class="form-group reading-content row d-none">
+            <label class="col-md-3 col-form-label control-label" for="contentLesson">Content</label>
+            <div class="col-md-9">
+                {{ form_widget(courseLessonForm.content, {'attr': {'class': 'form-control', 'placeholder': "Enter lesson's content"}}) }}
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        {{ form_widget(courseLessonForm.save, {'attr' : {'class': 'btn btn-submit btn-primary', 'type' : 'submit' }}) }}
+        {{ form_widget(courseLessonForm.delete, {'attr' : {'class': 'btn-delete btn btn-danger', 'type' : 'button' }}) }}
+        <a href="{{ url('admin_courses_route') }}" class="btn-link float-right align-middle">Back to list</a>
+    </div>
+    {{ form_end(courseLessonForm) }}
+</div>

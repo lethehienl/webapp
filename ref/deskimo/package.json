@@ -1,0 +1,19 @@
+{
+  "name": "vietnamworks-learning-biz",
+  "version": "1.0.0",
+  "license": "ISC",
+  "scripts": {
+    "build-dev": "encore dev --watch",
+    "build-prod": "encore production"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.8.3",
+    "@babel/preset-react": "^7.7.4",
+    "@symfony/webpack-encore": "^0.28.2",
+    "ckeditor": "^4.0.0",
+    "node-sass": "^4.13.0",
+    "paginationjs": "^2.1.5",
+    "sass-loader": "^7.0.1"
+  },
+  "browserslist": "> 0.05%, not dead"
+}

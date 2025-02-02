@@ -1,0 +1,4 @@
+services:
+  invoice.service:
+    class: InvoiceBundle\Services\InvoiceService
+    autowire: true

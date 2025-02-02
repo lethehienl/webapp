@@ -1,0 +1,58 @@
+{% extends '@App/anonymous/anonymous-master.html.twig' %}
+
+{% block prefix_title %}Login{% endblock %}
+
+{% block extra_stylesheets %}
+  {{ encore_entry_link_tags('loginPage') }}
+{% endblock %}
+
+{% block classBody %}
+  class="app login"
+{% endblock %}
+
+{% block body %}
+  <div class="login">
+    <div class="container container--login">
+      <div class="login__inner">
+        <h1 class="logo-text"><a href="/">Deskimo</a></h1>
+        <div class="login__form">
+          <h3 class="login__title">Login to your account</h3>
+          {% include '@App/authentication/admin/component/flash-message.html.twig' %}
+          <form action="{{ path('user_login_route') }}" method="post">
+            <div class="form-group">
+              <label for="emailLogin">Email address</label>
+              <input id="emailLogin" type="email" name="_username" placeholder="Input your username..."
+                     required="true" oninvalid="InvalidMsg(this);" name="email"
+                     oninput="InvalidMsg(this);"
+                     title="Please input right information">
+            </div>
+
+            <div class="form-group position-relative">
+              <label for="passwordLogin">
+                <span>Password</span>
+                <a class="login__title__forgot" href="{{ url('forgot_password_route') }}">Forgot password?</a>
+              </label>
+              <input id="passwordLogin" type="password" name="_password"
+                     placeholder="Input your password..."
+                     required="true" oninvalid="InvalidMsg(this);" oninput="InvalidMsg(this);"
+                     title="Please input right information">
+              <i class="toggle-pass fas fa-eye"></i>
+            </div>
+            <button type="submit" class="ripple btn btn-primary">Login</button>
+          </form>
+        </div>
+        <div class="login__links">
+          <a class="login__link" href="{{ url('contact_us_route') }}">Contact Us</a>
+          <a class="login__link" href="javascript:void(0)">Privacy Policy</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+
+{% block extra_javascripts %}
+  {{ encore_entry_script_tags('loginPage') }}
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends '@App/authentication/admin/admin-master.html.twig' %}
+
+{% block extra_stylesheets %}
+    {{ encore_entry_link_tags('admin_course_request_management') }}
+{% endblock %}
+
+{% block mainContent %}
+    <div class="card card-ex">
+        <div class="card-body">
+            <div id="form-search">
+                <div class="form-group row mb-2">
+                    <div class="col-sm-3 col-12">
+                        <label class="form-check-label" for="date_from">Tìm kiếm theo tên khoá học</label>
+                        <input type="text" class="form-control form-control-ex" data-autoclose="true" id="keyword">
+                    </div>
+                    <div class="input-group input-daterange col-sm-9 col-12 group-from-to">
+                        <div class="col-sm-4 col-12">
+                            <label class="form-check-label" for="date_from">Từ ngày</label>
+                            <input id="from_date" class="form-control form-control-ex">
+                        </div>
+
+                        <div class="col-sm-4 col-12">
+                            <label class="form-check-label" for="date_from">Đến ngày</label>
+                            <input id="to_date" class="form-control form-control-ex">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table id="course-table" class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Ngày yêu cầu gần nhất</th>
+                        <th scope="col">Khoá học</th>
+                        <th scope="col">Công ty</th>
+                        <th scope="col">Tổng yêu cầu</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('admin_course_request_management') }}
+{% endblock %}
+

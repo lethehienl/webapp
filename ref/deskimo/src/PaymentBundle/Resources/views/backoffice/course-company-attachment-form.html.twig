@@ -1,0 +1,11 @@
+<div class="course-attachments row form-group align-items-center position-relative">
+    <label class="col-md-3 col-lg-2 col-form-label control-label" for="name">Name</label>
+    <div class="col-md-3">
+        {{ form_widget(form.name, {'attr': {'class': 'required form-control w-100'}}) }}
+    </div>
+    <label class="col-form-label control-label mr-2" for="file">File</label>
+    <div class="col p-0">
+        {{ form.vars.data ? form_widget(form.file, {'attr': {'class': 'form-control w-100'}}) : form_widget(form.file, {'attr': {'class': 'required form-control w-100'}}) }}
+        {{ form.vars.data ? form.vars.data.fileKey : '' }}  {{ (form.vars.data ? ' | ' ~ form.vars.data.size | size : '') }}
+    </div>
+</div>

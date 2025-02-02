@@ -1,0 +1,60 @@
+{% extends '@App/authentication/admin/admin-master.html.twig' %}
+
+{% block prefix_title %} Permission {% endblock %}
+
+{% block mainContent %}
+    <div class="card card-ex">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="user-table" class="table align-items-center table-flush">
+                    <form action="{{ path('admin_role_permission_route') }}" method="post">
+                        <thead class="thead-light">
+                        <tr>
+                            <th scope="col">
+                                <div class="header_wrapper">
+                                    Permission \ Role
+                                </div>
+                            </th>
+                            {% for role in roles %}
+                                <th scope="col">{{ role }}</th>
+                            {% endfor %}
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for permissionKey, permission in permissions %}
+                            <tr>
+                                <td>{{ permission }}</td>
+                                {% for key, role in roles %}
+                                    <td>
+                                        <input {{ key ~ '_' ~ permissionKey in role_permissions ? 'checked' : '' }}
+                                                name="permission[]" class="permission custom-input-checkbox"
+                                                id="{{ key ~ '_' ~ permissionKey }}"
+                                                value="{{ key ~ '_' ~ permissionKey }}" type="checkbox"/>
+                                        <label class="custom-checkbox-label label-checkbox" for="{{ key ~ '_' ~ permissionKey }}">
+                                            <div class="custom-checkbox">
+                                                <div class="custom-checkbox__check"></div>
+                                            </div>
+                                        </label>
+                                    </td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="7">
+                                <button type="submit" class="btn btn-primary legitRipple">Submit</button>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </form>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_javascripts %}
+    {{ parent() }}
+{% endblock %}
+

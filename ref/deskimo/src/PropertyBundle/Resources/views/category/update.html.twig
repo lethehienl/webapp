@@ -1,0 +1,11 @@
+{% extends '@App/authentication/admin/admin-master.html.twig' %}
+
+{% form_theme form _self %}
+
+
+{% block mainContent %}
+  <div class="card card-ex">
+    {# <div class="card-header"><strong>Update Property Category</strong></div> #}
+    {% include '@Property/category/form/category.html.twig' with {action: "Update"} %}
+  </div>
+{% endblock %}

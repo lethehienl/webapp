@@ -1,0 +1,254 @@
+// This sass file will import to other sass file of master template use Core UI
+
+button {
+  outline: none !important;
+}
+
+.c-body {
+  font-size: 16px;
+}
+
+.c-sidebar .c-sidebar-nav-dropdown-toggle:hover, .c-sidebar .c-sidebar-nav-link:hover {
+  background-color: rgba(white, .1);
+}
+
+.form-control {
+  color: #434343;
+
+  &:focus {
+    color: #434343;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+  }
+}
+
+.c-avatar-img {
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .breadcrumb-item {
+    display: none;
+  }
+  .breadcrumb-item:nth-last-child(2) {
+    display: list-item;
+
+    &::before {
+      content: "<" !important;
+    }
+  }
+}
+
+// Style burger
+.hamburger {
+  display: flex;
+  transition-property: opacity, filter;
+  transition-duration: 0.15s;
+  transition-timing-function: linear;
+  font: inherit;
+  color: inherit;
+  text-transform: none;
+  background-color: transparent;
+  border: 0;
+  margin: 0;
+  overflow: visible;
+}
+
+.hamburger:hover {
+  opacity: 0.7;
+}
+
+
+.hamburger-box {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  position: relative;
+}
+
+.hamburger-inner {
+  display: block;
+  top: 50%;
+  margin-top: -2px;
+}
+
+.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+  width: 24px;
+  height: 2px;
+  background-color: rgba(0, 0, 21, .5);
+  border-radius: 4px;
+  position: absolute;
+  transition-property: transform;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
+
+.hamburger-inner::before, .hamburger-inner::after {
+  content: "";
+  display: block;
+}
+
+.hamburger-inner::before {
+  top: -10px;
+}
+
+.hamburger-inner::after {
+  bottom: -10px;
+}
+
+@media (min-width: 992px) {
+  .hamburger.is-active:hover, .c-sidebar-lg-show ~ .c-wrapper .hamburger:hover {
+    opacity: 0.7;
+  }
+
+  .hamburger.is-active, .c-sidebar-lg-show ~ .c-wrapper .hamburger {
+    .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+      background-color: rgba(0, 0, 21, .5);
+    }
+
+  }
+}
+
+@media (max-width: 991px) and (min-width: 576px) {
+  .hamburger.is-active:hover, .c-sidebar-show ~ .c-wrapper .hamburger:hover {
+    opacity: 0.7;
+  }
+
+  .hamburger.is-active, .c-sidebar-show ~ .c-wrapper .hamburger {
+    .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+      background-color: rgba(0, 0, 21, .5);
+    }
+
+  }
+}
+
+/*
+* Spin
+*/
+.hamburger--spin .hamburger-inner {
+  transition-duration: 0.22s;
+  transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.hamburger--spin .hamburger-inner::before {
+  transition: top 0.1s 0.25s ease-in, opacity 0.1s ease-in;
+}
+
+.hamburger--spin .hamburger-inner::after {
+  transition: bottom 0.1s 0.25s ease-in, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+/*
+   * Arrow
+   */
+.hamburger--arrow.is-active .hamburger-inner::before, .c-sidebar-lg-show ~ .c-wrapper .hamburger--arrow .hamburger-inner::before {
+  transform: translate3d(-8px, 0, 0) rotate(-45deg) scale(0.7, 1);
+  top: -5px;
+}
+
+.hamburger--arrow.is-active .hamburger-inner::after, .c-sidebar-lg-show ~ .c-wrapper .hamburger--arrow .hamburger-inner::after {
+  transform: translate3d(-8px, 0, 0) rotate(45deg) scale(0.7, 1);
+  bottom: -5px;
+}
+
+@media (max-width: 991px) and (min-width: 576px) {
+  .hamburger--arrow.is-active .hamburger-inner, .c-sidebar-show ~ .c-wrapper .hamburger--arrow .hamburger-inner {
+    transform: rotate(225deg);
+    transition-delay: 0.12s;
+    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  .hamburger--arrow.is-active .hamburger-inner::before, .c-sidebar-show ~ .c-wrapper .hamburger--arrow .hamburger-inner::before {
+    top: 0;
+    opacity: 0;
+    transition: top 0.1s ease-out, opacity 0.1s 0.12s ease-out;
+  }
+
+  .hamburger--arrow.is-active .hamburger-inner::after, .c-sidebar-show ~ .c-wrapper .hamburger--arrow .hamburger-inner::after {
+    bottom: 0;
+    transform: rotate(-90deg);
+    transition: bottom 0.1s ease-out, transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+}
+
+
+@media (min-width: 992px) {
+  .hamburger--spin.is-active .hamburger-inner, .c-sidebar-lg-show ~ .c-wrapper .hamburger--spin .hamburger-inner {
+    transform: rotate(225deg);
+    transition-delay: 0.12s;
+    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  .hamburger--spin.is-active .hamburger-inner::before, .c-sidebar-lg-show ~ .c-wrapper .hamburger--spin .hamburger-inner::before {
+    top: 0;
+    opacity: 0;
+    transition: top 0.1s ease-out, opacity 0.1s 0.12s ease-out;
+  }
+
+  .hamburger--spin.is-active .hamburger-inner::after, .c-sidebar-lg-show ~ .c-wrapper .hamburger--spin .hamburger-inner::after {
+    bottom: 0;
+    transform: rotate(-90deg);
+    transition: bottom 0.1s ease-out, transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+}
+
+@media (max-width: 991px) and (min-width: 576px) {
+  .hamburger--spin.is-active .hamburger-inner, .c-sidebar-show ~ .c-wrapper .hamburger--spin .hamburger-inner {
+    transform: rotate(225deg);
+    transition-delay: 0.12s;
+    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  .hamburger--spin.is-active .hamburger-inner::before, .c-sidebar-show ~ .c-wrapper .hamburger--spin .hamburger-inner::before {
+    top: 0;
+    opacity: 0;
+    transition: top 0.1s ease-out, opacity 0.1s 0.12s ease-out;
+  }
+
+  .hamburger--spin.is-active .hamburger-inner::after, .c-sidebar-show ~ .c-wrapper .hamburger--spin .hamburger-inner::after {
+    bottom: 0;
+    transform: rotate(-90deg);
+    transition: bottom 0.1s ease-out, transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+}
+
+
+// End style burger
+
+
+// Fix bug for IE 11
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .company__card .card {
+    flex-direction: column;
+  }
+
+}
+
+// End fix bug for IE 11
+
+.bg-gradient-primary {
+  background: #1f1498 !important;
+  background: linear-gradient(45deg, #321fdb 0%, #1f1498 100%) !important;
+  border-color: #1f1498 !important;
+}
+
+.bg-gradient-info {
+  background: #2982cc !important;
+  background: linear-gradient(45deg, #39f 0%, #2982cc 100%) !important;
+  border-color: #2982cc !important;
+}
+
+.bg-gradient-warning {
+  background: #f6960b !important;
+  background: linear-gradient(45deg, #f9b115 0%, #f6960b 100%) !important;
+  border-color: #f6960b !important;
+}
+
+.bg-gradient-danger {
+  background: #d93737 !important;
+  background: linear-gradient(45deg, #e55353 0%, #d93737 100%) !important;
+  border-color: #d93737 !important;
+}

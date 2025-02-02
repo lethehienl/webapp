@@ -1,0 +1,44 @@
+<header class="c-header c-header-light c-header-fixed c-header-with-subheader">
+    <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar"
+            data-class="c-sidebar-show"><span class="c-header-toggler-icon"></span>
+    </button>
+    <a class="c-header-brand d-none mr-3" href="#"><img class="c-header-brand-full c-d-dark-none"
+                                                        src="" width="200"
+                                                        height="auto"
+                                                        alt=""></a>
+    <button class="c-header-toggler c-class-toggler mfs-3 d-md-down-none" type="button" data-target="#sidebar"
+            data-class="c-sidebar-lg-show" responsive="true">
+        <span class="hamburger hamburger--arrow">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+        </span>
+    </button>
+    {% set password = app.user.password %}
+    {% if password is null %}
+        {% if (app.request.get('_route') == 'learning_order_course_details_route') %}
+            <div class="header__notification mr-4 mr-sm-none">
+            <span data-toggle="tooltip" data-placement="bottom"
+                  title="Ở chế độ này, thông tin tài khoản của bạn được tạo ngẫu nhiên">
+                <i class="fal fa-exclamation-triangle font-weight-bold text-warning"></i>
+                <span class="d-none d-md-inline">
+                    Bạn đang ở chế độ <b>KHÁCH</b>, vui lòng click
+                        vào <a href="{{ path('employee_manage_information_route') }}">đây</a> để cập nhật thông tin và sử dụng tiếp
+                </span>
+            </span>
+            </div>
+        {% else %}
+            <div class="header__notification">
+                <span data-toggle="tooltip" data-placement="bottom"
+                      title="Ở chế độ này, thông tin tài khoản của bạn được tạo ngẫu nhiên">
+                    <i class="fal fa-exclamation-triangle font-weight-bold text-warning"></i>
+                    <span class="d-none d-md-inline">
+                        Bạn đang ở chế độ <b>KHÁCH</b>, vui lòng click
+                        vào <a href="{{ path('employee_manage_information_route') }}">đây</a> để cập nhật thông tin và sử dụng tiếp
+                    </span>
+                </span>
+            </div>
+        {% endif %}
+    {% endif %}
+    {% include '@App/authentication/learning/templates/breadcrumb.html.twig' %}
+</header>

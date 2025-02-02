@@ -1,0 +1,81 @@
+<div class="card form-course">
+    <div class="card-header">
+        <strong>{{ course.slug is defined and course.slug is not null ? 'Edit course' : 'Create new course' }}</strong>
+    </div>
+    {{ form_start(courseForm) }}
+    <div class="card-body">
+        <div class="form-group row">
+            <label class="col-md-3 col-lg-3 col-xl-2 col-form-label {{ isEdit ? '' : 'control-label' }}"
+                   for="text-input">Logo</label>
+            <div class="col-md-9 col-lg-9 col-xl-10">
+                {{ form_widget(courseForm.logoFile, {'attr': {'class': 'd-block', 'placeholder': "Choose course's logo", 'accept': '.png,.jpeg,.jpg'}}) }}
+                <small>Recommend dimensions: 263 x 147</small>
+
+                {% if course.logo %}
+                    <div class="w-25">
+                        <img class="img-thumbnail" src="{{ course.logo | filePath }}" alt="{{ course.name }}">
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-md-3 col-lg-3 col-xl-2 col-form-label control-label" for="text-input">Name</label>
+            <div class="col-md-9 col-lg-9 col-xl-10">
+                {{ form_widget(courseForm.name, {'attr': {'class': 'form-control required', 'placeholder': "Enter course's name"}}) }}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-md-3 col-lg-3 col-xl-2 col-form-label control-label" for="provider">Trainer</label>
+            <div class="col-md-9 col-lg-9 col-xl-10">
+                {{ form_widget(courseForm.trainer, {'attr': {'class': 'form-control required', 'placeholder': "Enter course's trainer"}}) }}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-md-3 col-lg-3 col-xl-2 col-form-label control-label" for="provider">Categories</label>
+            <div class="col-md-9 col-lg-9 col-xl-10">
+                {{ form_widget(courseForm.courseCategories, {'attr': {'class': 'required form-control pure-select2'}}) }}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-md-3 col-lg-3 col-xl-2 col-form-label" for="description">Description</label>
+            <div class="col-md-9 col-lg-9 col-xl-10">
+                {{ form_widget(courseForm.content, {'attr': {'class': 'form-control', 'placeholder': "Description"}}) }}
+            </div>
+        </div>
+
+        {# Add attachement #}
+        <div>
+            <strong>Attachments</strong>
+        </div>
+        <hr class="mt-2">
+
+        <div id="course-attachments-list"
+             data-prototype="{{ form_widget(courseForm.courseAttachments.vars.prototype)|e('html_attr') }}"
+             data-widget-course-attachments="{{ '<div></div>'|e }}"
+             data-widget-counter="{{ courseForm.courseAttachments|length }}">
+            {% for courseAttachment in courseForm.courseAttachments %}
+                {% include '@Course/admin/course-inhouse-attachment-form.html.twig' with {'form': courseAttachment} %}
+            {% endfor %}
+        </div>
+
+        <button type="button"
+                class="add-another-collection-widget btn btn-outline-primary my-3"
+                data-list-selector="#course-attachments-list">Add another Attachment
+        </button>
+
+    </div>
+    <div class="card-footer">
+        {{ form_widget(courseForm.save, {'attr' : {'class': 'btn btn-submit btn-primary', 'type' : 'submit' }}) }}
+        {% if courseForm.delete is defined %}
+            {{ form_widget(courseForm.delete, {'attr' : {'class': 'btn-delete btn btn-danger', 'type' : 'button'}}) }}
+        {% endif %}
+        <a href="{{ url('admin_courses_route') }}" class="btn-link float-right align-middle">Back to list</a>
+    </div>
+    {{ form_end(courseForm) }}
+
+</div>
+

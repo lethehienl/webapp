@@ -1,0 +1,244 @@
+.video-js {
+  width: 100%;
+
+  @media (min-width: 768px) {
+    padding-top: calc(100vh - 56px) !important;
+    max-height: calc(100vh - 56px) !important;
+  }
+}
+
+.video-js .vjs-big-play-button {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.btn-lesson {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 46px;
+  height: 50px;
+  right: -70px;
+  top: 20px;
+  background-color: rgba(41, 48, 59, .7);
+  z-index: 10;
+  transition: right .25s;
+  cursor: pointer;
+
+  &:hover {
+    right: 0;
+  }
+
+  &:after {
+    content: 'Nội dung';
+    color: white;
+    font-size: px2rem(14);
+    padding-right: 12px;
+
+  }
+
+  .sidebar-lesson-show & {
+    right: -109px;
+  }
+
+  i {
+    padding-left: 12px;
+    padding-right: 12px;
+    color: white;
+  }
+}
+
+.btn-next-lesson, .btn-prev-lesson {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform .25s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+
+  html.desktop & {
+    width: 50px;
+    height: 45px;
+
+    > .inner {
+      cursor: pointer;
+      transition: transform .25s;
+    }
+
+    i {
+      font-size: 45px;
+      color: #fff;
+      text-shadow: 0px 0px 5px rgba(150, 150, 150, 1);
+    }
+  }
+
+  html:not(.desktop) & {
+    width: 34px;
+    height: 62px;
+    background-color: rgba(41, 48, 59, 0.2);
+
+    i {
+      font-size: 26px;
+      color: #fff;
+    }
+
+  }
+
+}
+
+.btn-prev-lesson {
+  left: 0;
+  transition: left .25s;
+
+  .vjs-first ~ & {
+    display: none;
+  }
+
+  html.desktop & {
+    left: -50px;
+
+  }
+
+  html:not(.desktop) & {
+    left: 0;
+  }
+
+  //.video-js.vjs-user-active ~ & {
+  //    left: 0;
+  //}
+
+  .left__wrapper:hover & {
+    left: 0;
+  }
+}
+
+.btn-next-lesson {
+  right: 0;
+  transition: right .25s;
+
+  .vjs-last ~ & {
+    display: none;
+  }
+
+  html.desktop & {
+    right: -50px;
+
+  }
+
+  html:not(.desktop) & {
+    right: 0;
+  }
+
+  //
+  //.video-js.vjs-user-active ~ & {
+  //    right: 0;
+  //}
+
+  .left__wrapper:hover & {
+    right: 0;
+  }
+
+}
+
+.btn-lesson-toggle {
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+
+.btn-repeat {
+  display: block;
+  overflow: hidden;
+  text-decoration: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.4);
+  z-index: -1;
+
+  @media (max-width: 575px) {
+    transform: translate(-50%, -50%) scale(0.2);
+  }
+
+  .vjs-ended ~ & {
+    z-index: 0;
+  }
+
+  .circle {
+    stroke: #fff;
+    stroke-dasharray: 650;
+    stroke-dashoffset: 650;
+    transition: all 2.5s ease-in-out;
+    opacity: 0.3;
+  }
+
+  .playBut {
+    display: inline-block;
+    transition: all 3.5s ease;
+
+    svg {
+      filter: drop-shadow(0px 0px 5px rgba(150, 150, 150, 1));
+
+    }
+
+    .triangle {
+      transition: all 3.7s ease-in-out;
+      stroke-dasharray: 240;
+      stroke-dashoffset: 480;
+      stroke: #fff;
+      transform: translateY(0)
+    }
+
+
+    .vjs-ended ~ & {
+
+      .triangle {
+        stroke-dashoffset: 0;
+        opacity: 1;
+        stroke: #fff;
+        animation: nudge 3.7s ease-in-out;
+
+        @keyframes nudge {
+          0% {
+            transform: translateX(0)
+          }
+          30% {
+            transform: translateX(-5px)
+          }
+          50% {
+            transform: translateX(5px)
+          }
+          70% {
+            transform: translateX(-2px)
+          }
+          100% {
+            transform: translateX(0)
+          }
+        }
+      }
+
+      .circle {
+        stroke-dashoffset: 0;
+        opacity: 1;
+        stroke: #fff;
+      }
+
+    }
+  }
+}
+
+
+.video-js .vjs-big-play-button {
+  @media (max-width: 767px) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+
+

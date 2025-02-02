@@ -1,0 +1,48 @@
+{{ form_start(form, {'method': 'POST', 'class': 'form-horizontal ng-pristine ng-valid'}) }}
+<div class="card card-form card-form-divide">
+  <div class="card-header">{{ action }} Property Company</div>
+  <div class="card-body">
+    <div class="form-group">
+      <label class="col-form-label control-label" for="order_company">Name</label>
+      <div class="">
+        {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+        <div class="invalid-feedback">{{ form_errors(form.name) }}</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-form-label control-label" for="order_company">Contact Name</label>
+      <div class="">
+        {{ form_widget(form.contactName, {'attr': {'class': 'form-control'}}) }}
+        <div class="invalid-feedback">{{ form_errors(form.contactName) }}</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-form-label control-label" for="order_company">Contact Phone</label>
+      <div class="">
+        {{ form_widget(form.contactPhone, {'attr': {'class': 'form-control'}}) }}
+        <div class="invalid-feedback">{{ form_errors(form.contactPhone) }}</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-form-label control-label" for="order_company">Status</label>
+      <div class="">
+        {{ form_widget(form.status, {'attr': {'class': 'form-control'}}) }}
+        <div class="invalid-feedback">{{ form_errors(form.status) }}</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-form-label control-label" for="order_company">Share Revenue Percent</label>
+      <div class="">
+        {{ form_widget(form.shareRevenuePercent, {'attr': {'class': 'form-control'}}) }}
+        <div class="invalid-feedback">{{ form_errors(form.shareRevenuePercent) }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include '@App/authentication/admin/component/actions.html.twig' with {'back_to_list_path': path('property_benefit_management_route')} %}
+{{ form_end(form) }}

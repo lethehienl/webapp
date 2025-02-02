@@ -1,0 +1,16 @@
+<?php
+namespace VisitBundle\Controller\Api;
+
+use AppBundle\Controller\NaviRestController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\Routing\Annotation\Route;
+
+class VisitController extends NaviRestController
+{
+  public function indexAction()
+  {
+
+    //return $this->renderTemplate('@Course/admin/company-course-list.html.twig');
+  }
+}

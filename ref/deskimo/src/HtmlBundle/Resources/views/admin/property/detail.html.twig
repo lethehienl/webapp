@@ -1,0 +1,245 @@
+{% extends '@App/authentication/admin/admin-master.html.twig' %}
+
+{% block extra_stylesheets %}
+  {{ encore_entry_link_tags('admin_property_detail') }}
+{% endblock %}
+
+{% block mainContent %}
+  <div class="card property-detail">
+    <div class="card-header">
+      <h2>Property Details</h2>
+      <button class="btn btn-primary">Edit</button>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-6 col-12 left-side">
+          <h1>The Centrepoint</h1>
+          <h4>Singapore • Coworking</h4>
+          <div class="card-section">
+            <h2>About</h2>
+            <p>
+              Headquartered in Singapore, JustCo was founded in 2011 by Kong Wan Sing, its current CEO, alongside
+              co-founders Liu Lu and Kong Wan Long, as a response to increasing demand for flexible workspaces.
+            </p>
+            <p>
+              Headquartered in Singapore, JustCo was founded in 2011 by Kong Wan Sing, its current CEO, alongside
+              co-founders Liu Lu and Kong Wan Long, as a response to increasing demand for flexible workspaces.
+            </p>
+          </div>
+          <div class="card-section schedule-list">
+            <h2>Schedule</h2>
+            <p class="main-schedule">
+              <span>Monday - Friday</span>
+              <span>8:30 AM - 10:00 PM</span>
+            </p>
+            <p>
+              <span>Space Opening Hours</span>
+              <span>8:30 AM - 10:00 PM</span>
+            </p>
+            <p>
+              <span>Community Team Hours</span>
+              <span>8:30 AM - 10:00 PM</span>
+            </p>
+            <p>
+              <span>Aircon Hours</span>
+              <span>8:30 AM - 10:00 PM</span>
+            </p>
+          </div>
+          <div class="card-section">
+            <h2>Amenities</h2>
+            <div class="amenity__list">
+              <div class="amenity__item">
+                <img src="" alt="">
+                <p>Meeting Rooms</p>
+              </div>
+              <div class="amenity__item">
+                <img src="" alt="">
+                <p>Printing Facilities</p>
+              </div>
+              <div class="amenity__item">
+                <img src="" alt="">
+                <p>Office Supplies</p>
+              </div>
+              <div class="amenity__item">
+                <img src="" alt="">
+                <p>Pantry</p>
+              </div>
+              <div class="amenity__item">
+                <img src="" alt="">
+                <p>Pantry</p>
+              </div>
+              <div class="amenity__item">
+                <img src="" alt="">
+                <p>Pantry</p>
+              </div>
+              <div class="amenity__item">
+                <img src="" alt="">
+                <p>Pantry</p>
+              </div>
+              <div class="amenity__item">
+                <img src="" alt="">
+                <p>Pantry</p>
+              </div>
+              <div class="amenity__item">
+                <img src="" alt="">
+                <p>Pantry</p>
+              </div>
+              <div class="amenity__item">
+                <img src="" alt="">
+                <p>Others</p>
+              </div>
+            </div>
+          </div>
+          <div class="card-section">
+            <h2>Photos</h2>
+            <div class="photo__list">
+              <div class="photo__item">
+                <img src="{{ asset('build/images/image-example-1.jpeg') }}" alt="image-1">
+              </div>
+              <div class="photo__item">
+                <img src="{{ asset('build/images/image-example-2.jpeg') }}" alt="">
+              </div>
+              <div class="photo__item">
+                <img src="{{ asset('build/images/image-example-3.jpeg') }}" alt="">
+              </div>
+              <div class="photo__item">
+                <img src="{{ asset('build/images/image-example-4.jpeg') }}" alt="">
+              </div>
+            </div>
+            <div class="photo__thumb-list">
+              <div class="photo__thumb-item">
+                <img src="{{ asset('build/images/image-example-1.jpeg') }}" alt="image-1">
+              </div>
+              <div class="photo__thumb-item">
+                <img src="{{ asset('build/images/image-example-2.jpeg') }}" alt="">
+              </div>
+              <div class="photo__thumb-item">
+                <img src="{{ asset('build/images/image-example-3.jpeg') }}" alt="">
+              </div>
+              <div class="photo__thumb-item">
+                <img src="{{ asset('build/images/image-example-4.jpeg') }}" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-12 right-side">
+          <div class="card-section price">
+            <p class="price-amount"><span class="amount">4.80</span><span class="unit">SGD / HR</span></p>
+            <p class="price-min-amount">Min Charge: SGD 1.00</p>
+          </div>
+          <div class="card-section">
+            <h2>Address</h2>
+            <p>TheOffice 189 Orchard Rd Singapore, Singapore</p>
+          </div>
+          <div class="card-section">
+            <h2>How to get there</h2>
+            <div class="guide-to__list">
+              <div class="guide-to__item">
+                <i class="fal fa-car"></i>
+                <div class="guide-to__content">
+                  <p class="main-text">Car drop-off point</p>
+                  <p class="sub-text">Cross Street Exchange Drop-off Point</p>
+                </div>
+              </div>
+              <div class="guide-to__item">
+                <i class="fal fa-subway"></i>
+                <div class="guide-to__content">
+                  <p class="main-text">Nearest MRT station</p>
+                  <p class="sub-text">Telok Ayer Station, Chinatown Station</p>
+                </div>
+              </div>
+              <div class="guide-to__item">
+                <i class="fal fa-building"></i>
+                <div class="guide-to__content">
+                  <p class="main-text">Front entrance of the space</p>
+                  <p class="sub-text">Register at the lobby with identification card to
+                    get a building access card; Take a lift to JustCo
+                    on L5.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-section parking">
+            <h2>Parking</h2>
+            <div class="parking__item">
+              <i class="fal fa-building"></i>
+              <p>TheOffice • 189 Orchard Rd</p>
+            </div>
+            <div class="parking__item">
+              <i class="fal fa-building"></i>
+              <p>TheOffice • 189 Orchard Rd</p>
+            </div>
+          </div>
+          <div class="card-section staff">
+            <h2>Staff</h2>
+            <div class="staff__list">
+              <div class="staff__item">
+                <img src="https://i.ibb.co/BG3ZTQm/businessman-character-avatar-isolated-vector-illustration-design.jpg"
+                     alt="">
+                <p class="staff__name">Robert Fox</p>
+                <p class="staff__title">Property Admin</p>
+              </div>
+              <div class="staff__item">
+                <img src="https://i.ibb.co/BG3ZTQm/businessman-character-avatar-isolated-vector-illustration-design.jpg"
+                     alt="">
+                <p class="staff__name">Leslie Alexander</p>
+                <p class="staff__title">Staff</p>
+              </div>
+              <div class="staff__item">
+                <img src="https://i.ibb.co/BG3ZTQm/businessman-character-avatar-isolated-vector-illustration-design.jpg"
+                     alt="">
+                <p class="staff__name">Dianne Russell</p>
+                <p class="staff__title">Staff</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="upload-media">
+    <ul id="sortable" class="image-list">
+      <li class="ui-state-default image-item">
+        <img src="{{ asset('build/images/image-example-1.jpeg') }}" alt="image-1">
+      </li>
+      <li class="ui-state-default image-item">
+        <img src="{{ asset('build/images/image-example-2.jpeg') }}" alt="image-2">
+      </li>
+      <li class="ui-state-default image-item">
+        <img src="{{ asset('build/images/image-example-3.jpeg') }}" alt="image-3">
+      </li>
+      <li class="ui-state-default image-item">
+        <img src="{{ asset('build/images/image-example-4.jpeg') }}" alt="image-4">
+      </li>
+      <li class="ui-state-default image-item">
+        <img src="{{ asset('build/images/image-example-1.jpeg') }}" alt="image-1">
+      </li>
+      <li class="ui-state-default image-item">
+        <img src="{{ asset('build/images/image-example-2.jpeg') }}" alt="image-2">
+      </li>
+      <li class="ui-state-default image-item">
+        <img src="{{ asset('build/images/image-example-3.jpeg') }}" alt="image-3">
+      </li>
+      <li class="ui-state-default image-item">
+        <img src="{{ asset('build/images/image-example-4.jpeg') }}" alt="image-4">
+      </li>
+    </ul>
+  </div>
+
+  <div id="dropzone">
+    <form action="/upload" class="dropzone needsclick dz-clickable" id="uploadMedia">
+      <div class="dz-message needsclick">
+        <button type="button" class="dz-button">Drop files here or click to upload.</button>
+        <br>
+        <span class="note needsclick">(Upload maximums <b>5</b> images)</span>
+      </div>
+    </form>
+  </div>
+
+
+{% endblock %}
+
+{% block extra_javascripts %}
+  {{ parent() }}
+  {{ encore_entry_script_tags('admin_property_detail') }}
+{% endblock %}

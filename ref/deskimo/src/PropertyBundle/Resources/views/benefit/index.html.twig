@@ -1,0 +1,55 @@
+{% extends '@App/authentication/admin/admin-master.html.twig' %}
+
+{% block prefix_title %} List Amenities {% endblock %}
+
+{% block extra_stylesheets %}
+    {{ encore_entry_link_tags('admin_property_benefit_management') }}
+{% endblock %}
+
+{% block mainContent %}
+    <div class="card card-ex">
+        <div class="card-body">
+            <div class="c-subheader justify-content-between">
+                <div id="form-search">
+                    <div class="form-group row">
+                        <div class="col-sm-6 pr-0">
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-ex" style="width: 400px"
+                                       data-autoclose="true" id="keyword"
+                                       placeholder="Search by Amenity ">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="c-subheader-nav d-md-down-none mfe-2">
+                    <div>
+                        <a class="btn btn-primary"
+                           href="{{ path('property_benefit_management_create_route') }}">+ New Amenity</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+
+                <table id="bundle-table" class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Updated Date</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('admin_property_benefit_management') }}
+{% endblock %}

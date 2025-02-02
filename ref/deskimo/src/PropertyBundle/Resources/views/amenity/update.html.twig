@@ -1,0 +1,18 @@
+{% extends '@App/authentication/admin/admin-master.html.twig' %}
+
+{% form_theme form _self %}
+
+{% block extra_stylesheets %}
+    {{ encore_entry_link_tags('admin_property_amenity_update') }}
+{% endblock %}
+
+{% block mainContent %}
+    <div class="card card-ex">
+        {% include '@Property/amenity/form/amenity.html.twig' %}
+    </div>
+{% endblock %}
+
+{% block extra_javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('admin_property_amenity_update') }}
+{% endblock %}

@@ -1,0 +1,17 @@
+services:
+  stripe.client:
+    class: Stripe\StripeClient
+    arguments:
+      - '%stripe_secret_key%'
+
+  stripe.service:
+    class: PaymentBundle\Services\StripeService
+    autowire: true
+
+  payment_method.service:
+    class: PaymentBundle\Services\PaymentMethodService
+    autowire: true
+
+  transaction_api.service:
+    class: PaymentBundle\Services\TransactionApiService
+    autowire: true

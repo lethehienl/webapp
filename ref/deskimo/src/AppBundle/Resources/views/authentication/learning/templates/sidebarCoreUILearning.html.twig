@@ -1,0 +1,247 @@
+<div class="c-sidebar c-sidebar-dark c-sidebar-fixed {% if app.request.get('_route') != 'learning_order_course_details_route' %} c-sidebar-lg-show {% endif %}"
+     id="sidebar">
+    <div class="c-sidebar-brand">
+        <img class="c-sidebar-brand-full" src="{{ asset('build/images/vnwlLogo.png') }}" width="200">
+    </div>
+    <ul class="c-sidebar-nav">
+        {# {% if not is_granted('ROLE_ADMIN') %} #}
+        <li>
+            <div class="c-sidebar-nav-title">
+                <a class="avatar-image" href="#">
+                    <div class="overlay-avatar">
+                        <a class="overlay-avatar-edit ga_edit_avatar" href="#" data-toggle="modal"
+                           data-target="#change-avatar"><i
+                                    class="fas fa-camera"></i></a>
+                    </div>
+                    <img class="c-sidebar-avatar" id="user-avatar"
+                         src="{{ app.user.userProfile is defined and app.user.userProfile.avatar is not null ? asset('media/' ~ app.user.userProfile.avatar) : asset('/build/images/avatar-profile.png') }}"
+                         width="150" height="150" alt="Avatar Profile">
+                </a>
+                <div class="c-sidebar-mobile">
+                    <p class="c-sidebar-name">
+                        {{ app.user.fullname }}</p>
+                    <span>({{ users.getUserRoleTitle(app.user) }})</span>
+                    <a href="{{ path('employee_manage_information_route') }}" class="c-sidebar-edit ga_edit_info"><i
+                                class="fal fa-edit"></i>Chỉnh sửa</a>
+                </div>
+                {% if is_granted(constant('UserBundle\\Utils\\PermissionUtil::COURSE_MANAGE_MY_COURSE')) %}
+                    <div class="result-summary">
+                        {% if users.employeeCourseSummary(app.user) is defined %}
+                            {% set summary = users.employeeCourseSummary(app.user) %}
+
+                            <div class="result-detail">
+                                <p class="result-number"
+                                   style="background: #0e46cd">{{ summary['not_learn']|default(00) }}</p>
+                                <p class="result-title">Số khoá <br>chưa học</p>
+                            </div>
+
+                            <div class="vertical-line"></div>
+                            <div class="result-detail">
+                                <p class="result-number"
+                                   style="background: #7ed321">{{ summary['completed']|default(00) }}</p>
+                                <p class="result-title">Số khoá <br>hoàn thành</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </div>
+        </li>
+        {# {% endif %} #}
+        {% if is_granted(constant('UserBundle\\Utils\\PermissionUtil::ADMIN_COMPANY_DASHBOARD')) %}
+            <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link" href="{{ path('company_dashboard_route') }}">
+                    <i class="fal fa-tachometer-alt-fastest mr-3"></i>
+                    Dashboard
+                </a>
+            </li>
+        {% endif %}
+        {% if is_granted(constant('UserBundle\\Utils\\PermissionUtil::CONTRACT_COURSE_MANAGE')) %}
+            <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link" href="{{ path('admin_company_contracts_route') }}">
+                    <i class="fal fa-home mr-3"></i>
+                    Quản lý khóa học
+                </a>
+            </li>
+        {% endif %}
+        {% if is_granted(constant('UserBundle\\Utils\\PermissionUtil::GROUP_MANAGE')) %}
+            <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link" href="{{ path('company_group_route') }}">
+                    <i class="fal fa-users mr-3"></i>
+                    Quản lý nhóm
+                </a>
+            </li>
+        {% endif %}
+
+        {% if is_granted(constant('UserBundle\\Utils\\PermissionUtil::CONTRACT_GROUP_COURSE_MANAGE')) %}
+            <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link ripple" href="{{ url('admin_company_group_course_list_route') }}">
+                    <i class="fal fa-book-reader mr-3"></i>
+                    Khoá học của nhóm
+                </a>
+            </li>
+        {% endif %}
+
+        {% if is_granted(constant('UserBundle\\Utils\\PermissionUtil::COURSE_MANAGE')) %}
+            <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link" href="{{ path('company_employer_courses_route') }}">
+                    <i class="fal fa-books mr-3"></i>
+                    Quản lý khóa học
+                </a>
+            </li>
+        {% endif %}
+
+        {% if is_granted(constant('UserBundle\\Utils\\PermissionUtil::ADMIN_COMPANY_MANAGER_REQUEST_COURSES')) %}
+            <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link" href="{{ path('admin_company_course_request_route') }}">
+                    <i class="fal fa-list mr-3"></i>
+                    Quản lý yêu cầu học
+                </a>
+            </li>
+        {% endif %}
+
+        {% if is_granted(constant('UserBundle\\Utils\\PermissionUtil::EMPLOYEE_MANAGE')) %}
+            <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link" href="{{ path('company_employee_list_route') }}">
+                    <i class="fal fa-user-tie mr-3"></i>
+                    Quản lý học viên
+                </a>
+            </li>
+        {% endif %}
+
+        {% if is_granted(constant('UserBundle\\Utils\\PermissionUtil::CONTRACT_MANAGE')) %}
+
+            <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link" href="{{ path('admin_company_contract_list_route') }}">
+                    <i class="fal fa-cart-arrow-down mr-3"></i>
+                    Hợp đồng
+                </a>
+            </li>
+
+            {# <li class="c-sidebar-nav-item"> #}
+            {# <a class="c-sidebar-nav-link" href="{{ path('admin_company_contract_list_route') }}"> #}
+            {# <i class="fal fa-cart-arrow-down mr-3"></i> #}
+            {# Hợp đồng thường #}
+            {# </a> #}
+            {# </li> #}
+        {% endif %}
+
+        {% if is_granted(constant('UserBundle\\Utils\\PermissionUtil::COURSE_MANAGE_COURSE_POOL')) %}
+            <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link ripple" href="{{ url('course_pool_route') }}">
+                    <i class="fal fa-books mr-3"></i>
+                    Yêu cầu khoá mới
+                    <span class="badge bg-warning c-active" style="align-self: center;">NEW</span>
+                </a>
+            </li>
+        {% endif %}
+
+        {% if is_granted(constant('UserBundle\\Utils\\PermissionUtil::COURSE_MANAGE_MY_COURSE')) %}
+            <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link ripple" href="{{ url('learning_course_list_route') }}">
+                    <i class="fal fa-book-open mr-3"></i>
+                    Khoá học của tôi
+                </a>
+            </li>
+        {% endif %}
+
+        {% if is_granted(constant('UserBundle\\Utils\\PermissionUtil::ADMIN_COMPANY_REPORT')) %}
+            <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link ripple" href="{{ url('admin_company_report_index') }}">
+                    <i class="fal fa-analytics mr-3"></i>
+                    Báo cáo
+                </a>
+            </li>
+        {% endif %}
+
+        {% if is_granted(constant('UserBundle\\Utils\\PermissionUtil::COURSE_ACTIVE_INVITE_CODE')) %}
+            <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link ripple" id="active-invite-code" href="#" data-toggle="modal"
+                   data-target="#active-invite-code-modal">
+                    <i class="fal fa-spell-check mr-3"></i>
+                    Kích hoạt mã khóa học
+                </a>
+            </li>
+        {% endif %}
+        <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link ripple" id="logout-btn" href="{{ url('user_logout_route') }}">
+                <i class="fal fa-sign-out mr-3"></i>
+                Đăng xuất
+            </a>
+        </li>
+        <li class="c-sidebar-nav-item c-sidebar-nav-qr">
+            <div class="qr-wrapper">
+                <img src="{{ asset('build/images/qr_min_ios.png') }}" alt="qr_code_ios" class="c-sidebar-qr">
+                <a href="https://apps.apple.com/vn/app/vlenterprise/id1504207648" target="_blank">
+                    <img src="{{ asset('build/images/appstore-badget.svg') }}" alt="app_store_badge"
+                         class="c-sidebar-badge">
+                </a>
+            </div>
+            <div class="qr-wrapper">
+                <img src="{{ asset('build/images/qr_min_android.png') }}" alt="qr_code_android" class="c-sidebar-qr">
+                <a href="https://play.google.com/store/apps/details?id=com.nlventerprise" target="_blank">
+                    <img src="{{ asset('build/images/google-play-badge.png') }}" alt="google_play_badge"
+                         class="c-sidebar-badge">
+                </a>
+            </div>
+        </li>
+    </ul>
+    <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="#sidebar"
+            data-class="c-sidebar-lg-show"></button>
+</div>
+
+<div class="modal fade" id="change-avatar" tabindex="-1" role="dialog" aria-labelledby="change-avatar"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="change-avatar">Chọn hình đại diện mới</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="dropzone" id="avatar-dropzone" enctype="multipart/form-data">
+                    <div class="fallback">
+                        <input name="file" type="file"/>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <span class="text-center container-fluid dz-footer-message"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="active-invite-code-modal" tabindex="-1" role="dialog"
+     aria-labelledby="active-invite-code-modal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="change-avatar">Kích hoạt mã khóa học</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="active-invite-code-form">
+                    <div class="form-group col-md-12">
+                        <label for="invite_code" class="col-form-label control-label">Mã khóa học</label>
+                        <input type="text" id="invite_code" name="invite_code" required="required" class="form-control">
+                        <input type="hidden" name="token"
+                               value="{{ csrf_token(constant('AppBundle\\Utils\\FormTokenUtil::ACTIVE_INVITE_CODE_FORM')) }}"/>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-outline-primary btn-pill legitRipple" id="close-modal" type="button"
+                                data-dismiss="modal">Đóng
+                        </button>
+                        <button type="submit" id="active-license" name="active-license"
+                                class="btn btn-primary btn-add btn-pill legitRipple">Kich hoạt
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

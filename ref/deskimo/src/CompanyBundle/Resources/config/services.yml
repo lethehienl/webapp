@@ -1,0 +1,4 @@
+services:
+  property_company.service:
+    class: CompanyBundle\Services\PropertyCompanyService
+    autowire: true

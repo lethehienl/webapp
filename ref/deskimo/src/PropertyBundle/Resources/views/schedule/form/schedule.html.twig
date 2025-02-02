@@ -1,0 +1,17 @@
+{{ form_start(form, {'method': 'POST', 'class': 'form-horizontal ng-pristine ng-valid'}) }}
+<div class="propertyScheduleFormInner">
+    <div class="card card-form">
+        <div class="cart-body">
+            {% set scheduleOpenHour = schedule['openHour'] is defined ? schedule['openHour'] : [] %}
+            {% set scheduleCommunity = schedule['community'] is defined ? schedule['community'] : [] %}
+            {% set scheduleAircon = schedule['aircon'] is defined ? schedule['aircon'] : [] %}
+
+            {% include '@Property/schedule/form/scheduleOpenHour.html.twig' with {default: scheduleOpenHour}%}
+            {% include '@Property/schedule/form/scheduleCommunity.html.twig' with {default: scheduleCommunity}%}
+            {% include '@Property/schedule/form/scheduleAircon.html.twig' with {default: scheduleAircon}%}
+        </div>
+</div>
+</div>
+
+{% include '@App/authentication/admin/component/actions.html.twig' with {'back_to_list_path': path('property_benefit_management_route')} %}
+{{ form_end(form) }}

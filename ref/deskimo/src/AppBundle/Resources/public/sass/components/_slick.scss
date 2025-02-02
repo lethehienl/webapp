@@ -1,0 +1,16 @@
+.slick-initialized {
+  opacity: 1 !important;
+  transition: opacity .3s ease-out;
+}
+
+.slick-list {
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+}
+
+.slick-dots li button:before {
+  content: '';
+  background: black;
+  height: 4px;
+  border-radius: 100px;
+}

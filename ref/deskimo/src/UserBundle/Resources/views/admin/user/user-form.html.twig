@@ -1,0 +1,64 @@
+{% extends '@App/authentication/admin/admin-master.html.twig' %}
+{% block prefix_title %}Update user{% endblock %}
+
+{% block mainContent %}
+    <div class="card card-ex">
+        <div class="card-header">
+            <strong>Create/Update user</strong>
+        </div>
+
+        {{ form_start(form, {'method': 'POST', 'class': 'form-horizontal ng-pristine ng-valid'}) }}
+        <div class="card-body">
+            <div class="form-group row">
+                {{ form_label(form.username) }}
+                <div class="col-md-4">
+                    {{ form_widget(form.username) }}
+                    <div class="invalid-feedback">{{ form_errors(form.username) }}</div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                {{ form_label(form.password.first) }}
+                <div class="col-md-4">
+                    {{ form_widget(form.password.first) }}
+                    <div class="invalid-feedback">{{ form_errors(form.password.first) }}</div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                {{ form_label(form.password.second) }}
+                <div class="col-md-4">
+                    {{ form_widget(form.password.second) }}
+                    <div class="invalid-feedback">{{ form_errors(form.password.second) }}</div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                {{ form_label(form.fullName) }}
+                <div class="col-md-4">
+                    {{ form_widget(form.fullName) }}
+                    <div class="invalid-feedback">{{ form_errors(form.fullName) }}</div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                {{ form_label(form.roleId) }}
+                <div class="col-md-4">
+                    {{ form_widget(form.roleId) }}
+                    <div class="invalid-feedback">{{ form_errors(form.roleId) }}</div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                {{ form_label(form.status) }}
+                <div class="col-md-4">
+                    {{ form_widget(form.status) }}
+                    <div class="invalid-feedback">{{ form_errors(form.status) }}</div>
+                </div>
+            </div>
+        </div>
+
+        {% include '@App/authentication/admin/component/actions.html.twig' with {'back_to_list_path': path('admin_users_route')} %}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

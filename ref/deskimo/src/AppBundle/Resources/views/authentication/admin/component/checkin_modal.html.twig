@@ -1,0 +1,29 @@
+<!-- Modal -->
+<div class="modal fade" id="manualModal" tabindex="-1" role="dialog" aria-labelledby="manualModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="visit-label-title">Check in NOW!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="visit-form" name="visit-form" method="post">
+                <div class="modal-body">
+                        <input type="hidden" id="_token_form" name="token_form"
+                               value="{{ csrf_token(app.user.username) }}">
+                        <div class="form-group">
+                            <label class="col-form-label control-label" for="qr_code_number">QR Code Number</label>
+                            <div>
+                                <input type="text" class="form-control" id="qr_code_number" required>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="checkin-submit" class="btn btn-primary">Check-in</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

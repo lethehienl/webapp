@@ -1,0 +1,368 @@
+@keyframes animate-pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.time {
+  color: white;
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  80% {
+    transform: translateX(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  80% {
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  80% {
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#clockdiv {
+  color: #fff;
+  display: inline-block;
+  font-weight: 700;
+  text-align: right;
+  font-size: 16px;
+  float: right;
+  position: sticky;
+  top: 86px;
+  z-index: 10;
+  transform: translateX(80px);
+  background: transparent;
+}
+
+.time-box {
+  display: inline-block;
+}
+
+.time-wrapper {
+  padding: 4px;
+  border-radius: 3px;
+  background: #00b9f2;
+  display: inline-block;
+  min-width: 46px;
+}
+
+.time {
+  padding: 4px;
+  border-radius: 3px;
+  //background: #008ebd;
+  background: #00b9f2;
+  display: inline-block;
+  min-width: 38px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.clock-title {
+  display: block;
+  color: #3c4b64;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.smalltext {
+  padding-top: 5px;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* The container */
+form {
+  margin: 1rem;
+}
+
+.form-header {
+  margin-top: 2rem;
+
+  p {
+    display: inline;
+  }
+}
+
+.answer-row {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 1rem;
+  border: 1px solid rgba(82, 82, 82, 0.52);
+  border-radius: 5px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transition: all .2s ease-out;
+
+  input {
+    position: absolute;
+    z-index: 10;
+    opacity: 0;
+    cursor: pointer;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  &:hover {
+    background: #f2f3f5;
+  }
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 50%;
+  left: 18px;
+  transform: translateY(-50%);
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.answer-row:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.answer-row:hover input ~ .checkbox-checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.answer-row input:checked ~ .checkmark {
+  background-color: #00b9f2;
+}
+
+.answer-row input:checked ~ .checkbox-checkmark {
+  background-color: #00b9f2;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+
+/* Show the indicator (dot/circle) when checked */
+.answer-row input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.answer-row input:checked ~ .checkbox-checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.answer-row .checkmark:after {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: white;
+}
+
+.checkbox-wrapper {
+  height: 24px;
+}
+
+.answer-wrapper {
+  margin-left: 2.5rem;
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.answer-content {
+  margin-bottom: 0;
+  text-align: justify;
+}
+
+.checkbox-checkmark {
+  position: absolute;
+  top: 50%;
+  left: 18px;
+  transform: translateY(-50%);
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 4px;
+}
+
+.answer-row .checkbox-checkmark:after {
+  left: 8px;
+  top: 5px;
+  width: 5px;
+  height: 11px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.field-test {
+  padding: 2rem;
+  border: 1px solid #525252;
+  border-radius: 5px;
+}
+
+.fill-test {
+  text-align: center;
+  text-transform: uppercase;
+  width: 130px;
+  font-weight: bolder;
+  color: #00b9f2;
+  border: 1px solid #00b9f2;
+  border-radius: 5px;
+  margin: 0 0 4px 0;
+}
+
+.quiz-submit {
+  display: block;
+  margin-left: 50px;
+}
+
+
+.animate-pulse {
+  animation-name: animate-pulse;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+.animate-fade-in-left {
+  animation: moveInLeft 1s ease-out .5s;
+  animation-fill-mode: backwards;
+}
+
+.animate-fade-in-right {
+  animation: moveInRight 1s ease-out .5s;
+  animation-fill-mode: backwards;
+}
+
+.animate-fade-in-bottom {
+  animation: moveInBottom 1s ease-out .5s;
+  animation-fill-mode: backwards;
+}
+
+.form-control:disabled, .form-control[readonly] {
+  opacity: 0;
+}
+
+.disabled {
+  opacity: .6;
+}
+
+.infoPage__content {
+  background-image: url("/build/images/infoPage.png");
+  background-position: center;
+  background-size: 500px;
+  background-repeat: no-repeat;
+  background-position-y: 200px;
+}
+
+.widget {
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, .3);
+  transition: box-shadow .3s;
+
+  &:hover {
+    box-shadow: 0 0 6px 1px rgba(0, 0, 0, .5);
+  }
+}
+
+.number-percent::after {
+  content: "%";
+  font-size: 28px;
+  @media (min-width: 1200px) {
+    font-size: 28px;
+  }
+}
+
+.total-right-title {
+  font-size: 24px;
+}
+
+.result-detail {
+  padding: 0 20px;
+}
+
+.card-number {
+  font-size: 36px;
+
+  span:nth-child(2) {
+    font-size: 24px;
+  }
+}
+
+.resultPage__content {
+  background-image: url("/build/images/resultPage.png");
+  background-position: center;
+  background-size: 500px;
+  background-repeat: no-repeat;
+  background-position-y: 300px;
+}
+
+.infoPage__wrapper {
+  backface-visibility: hidden;
+}
+
+@for $i from 1 through 20 {
+  .quiz-container:nth-child(#{$i}) {
+    animation: moveInBottom .3s ease-out #{$i/3}s;
+    animation-fill-mode: backwards;
+  }
+}
+

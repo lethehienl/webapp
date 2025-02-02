@@ -1,0 +1,26 @@
+.c-sidebar {
+  background: $black;
+
+  .c-sidebar-brand {
+    justify-content: flex-start;
+    padding: .8445rem 1rem;
+  }
+
+  .c-sidebar-nav-dropdown {
+    &.c-show {
+      background: rgba(white, .05);
+    }
+  }
+}
+
+.manual-cta {
+  border-radius: 0;
+  padding: 1rem;
+  font-weight: 500;
+  font-size: .875rem;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: 0.01em;
+  color: #13100C;
+
+}

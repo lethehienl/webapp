@@ -1,0 +1,28 @@
+@import '../../../../../AppBundle/Resources/public/sass/abstract/abstract';
+
+.main-column {
+  &__wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    .btn {
+      min-height: unset;
+      height: 35px;
+    }
+  }
+
+  &__row {
+    color: $grey;
+    font-size: .875rem;
+    margin-bottom: .75rem;
+
+    &.title {
+      font-weight: 500;
+      font-size: 1.125rem;
+      color: $black;
+      margin-bottom: 1rem;
+    }
+  }
+}

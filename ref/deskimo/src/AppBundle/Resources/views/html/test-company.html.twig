@@ -1,0 +1,63 @@
+{% extends '@App/authentication/company/company-master.html.twig' %}
+{% block title %}Company{% endblock %}
+ {% block mainContent %}
+     <form class="navbar-form navbar-left" role="search">
+         <div class="form-group" style="display:table; white-space:nowrap;">
+
+             <input type="text" class="form-control" placeholder="Search" size=60px
+                    style="margin:0px; min-width:160px; width:65%;"></input>
+
+             <button type="submit" class="btn btn-default" style="margin:0px;">Submit</button>
+
+         </div>
+     </form>
+     <div class="company__button--container">
+         <input type="text" placeholder="Search course or order here..." class="form-control w-50">
+     </div>
+     <div class="company__card">
+         <h4 class="company__title--course">
+             VLB-01<span class="company__date">   (tạo ngày 01/01/2020)</span>
+         </h4>
+         <div class="card">
+             <div class="card-body">
+                 <p class="card-text">Học viên: 0/30</p>
+                 <p class="card-text">Khoá học: </p>
+                 <a href="#" class="btn btn-pill btn-warning company__button">Tiếng Trung cơ bản cho người mới bắt đầu
+                     1</a>
+                 <a href="#" class="btn btn-pill btn-success company__button">Tiếng Hàn sơ cho người mới bắt đầu</a>
+                 <a href="#" class="btn btn-pill btn-warning company__button">Tiếng Trung cơ bản cho người mới bắt đầu
+                     1</a>
+                 <a href="#" class="btn btn-pill btn-warning company__button">Tiếng Trung cơ bản cho người mới bắt đầu
+                     1</a>
+                 <a href="#" class="btn btn-pill btn-primary company__button">Tiếng Nhật giao tiếp cho người mới bắt
+                     đầu</a>
+                 <div class="company__card--footer">
+                     <p class="card-text company__date--timeleft">&#8231;Còn 29 ngày sử dụng </p>
+                     <a class="company__student--add btn btn-pill btn-outline-primary" href="#"><i class="cil-plus"></i>
+                         Thêm học viên</a>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <div class="company__card">
+         <h4 class="company__title--course">
+             VLB-04<span class="company__date">   (tạo ngày 01/01/2019)</span>
+         </h4>
+         <div class="card">
+             <div class="card-body">
+                 <p class="card-text">Học viên: 0/30</p>
+                 <p class="card-text">Khoá học: </p>
+                 <a href="#" class="btn btn-pill btn-warning company__button">Tiếng Trung cơ bản cho người mới bắt đầu
+                     1</a>
+                 <a href="#" class="btn btn-pill btn-success company__button">Tiếng Hàn sơ cho người mới bắt đầu</a>
+                 <a href="#" class="btn btn-pill btn-primary company__button">Tiếng Nhật giao tiếp cho người mới bắt
+                     đầu</a>
+                 <p class="card-text company__date--timeleft company__date--timeexpire">&#8231;Còn 0 ngày sử dụng </p>
+             </div>
+         </div>
+     </div>
+ {% endblock %}
+
+{% block javascripts %}
+{% endblock %}
+

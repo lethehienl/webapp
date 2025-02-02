@@ -1,0 +1,60 @@
+@import './abstract/variables';
+@import './abstract/mixins';
+@import './abstract/base';
+@import './abstract/typography';
+@import './abstract/animations';
+
+@import './components/button';
+@import './components/breadcrumb';
+@import './components/chart';
+@import './components/dropdown';
+@import './components/header';
+@import './components/modal';
+@import './components/nav_tabs';
+@import './components/sidebar';
+@import './components/table';
+@import './components/slick';
+@import './components/pagination';
+@import './components/dropzone';
+
+@import './components/form/input';
+@import './components/form/form_layout';
+@import './components/form/checkbox';
+
+// Color variable
+$admin-main-color: #4268a2;
+
+$employee-main-color: #0e46cd;
+
+$green-color: #7ed321;
+$yellow-color: #e6c60d;
+$red-color: #d43b16;
+$grey-color: #434343;
+
+$black-color: #303030;
+
+//Function
+@function px2rem($px) {
+  @return $px / 16 + rem;
+}
+
+
+%fontAwesome {
+  font-family: "Font Awesome 5 Pro";
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+}
+
+%textShadowBold {
+  text-shadow: -.18px 0 currentColor, 0 .18px currentColor, .18px 0 currentColor, 0 -.18px currentColor,
+  -.18px -.18px currentColor, .18px .18px currentColor, -.18px .18px currentColor, .18px -.18px currentColor;
+}
+
+.hr {
+  margin-right: 1.5rem;
+  margin-left: 1.5rem;
+}

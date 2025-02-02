@@ -1,0 +1,152 @@
+Array
+(
+    [openHour] => Array
+        (
+            [monday] => Array
+                (
+                    [openHour] => 7:00 AM
+                    [closeHour] => 10:00 PM
+                    [custom] => true
+                )
+
+            [tuesday] => Array
+                (
+                    [openHour] => 6:00 AM
+                    [closeHour] => 10:00 PM
+                    [24] => true
+                )
+
+            [wednesday] => Array
+                (
+                    [openHour] => 6:00 AM
+                    [closeHour] => 10:00 PM
+                    [close] => true
+                )
+
+            [thursday] => Array
+                (
+                    [openHour] => 7:00 AM
+                    [closeHour] => 10:00 PM
+                    [custom] => true
+                    [close] => true
+                    [24] => true
+                )
+
+            [friday] => Array
+                (
+                    [openHour] => 6:00 AM
+                    [closeHour] => 1:00 PM
+                    [custom] => true
+                    [close] => true
+                )
+
+            [saturday] => Array
+                (
+                    [openHour] => 6:00 AM
+                    [closeHour] => 10:00 PM
+                )
+
+            [sunday] => Array
+                (
+                    [openHour] => 6:00 AM
+                    [closeHour] => 10:00 PM
+                )
+
+        )
+
+    [community] => Array
+        (
+            [monday] => Array
+                (
+                    [openHour] => 6:00 AM
+                    [closeHour] => 12:00 PM
+                    [custom] => true
+                    [24] => true
+                )
+
+            [tuesday] => Array
+                (
+                    [openHour] => 6:00 AM
+                    [closeHour] => 10:00 PM
+                    [close] => true
+                )
+
+            [wednesday] => Array
+                (
+                    [openHour] => 6:00 AM
+                    [closeHour] => 10:00 PM
+                    [24] => true
+                )
+
+            [thursday] => Array
+                (
+                    [openHour] => 6:00 AM
+                    [closeHour] => 4:00 PM
+                    [custom] => true
+                )
+
+            [friday] => Array
+                (
+                    [openHour] => 6:00 AM
+                    [closeHour] => 10:00 PM
+                    [24] => true
+                )
+
+            [saturday] => Array
+                (
+                    [openHour] => 6:00 AM
+                    [closeHour] => 10:00 PM
+                    [close] => true
+                )
+
+            [sunday] => Array
+                (
+                    [openHour] => 6:00 AM
+                    [closeHour] => 10:00 PM
+                )
+
+            [cLoseOnHolidays] => true
+        )
+
+    [aircon] => Array
+        (
+            [monday] => Array
+                (
+                    [openHour] => 6:00 AM
+                    [closeHour] => 4:00 PM
+                    [custom] => true
+                    [close] => true
+                    [24] => true
+                )
+
+            [tuesday] => Array
+                (
+                    [openHour] => 6:00 AM
+                    [closeHour] => 10:00 PM
+                    [24] => true
+                )
+
+            [wednesday] => Array
+                (
+                    [openHour] => 6:00 AM
+                    [closeHour] => 10:00 PM
+                    [close] => true
+                )
+
+            [thursday] => Array
+                (
+                    [openHour] => 6:00 AM
+                    [closeHour] => 12:00 PM
+                    [custom] => true
+                )
+
+            [friday] => Array
+                (
+                    [openHour] => 6:00 AM
+                    [closeHour] => 10:00 PM
+                    [24] => true
+                )
+
+        )
+
+)

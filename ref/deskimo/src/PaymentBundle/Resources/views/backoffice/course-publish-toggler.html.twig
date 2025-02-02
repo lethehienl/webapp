@@ -1,0 +1,8 @@
+<div class="course-publish pb-2 col-md-12 col-lg-4">
+    <strong class="publish-label mr-3">{{ label }}</strong>
+    <label class="c-switch c-switch-label c-switch-pill c-switch-primary mb-0" id="toggle" data-entity-id="{{ id }}"
+           data-endpoint="{{ endpoint }}">
+        <input type="checkbox" id="status" {{ checked ? 'checked' : '' }} class="c-switch-input"/>
+        <span class="c-switch-slider" data-checked="Published" data-unchecked="Unpublished"></span>
+    </label>
+</div>

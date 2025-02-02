@@ -1,0 +1,11 @@
+{% extends '@App/authentication/admin/admin-master.html.twig' %}
+
+{% form_theme form _self %}
+
+
+{% block mainContent %}
+    <div class="card card-ex">
+        <div class="card-header"><strong>Update Property Location</strong></div>
+        {% include '@Property/location/form/location.html.twig' %}
+    </div>
+{% endblock %}

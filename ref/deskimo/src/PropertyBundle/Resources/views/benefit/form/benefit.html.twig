@@ -1,0 +1,16 @@
+{{ form_start(form, {'method': 'POST', 'class': 'form-horizontal ng-pristine ng-valid'}) }}
+<div class="card card-form card-form-divide">
+  <div class="card-header">{{ action }} Property Amenity</div>
+  <div class="card-body">
+    <div class="form-group">
+      <label class="col-form-label control-label" for="order_company">Name</label>
+      <div class="">
+        {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+        <div class="invalid-feedback">{{ form_errors(form.name) }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include '@App/authentication/admin/component/actions.html.twig' with {'back_to_list_path': path('property_benefit_management_route')} %}
+{{ form_end(form) }}

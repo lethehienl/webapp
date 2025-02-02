@@ -1,0 +1,139 @@
+{% extends '@App/authentication/admin/admin-master.html.twig' %}
+{% block prefix_title %} Overview {% endblock %}
+{% block mainContent %}
+    <div class="fade-in">
+        {% if is_granted('ROLE_DESKIMO_ADMIN') or is_granted('ROLE_PROPERTY_ADMIN') %}
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div class="main-chart__header">
+                            <h4 class="card-title mb-0">Total Revenue (SGD)</h4>
+                        </div>
+                        <div class="btn-toolbar d-none d-md-block" role="toolbar" aria-label="Toolbar with buttons">
+                        </div>
+                    </div>
+                    <div class="c-chart-wrapper">
+                        <canvas id="revenue-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row widget-4">
+
+                <div class="col-sm-6 col-lg-4">
+                    <div class="card bg-white p-3">
+                        <div class="d-flex justify-content-center align-items-start">
+                            <div class="widget-chart">
+                                <div class="chart-total"></div>
+                                <div class="chart-title">Total Users</div>
+                            </div>
+                        </div>
+                        <div class="c-chart-wrapper mt-3">
+                            <canvas class="chart chartjs-render-monitor" id="user-chart" height="140"
+                                    width="450"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <div class="card bg-white p-3">
+                        <div class="d-flex justify-content-center align-items-start">
+                            <div class="widget-chart">
+                                <div class="chart-total"></div>
+                                <div class="chart-title">Total Usage (Min)</div>
+                            </div>
+                        </div>
+                        <div class="c-chart-wrapper mt-3">
+                            <canvas class="chart chartjs-render-monitor" id="usage-chart" height="140"
+                                    width="450"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <div class="card bg-white p-3">
+                        <div class="d-flex justify-content-center align-items-start">
+                            <div class="widget-chart">
+                                <div class="chart-total"></div>
+                                <div class="chart-title">Avg Usage Per Stay (Min)</div>
+                            </div>
+                        </div>
+                        <div class="c-chart-wrapper mt-3">
+                            <canvas class="chart chartjs-render-monitor" id="avg-usage-chart" height="140"
+                                    width="450"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        {% endif %}
+
+        <div class="card card-ex">
+            <div class="card-body">
+                <div class="table-title">Active Usage</div>
+                <div class="c-subheader justify-content-between">
+                </div>
+
+                <div class="table-responsive">
+                    <table id="active-usage-table" class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                        <tr>
+                          <th scope="col"></th>
+                          <th scope="col">Transaction ID</th>
+                          <th scope="col">Visitor</th>
+                          <th scope="col">Phone No.</th>
+                          <th scope="col">Check-in</th>
+                          <th scope="col">Usage(Min)</th>
+                          <th scope="col">Rate Per Hour</th>
+                          <th scope="col">Revenue</th>
+                            <th scope="col">Status</th>
+                          <th scope="col">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        {#<div class="card card-ex">
+            <div class="card-body">
+                <div class="table-title">Staff Revenue</div>
+                <div class="c-subheader justify-content-between">
+                    <div id="form-search">
+                        <div class="form-group row">
+                            <div class="col-sm-6 pr-0">
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-ex"
+                                           data-autoclose="true" id="keyword"
+                                           placeholder="Search by Staff name">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table id="bundle-table" class="table align-items-center table-flush">
+                        <thead class="thead-light d-none">
+                        <tr>
+                            <th>Name</th>
+                            <th>Revenue</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>#}
+
+    </div>
+{% endblock %}
+
+{% block extra_javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.0.1/chart.min.js"></script>
+    {{ encore_entry_script_tags('admin_dashboard') }}
+{% endblock %}

@@ -1,0 +1,8 @@
+<div class="card-footer">
+  <div class="col-6 cta-wrapper">
+    <a class="btn btn-secondary" href="{{ back_to_list_path }}">Cancel</a>
+    {% if allowEdit is not defined or (allowEdit is defined and allowEdit == 1) %}
+      <button type="submit" class="btn btn-primary">Continue</button>
+    {% endif %}
+  </div>
+</div>

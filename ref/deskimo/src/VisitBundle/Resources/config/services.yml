@@ -1,0 +1,8 @@
+services:
+  visit_api.service:
+    class: VisitBundle\Services\VisitApiService
+    autowire: true
+
+  visit.service:
+    class: VisitBundle\Services\VisitService
+    autowire: true

@@ -1,0 +1,56 @@
+.btn {
+  min-width: 4.5rem;
+  transition: all .2s ease;
+  justify-content: center;
+  border-radius: 8px;
+  font-weight: 500;
+
+  &:focus, &:active {
+    box-shadow: none !important;
+    outline: none !important;
+  }
+
+  &-primary {
+    background-color: $black;
+    border-color: $black;
+    color: white;
+
+    &:hover, &:focus, &:active {
+      border-color: $black !important;
+      background-color: lighten($black, 10%) !important;
+    }
+  }
+
+  &-secondary {
+    background: #CCCCCC;
+    color: white;
+  }
+
+  &-success {
+    color: white;
+    background: $green;
+  }
+
+  &-info {
+  }
+
+  &-warning {
+  }
+
+  &-danger {
+  }
+
+  &-outline {
+    &-primary {
+      color: $black;
+      background-color: transparent;
+      border-color: $black;
+
+      &:hover, &:focus, &:active {
+        border-color: $black !important;
+        background-color: $black !important;
+        color: white;
+      }
+    }
+  }
+}

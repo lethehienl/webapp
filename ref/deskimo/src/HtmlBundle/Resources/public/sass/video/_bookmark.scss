@@ -1,0 +1,108 @@
+.bookmark__list {
+  height: calc(100vh - 112px);
+  padding: 20px;
+}
+
+.bookmark-item {
+  position: relative;
+  padding-bottom: 20px;
+
+  .section-name {
+    font-size: px2rem(15);
+    display: flex;
+    align-items: flex-start;
+    color: black;
+    padding-right: 25px;
+
+    i {
+      margin-right: 5px;
+      color: #00b9f2;
+      padding-top: 2px;
+    }
+  }
+
+  .video-index {
+    cursor: pointer;
+    margin-left: 25px;
+    display: inline-block;
+    padding: 1px 8px 1px 2px;
+    border-radius: 30px;
+    background-color: #00b9f2;
+    color: white;
+    font-size: px2rem(12);
+
+  }
+
+  .bookmark-note {
+    margin-top: 13px;
+    padding: 10px;
+    background-color: #f6f6f6;
+    border-radius: 5px;
+    font-size: px2rem(14);
+    color: #878787;
+  }
+
+  .delete-bookmark {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    z-index: 1;
+
+    i {
+      color: #a8a8a8;
+    }
+  }
+}
+
+#bookmark {
+  position: absolute;
+  padding: 3px;
+  top: 24px;
+  right: 50px;
+  width: 50px;
+  height: 50px;
+  background-color: #00b9f2;
+  box-shadow: 0 0 6px 3px rgba(#000, .16);
+  border-radius: 30px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color .25s linear;
+  transition: all .25s linear;
+
+  @media (max-width: 767px) {
+    width: 40px;
+    height: 40px;
+    top: 7px;
+  }
+
+  .sidebar-lesson-show & {
+    right: 16px;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  .icon {
+    display: inline-block;
+    width: 22px;
+    height: 30px;
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../../images/bookmark.svg");
+
+    @media (max-width: 767px) {
+      background-size: 17px;
+    }
+  }
+
+  &.marked {
+    .icon {
+      background-image: url("../../images/bookmarkChecked.svg");
+    }
+  }
+}

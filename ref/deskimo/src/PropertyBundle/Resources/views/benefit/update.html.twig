@@ -1,0 +1,13 @@
+{% extends '@App/authentication/admin/admin-master.html.twig' %}
+
+{% block prefix_title %} Update Amenity {% endblock %}
+
+{% form_theme form _self %}
+
+
+{% block mainContent %}
+  <div class="card card-ex">
+    {# <div class="card-header"><strong>Update Property Amenity</strong></div> #}
+    {% include '@Property/benefit/form/benefit.html.twig' with {action: "Update"} %}
+  </div>
+{% endblock %}

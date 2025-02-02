@@ -11,7 +11,7 @@ class UserController extends AbstractController
 
     public function login(): Response
     {
-        echo 'user/login';die;
+        echo 'Admin > login';die;
 
       /*  return $this->render('@Html/bachmoc/home.html.twig', [
           'number' => $number,

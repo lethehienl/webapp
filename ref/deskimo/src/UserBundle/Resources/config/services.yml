@@ -1,0 +1,8 @@
+services:
+  user.service:
+    class: UserBundle\Services\UserService
+    autowire: true
+
+  user_api.service:
+    class: UserBundle\Services\UserApiService
+    autowire: true

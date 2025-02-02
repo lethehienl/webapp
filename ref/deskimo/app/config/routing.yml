@@ -1,0 +1,67 @@
+
+fos_oauth_server_token:
+    resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"
+
+fos_oauth_server_authorize:
+    resource: "@FOSOAuthServerBundle/Resources/config/routing/authorize.xml"
+
+# app config route
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+# user config route
+anonymous:
+    resource: "@UserBundle/Controller/Anonymous"
+    type:     annotation
+    prefix: /
+
+user_admin:
+    resource: "@UserBundle/Controller/Admin"
+    type: annotation
+    prefix: /admin
+
+property_admin:
+    resource: "@PropertyBundle/Controller/Admin"
+    type: annotation
+    prefix: /admin/property
+
+property_company_admin:
+    resource: "@CompanyBundle/Controller/BackOffice"
+    type: annotation
+    prefix: /admin/property
+
+payment_admin:
+    resource: "@PaymentBundle/Controller/BackOffice"
+    type: annotation
+
+api_property:
+    resource: "@PropertyBundle/Controller/Api"
+    type: annotation
+
+api_payment_info:
+    resource: "@PaymentBundle/Controller/Api"
+    type: annotation
+
+api_user:
+    resource: "@UserBundle/Controller/Api"
+    type: annotation
+
+api_visit:
+    resource: "@VisitBundle/Controller/Api"
+    type: annotation
+
+
+html:
+    resource: "@HtmlBundle/Controller/BackOffice"
+    type: annotation
+    prefix: /html/admin
+
+admin_visit:
+    resource: "@VisitBundle/Controller/BackOffice"
+    type: annotation
+
+admin_invoice:
+    resource: "@InvoiceBundle/Controller/Admin"
+    prefix: /admin
+    type: annotation

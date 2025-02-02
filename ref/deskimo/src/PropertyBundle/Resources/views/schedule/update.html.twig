@@ -1,0 +1,21 @@
+{% extends '@App/authentication/admin/admin-master.html.twig' %}
+{% block prefix_title %} Update Schedule {% endblock %}
+
+{% form_theme form _self %}
+
+{% block extra_stylesheets %}
+    {{ encore_entry_link_tags('admin_property_schedule_management') }}
+{% endblock %}
+
+{% block mainContent %}
+    <div class="card card-ex">
+{#        <div class="card-header"><strong>Update Property Schedule</strong></div>#}
+        {% include '@Property/schedule/form/schedule.html.twig' with {action: "Update"}%}
+    </div>
+{% endblock %}
+
+{% block extra_javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('admin_property_schedule_management') }}
+{% endblock %}
+

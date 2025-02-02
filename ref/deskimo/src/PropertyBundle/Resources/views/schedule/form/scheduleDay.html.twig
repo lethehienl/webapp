@@ -1,0 +1,94 @@
+{# MOMDAY #}
+{% set showInput =  'show' %}
+
+{% if(day['close'] is defined and day['close'] == true) %}
+    {% set showInput = 'hide' %}
+{% endif %}
+{% if(day['24'] is defined and day['24'] == true) %}
+    {% set showInput = 'hide' %}
+{% endif %}
+<div class="form-group weekendDay">
+    <div class="row">
+        <div class="col-md-2">
+            <label style="line-height: 44px" class="col-form-label control-label"
+                   for="order_company">{{ camKey }}</label>
+        </div>
+
+        <div class="col-md-2 customActive" style="{{ showInput == 'show' ? 'display: block;' : 'display: none;'}}"
+        >
+            <div class="form-group">
+                <input class="form-control" name="{{ prefix ~ '[' ~ key ~ ']' }}[openHour]" type="text" required
+                       value="{{ day['openHour'] is defined ? day['openHour'] : '6:00 AM' }}">
+            </div>
+        </div>
+        <div class="col-md-2 customActive" style="{{ showInput == 'show' ? 'display: block;' : 'display: none;'}}">
+            <div class="form-group">
+                <input class="form-control" name="{{ prefix ~ '[' ~ key ~ ']' }}[closeHour]" type="text" required
+                       value="{{ day['closeHour'] is defined ? day['closeHour'] : '10:00 PM' }}">
+            </div>
+        </div>
+
+        <div class="col-md-1 customNotActive" style="
+        {{ showInput == 'show' ? 'display: none;' : 'display: block;'}}
+                line-height: 44px;padding-right: 0px;">
+            <label class="col-form-label control-label">{{ day['openHour'] is defined ? day['openHour'] : '6:00 AM' }}</label>
+        </div>
+        <div class="col-md-1 customNotActive" style="
+        {{ showInput == 'show' ? 'display: none;' : 'display: block;'}}line-height: 44px;text-align: center;">
+            <label class="col-form-label control-label">-</label>
+        </div>
+        <div class="col-md-2 customNotActive" style="
+        {{ showInput == 'show' ? 'display: none;' : 'display: block;'}}line-height: 44px">
+            <label class="col-form-label control-label">{{ day['CloseHour'] is defined ? day['CloseHour'] : '10:00 PM' }}</label>
+        </div>
+
+        <div class="col-md-2">
+            <div class="form-group" style="line-height: 10px">
+                <input class="custom-input-checkbox customCheckbox" type="checkbox"
+                       id="{{ prefix ~ '[' ~ camKey ~ ']' }}Custom"
+                       name="{{ prefix ~ '[' ~ key ~ ']' }}[custom]"
+                        {{ showInput == 'show' ? 'checked' : ''}}
+
+                       value="true">
+                <label class="col-form-label control-label label-checkbox"
+                       for="{{ prefix ~ '[' ~ camKey ~ ']' }}Custom">
+                    <div class="custom-checkbox">
+                        <div class="custom-checkbox__check"></div>
+                        <div class="custom-checkbox__content">Custom</div>
+                    </div>
+                </label>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group" style="line-height: 10px">
+                <input class="custom-input-checkbox customCheckboxClose" type="checkbox" id="{{ prefix ~ '[' ~ camKey ~ ']' }}Close"
+                       name="{{ prefix ~ '[' ~ key ~ ']' }}[close]"
+                        {{ day['close'] is defined and day['close'] == true ? 'checked': '' }}
+                       value="true">
+                <label class="col-form-label control-label label-checkbox"
+                       for="{{ prefix ~ '[' ~ camKey ~ ']' }}Close">
+                    <div class="custom-checkbox">
+                        <div class="custom-checkbox__check"></div>
+                        <div class="custom-checkbox__content">Closed</div>
+                    </div>
+                </label>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group" style="line-height: 10px">
+                <input class="custom-input-checkbox  customCheckbox24" type="checkbox" id="{{ prefix ~ '[' ~ camKey ~ ']' }}24"
+                       name="{{ prefix ~ '[' ~ key ~ ']' }}[24]"
+                        {{ day['24'] is defined and day['24'] == true ? 'checked': '' }}
+                       value="true">
+                <label class="col-form-label control-label label-checkbox"
+                       for="{{ prefix ~ '[' ~ camKey ~ ']' }}24">
+                    <div class="custom-checkbox">
+                        <div class="custom-checkbox__check"></div>
+                        <div class="custom-checkbox__content">Open 24 hours</div>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+    </div>
+</div>

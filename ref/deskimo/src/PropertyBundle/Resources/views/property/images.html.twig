@@ -1,0 +1,43 @@
+{% extends '@App/authentication/admin/admin-master.html.twig' %}
+
+{% block extra_stylesheets %}
+    {{ encore_entry_link_tags('admin_property_detail') }}
+{% endblock %}
+
+{% block mainContent %}
+    <div class="card property-detail" data-upload-url="{{ url('property_add_images_route', {id: property.id}) }}" data-property-id="{{ property.id }}">
+        <div class="card-header">
+            <h2>Property gallery</h2>
+        </div>
+        <div class="card-body">
+            <div class="upload-media">
+                <ul id="sortable" class="image-list">
+                    {% for picture in property.pictures %}
+                    <li class="ui-state-default image-item image-area">
+                            <img src="{{ asset(picture.uri) }}" alt="image-{{ picture.id }}">
+                            <a class="remove-image" data-remove-url="{{ url('property_remove_image_route', {propertyId: property.id, pictureId: picture.id}) }}" href="#" style="display: inline;">&#215;</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div id="dropzone">
+                <form action="{{ url('property_add_images_route', {id: property.id}) }}"  class="dropzone needsclick dz-clickable" id="uploadMedia">
+                    <div class="dz-message needsclick">
+                        <button type="button" class="dz-button">Drop files here or click to upload.</button>
+                        <br>
+                        <span class="note needsclick">(Upload maximums <b>6</b> images)</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
+{% block extra_javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('admin_property_detail') }}
+{% endblock %}

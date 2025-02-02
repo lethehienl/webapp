@@ -1,0 +1,111 @@
+{% extends '@App/authentication/company/company-master.html.twig' %}
+{% block extra_stylesheets %}
+    {{ encore_entry_link_tags('employee_list') }}
+{% endblock %}
+ {% block mainContent %}
+     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addEmployee" data-whatever="@mdo">
+         Thêm học viên
+     </button>
+     <div class="modal fade" id="addEmployee" tabindex="-1" role="dialog" aria-labelledby="addEmployeeModalLabel"
+          style="display: none;" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+             <div class="modal-content">
+                 <div class="modal-header">
+                     <h4 class="modal-title">Điền thông tin của học viên</h4>
+                     <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
+                                 aria-hidden="true">×</span></button>
+                 </div>
+                 <div class="modal-body">
+                     <div class="assign_message">
+                     </div>
+                     <div class="form-group col-md-12">
+                         <label for="assign_popup_fullName" class="col-form-label control-label">Họ & tên</label>
+                         <input type="text" class="form-control" id="student-name">
+                         <div class="invalid-feedback"></div>
+                     </div>
+                     <div class="form-group col-md-12">
+                         <label for="assign_popup_fullName" class="col-form-label control-label">Email</label>
+                         <input type="text" class="form-control" id="student-email">
+                         <div class="invalid-feedback"></div>
+                     </div>
+
+                     <input type="hidden" id="assign_popup_order_code" name="assign_popup_order_code" value="">
+                     <div class="modal-footer">
+                         <button class="btn btn-primary">Lưu lại</button>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <button class="btn btn-success" data-toggle="modal" data-target="#addCourse">Mời học</button>
+     <div class="modal fade" id="addCourse" tabindex="-1" role="dialog" aria-labelledby="addCourseModalLabel"
+          style="display: none;" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+             <div class="modal-content">
+                 <div class="modal-header">
+                     <h4 class="modal-title">Danh sách khoá học đang có </h4>
+                     <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
+                                 aria-hidden="true">×</span></button>
+                 </div>
+                 <div class="modal-body">
+                     <div class="form-group col-md-12">
+                         <div class="form-check">
+                             <input class="form-check-input" type="checkbox" value="" id="course-1">
+                             <div class="course-info">
+                                 <label class="form-check-label" for="course-1">
+                                     Tiếng Trung cơ bản cho người mới bắt đầu 1
+                                 </label>
+                                 <p class="course-info-description"><span>VLB01</span> &bull; 5 học viên đang học &bull;
+                                     <span>Còn 28 ngày hết hạn </span></p>
+                             </div>
+                         </div>
+                         <hr>
+                     </div>
+                     <div class="form-group col-md-12">
+                         <div class="form-check">
+                             <input class="form-check-input" type="checkbox" value="" id="course-2">
+                             <div class="course-info">
+                                 <label class="form-check-label" for="course-2">
+                                     Tiếng Trung cơ bản cho người mới bắt đầu 1
+                                 </label>
+                                 <p class="course-info-description"><span>VLB02</span> &bull; 5 học viên đang học &bull;
+                                     <span>Còn 17 ngày hết hạn </span></p>
+                             </div>
+                         </div>
+                         <hr>
+                     </div>
+                     <div class="form-group col-md-12">
+                         <div class="form-check">
+                             <input class="form-check-input" type="checkbox" value="" id="course-3">
+                             <div class="course-info">
+                                 <label class="form-check-label" for="course-3">
+                                     Bí quyết chốt sales và tăng doanh
+                                 </label>
+                                 <p class="course-info-description"><span>VLB01</span> &bull; 5 học viên đang học &bull;
+                                     <span>Còn 28 ngày hết hạn </span></p>
+                             </div>
+                         </div>
+                         <hr>
+                     </div>
+                     <div class="form-group col-md-12">
+                         <div class="form-check">
+                             <input class="form-check-input" type="checkbox" value="" id="course-4">
+                             <div class="course-info">
+                                 <label class="form-check-label" for="course-4">
+                                     Bí quyết chốt sales và tăng doanh
+                                 </label>
+                                 <p class="course-info-description"><span>VLB02</span> &bull; 5 học viên đang học &bull;
+                                     <span>Còn 17 ngày hết hạn </span></p>
+                             </div>
+                         </div>
+                     </div>
+
+                     <input type="hidden" id="assign_popup_order_code" name="assign_popup_order_code" value="">
+                 </div>
+                 <div class="modal-footer">
+                     <button class="btn btn-primary">Gửi lời mời</button>
+                 </div>
+             </div>
+         </div>
+     </div>
+ {% endblock %}

@@ -1,0 +1,18 @@
+{% extends '@App/anonymous/anonymous-master.html.twig' %}
+
+{% block title %}Deskimo | 404 | {% endblock %}
+
+{% block extra_stylesheets %}
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    {{ encore_entry_link_tags('page_error')}}
+{% endblock %}
+
+
+{% block body %}
+    <div class="container">
+        <h1>404</h1>
+        <p>Không tìm thấy trang này, bạn hãy kiểm tra lại đường dẫn.</p>
+        <a href="/login"><< Trở về trang chủ</a>
+    </div>
+{% endblock %}

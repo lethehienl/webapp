@@ -1,7 +1,7 @@
 doctrine:
     dbal:
 #        url: '%env(resolve:DATABASE_URL)%'
-        url: 'mysql://root:@127.0.0.1:3306/wevapp?serverVersion=10.4.32-MariaDB&charset=utf8mb4'
+        url: 'mysql://root:@127.0.0.1:3306/webapp?serverVersion=10.4.32-MariaDB&charset=utf8mb4'
         dbname: webapp
         host: localhost
         port: 1234
@@ -13,7 +13,7 @@ doctrine:
 
         # IMPORTANT: You MUST configure your server version,
         # either here or in the DATABASE_URL env var (see .env file)
-        #server_version: '16'
+        # server_version: '16'
 
         profiling_collect_backtrace: '%kernel.debug%'
         server_version: '10.4.32-MariaDB'
@@ -35,9 +35,9 @@ doctrine:
             App:
                 type: attribute
                 is_bundle: false
-                dir: '%kernel.project_dir%/src/Entity'
-                prefix: 'App\Entity'
-                alias: App
+                dir: '%kernel.project_dir%/src/Bundle'
+                prefix: 'App\Bundle'
+                alias: Bundle
         controller_resolver:
             auto_mapping: false
 

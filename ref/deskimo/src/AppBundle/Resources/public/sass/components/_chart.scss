@@ -1,0 +1,19 @@
+.widget-chart {
+  position: relative;
+  top: 25px;
+
+  .chart-total {
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    text-align: center;
+    color: #000A33;
+  }
+
+  .chart-title {
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: center;
+    color: #949494;
+  }
+}

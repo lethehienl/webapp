@@ -1,0 +1,21 @@
+{% extends '@App/authentication/admin/admin-master.html.twig' %}
+
+{% block prefix_title %} Create Property {% endblock %}
+
+{% block extra_stylesheets %}
+  {{ encore_entry_link_tags('admin_property_detail') }}
+{% endblock %}
+
+{% block mainContent %}
+  <div class="card card-ex">
+    {# <div class="card-header"><strong>Create Property</strong></div> #}
+    {% include '@Property/property/form/property.html.twig' with {action: 'Create'} %}
+  </div>
+{% endblock %}
+
+
+{% block extra_javascripts %}
+  <script src="https://maps.googleapis.com/maps/api/js?key={{ google_api_key }}&libraries=places"></script>
+  {{ encore_entry_script_tags('google_map_api') }}
+  {{ encore_entry_script_tags('admin_property_detail') }}
+{% endblock %}

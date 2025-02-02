@@ -1,0 +1,415 @@
+{% extends '@App/authentication/learning/learning-mater.html.twig' %}
+
+
+
+{% block extra_stylesheets %}
+    {{ encore_entry_link_tags('course_list') }}
+{% endblock %}
+
+{% block mainContent %}
+    <div class="summary-info">
+        <img class="c-sidebar-brand-full" src="{{ asset('/build/images/avatar-profile.png') }}"
+             width="150" height="150" alt="Avatar Profile">
+        <p class="c-sidebar-name">Quách Minh Trí</p>
+        <a href="#" class="c-sidebar-edit"><i class="cil-pencil"></i> Chỉnh sửa</a>
+        <div class="result-summary">
+            <a href="#">
+                <div class="result-detail">
+                    <p class="result-number" style="background: #0e46cd">02</p>
+                    <p class="result-title">Số khoá chưa học</p>
+                </div>
+            </a>
+            <div class="vertical-line"></div>
+            <a href="#">
+                <div class="result-detail">
+                    <p class="result-number" style="background: #7ed321">02</p>
+                    <p class="result-title">Số khoá hoàn thành</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="sort-filter">
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                <i class="cil-sort-alpha-down"></i>Sắp xếp
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+                <a class="dropdown-item" href="#">Khoá mới đăng ký</a>
+                <a class="dropdown-item" href="#">Tên khoá học: A-to-Z</a>
+                <a class="dropdown-item" href="#">Tên khoá học: Z-to-A</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                <i class="cil-filter"></i>Lĩnh vực
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+                <a class="dropdown-item" href="#">Development</a>
+                <a class="dropdown-item" href="#">IT & Software</a>
+                <a class="dropdown-item" href="#">Thiết kế</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                <i class="cil-filter"></i>Tiến Trình
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+                <a class="dropdown-item" href="#">Đang học </a>
+                <a class="dropdown-item" href="#">Chưa bắt đầu</a>
+                <a class="dropdown-item" href="#">Hoàn thành</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                <i class="cil-filter"></i>Giảng viên
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+                <a class="dropdown-item" href="#">Trí Quách</a>
+                <a class="dropdown-item" href="#">Thuận Võ</a>
+                <a class="dropdown-item" href="#">Trí Lê</a>
+            </div>
+        </div>
+    </div>
+    <div class="course-search">
+        <input class="form-control" type="text" placeholder="Tìm khoá học của tôi">
+    </div>
+    <div class="course-list course-continue">
+        <div class="card-overlay-lg">
+            <a class="btn btn-primary btn-lg">Học Ngay</a>
+        </div>
+        <h4 class="course-category">Tiếp tục học</h4>
+        <div class="card card-continue">
+            <a href="#">
+                <div class="card-body">
+                    <div class="card-image">
+                        <img class="card-img-top" src="{{ asset('build/images/course-image.jpg') }}" alt="Course Title">
+                    </div>
+                    <div class="card-content">
+                        <div class="course-date">
+                            <p class="course-date-start">Mời học: 14/3/2018 </p>
+                            <span class="course-date-left"> &bull; Còn 25 ngày sử dụng</span>
+                        </div>
+                        <p class="card-category">Tài chính</p>
+                        <p class="card-title">Kỹ Năng Phỏng Vấn Dành Cho IT Recruiter và Technical Manager</p>
+                        <p class="card-text">GV: Trần Vũ Thanh</p>
+                        <div class="card-footer">
+                            <div class="progress-group">
+                                <div class="progress-group-header align-items-end">
+                                    <div class="text-warning">Hoàn thành 40%</div>
+                                </div>
+                                <div class="progress-group-bars">
+                                    <div class="progress progress-xs">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 0"
+                                             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <h4 class="course-category-sm">Tiếp tục học</h4>
+    <div class="course-list course-continue-sm">
+        <div class="card">
+            <a href="#">
+                <div class="card-header">
+                    <p class="course-date-start">Mời học: 14/3/2018</p>
+                    <span class="course-date-left">&bull; Còn 25 ngày sử dụng</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-image">
+                        <img class="card-img-top" src="{{ asset('build/images/course-image.jpg') }}" alt="Course Title">
+                    </div>
+                    <div class="card-content">
+                        <p class="card-category">Tài chính</p>
+                        <p class="card-title">Kỹ Năng Phỏng Vấn Dành Cho IT Recruiter và Technical Manager</p>
+                        <p class="card-text">GV: Trần Vũ Thanh</p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="progress-group">
+                        <div class="progress-group-header align-items-end">
+                            <div class="text-warning">Hoàn thành 40%</div>
+                        </div>
+                        <div class="progress-group-bars">
+                            <div class="progress progress-xs">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 0"
+                                     aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-overlay">
+                    <a class="btn btn-primary btn-lg" href="#">Học Ngay</a>
+                </div>
+            </a>
+        </div>
+    </div>
+    <h4 class="course-category">Khoá học kỹ năng mềm</h4>
+    <div class="course-list">
+        <div class="card">
+            <a href="#">
+                <div class="card-header">
+                    <p class="course-date-start">Mời học: 14/3/2018</p>
+                    <span class="course-date-left">&bull; Còn 0 ngày sử dụng</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-image">
+                        <img class="card-img-top" src="{{ asset('build/images/course-image.jpg') }}" alt="Course Title">
+                    </div>
+                    <div class="card-content">
+                        <p class="card-category">Tài chính</p>
+                        <p class="card-title">Kỹ Năng Phỏng Vấn Dành Cho IT Recruiter và Technical Manager</p>
+                        <p class="card-text">GV: Trần Vũ Thanh</p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="progress-group">
+                        <div class="progress-group-header align-items-end">
+                            <div class="text-warning">Hoàn thành 40%</div>
+                        </div>
+                        <div class="progress-group-bars">
+                            <div class="progress progress-xs">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 0"
+                                     aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-overlay card-overlay-expired">
+                    <a class="btn btn-dark btn-lg" href="#">Khoá học đã hết hạn</a>
+                </div>
+            </a>
+        </div>
+        <div class="card">
+            <a href="#">
+                <div class="card-header">
+                    <p class="course-date-start">Mời học: 14/3/2018</p>
+                    <span class="course-date-left">&bull; Còn 25 ngày sử dụng</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-image">
+                        <img class="card-img-top" src="{{ asset('build/images/course-image.jpg') }}" alt="Course Title">
+                    </div>
+                    <div class="card-content">
+                        <p class="card-category">Tài chính</p>
+                        <p class="card-title">Kỹ Năng Phỏng Vấn Dành Cho IT Recruiter và Technical Manager</p>
+                        <p class="card-text">GV: Trần Vũ Thanh</p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="progress-group">
+                        <div class="progress-group-header align-items-end">
+                            <div class="text-success">Hoàn thành 100%</div>
+                        </div>
+                        <div class="progress-group-bars">
+                            <div class="progress progress-xs">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 0"
+                                     aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-overlay">
+                    <a class="btn btn-primary btn-lg" href="#">Học Ngay</a>
+                </div>
+            </a>
+        </div>
+        <div class="card">
+            <a href="#">
+                <div class="card-header">
+                    <p class="course-date-start">Mời học: 14/3/2018</p>
+                    <span class="course-date-left">&bull; Còn 25 ngày sử dụng</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-image">
+                        <img class="card-img-top" src="{{ asset('build/images/course-image.jpg') }}" alt="Course Title">
+                    </div>
+                    <div class="card-content">
+                        <p class="card-category">Tài chính</p>
+                        <p class="card-title">Kỹ Năng Phỏng Vấn Dành Cho IT Recruiter và Technical Manager</p>
+                        <p class="card-text">GV: Trần Vũ Thanh</p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="progress-group">
+                        <div class="progress-group-header align-items-end">
+                            <div class="text-secondary">Hoàn thành 0%</div>
+                            <span class="text-primary ml-4">Học ngay</span>
+                        </div>
+                        <div class="progress-group-bars">
+                            <div class="progress progress-xs">
+                                <div class="progress-bar bg-secondary" role="progressbar" style="width: 0"
+                                     aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-overlay">
+                    <a class="btn btn-primary btn-lg" href="#">Học Ngay</a>
+                </div>
+            </a>
+        </div>
+        <div class="card">
+            <a href="#">
+                <div class="card-header">
+                    <p class="course-date-start">Mời học: 14/3/2018</p>
+                    <span class="course-date-left">&bull; Còn 25 ngày sử dụng</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-image">
+                        <img class="card-img-top" src="{{ asset('build/images/course-image.jpg') }}" alt="Course Title">
+                    </div>
+                    <div class="card-content">
+                        <p class="card-category">Tài chính</p>
+                        <p class="card-title">Kỹ Năng Phỏng Vấn Dành Cho IT Recruiter và Technical Manager</p>
+                        <p class="card-text">GV: Trần Vũ Thanh</p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="progress-group">
+                        <div class="progress-group-header align-items-end">
+                            <div class="text-warning">Hoàn thành 40%</div>
+                        </div>
+                        <div class="progress-group-bars">
+                            <div class="progress progress-xs">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 0"
+                                     aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-overlay">
+                    <a class="btn btn-primary btn-lg" href="#">Học Ngay</a>
+                </div>
+            </a>
+        </div>
+        <div class="card">
+            <a href="#">
+                <div class="card-header">
+                    <p class="course-date-start">Mời học: 14/3/2018</p>
+                    <span class="course-date-left">&bull; Còn 25 ngày sử dụng</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-image">
+                        <img class="card-img-top" src="{{ asset('build/images/course-image.jpg') }}" alt="Course Title">
+                    </div>
+                    <div class="card-content">
+                        <p class="card-category">Tài chính</p>
+                        <p class="card-title">Kỹ Năng Phỏng Vấn Dành Cho IT Recruiter và Technical Manager</p>
+                        <p class="card-text">GV: Trần Vũ Thanh</p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="progress-group">
+                        <div class="progress-group-header align-items-end">
+                            <div class="text-success">Hoàn thành 100%</div>
+                        </div>
+                        <div class="progress-group-bars">
+                            <div class="progress progress-xs">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 0"
+                                     aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-overlay">
+                    <a class="btn btn-primary btn-lg" href="#">Học Ngay</a>
+                </div>
+            </a>
+        </div>
+        <div class="card">
+            <a href="#">
+                <div class="card-header">
+                    <p class="course-date-start">Mời học: 14/3/2018</p>
+                    <span class="course-date-left">&bull; Còn 25 ngày sử dụng</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-image">
+                        <img class="card-img-top" src="{{ asset('build/images/course-image.jpg') }}" alt="Course Title">
+                    </div>
+                    <div class="card-content">
+                        <p class="card-category">Tài chính</p>
+                        <p class="card-title">Kỹ Năng Phỏng Vấn Dành Cho IT Recruiter và Technical Manager</p>
+                        <p class="card-text">GV: Trần Vũ Thanh</p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="progress-group">
+                        <div class="progress-group-header align-items-end">
+                            <div class="text-secondary">Hoàn thành 0%</div>
+                            <span class="text-primary ml-4">Học ngay</span>
+                        </div>
+                        <div class="progress-group-bars">
+                            <div class="progress progress-xs">
+                                <div class="progress-bar bg-secondary" role="progressbar" style="width: 0"
+                                     aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-overlay">
+                    <a class="btn btn-primary btn-lg" href="#">Học Ngay</a>
+                </div>
+            </a>
+        </div>
+        <div class="card">
+            <a href="#">
+                <div class="card-header">
+                    <p class="course-date-start">Mời học: 14/3/2018</p>
+                    <span class="course-date-left">&bull; Còn 25 ngày sử dụng</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-image">
+                        <img class="card-img-top" src="{{ asset('build/images/course-image.jpg') }}" alt="Course Title">
+                    </div>
+                    <div class="card-content">
+                        <p class="card-category">Tài chính</p>
+                        <p class="card-title">Kỹ Năng Phỏng Vấn Dành Cho IT Recruiter và Technical Manager</p>
+                        <p class="card-text">GV: Trần Vũ Thanh</p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="progress-group">
+                        <div class="progress-group-header align-items-end">
+                            <div class="text-warning">Hoàn thành 40%</div>
+                        </div>
+                        <div class="progress-group-bars">
+                            <div class="progress progress-xs">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 0"
+                                     aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-overlay">
+                    <a class="btn btn-primary btn-lg" href="#">Học Ngay</a>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <nav aria-label="course-pagination">
+        <ul class="pagination justify-content-end pagination-sm">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        </ul>
+    </nav>
+
+{% endblock %}
+{% block extra_javascripts %}
+    {{ encore_entry_script_tags('course_list') }}
+{% endblock %}

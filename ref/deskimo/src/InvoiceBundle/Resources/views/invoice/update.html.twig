@@ -1,0 +1,13 @@
+{% extends '@App/authentication/admin/admin-master.html.twig' %}
+
+{% block prefix_title %} Update Invoice {% endblock %}
+
+{% form_theme form _self %}
+
+
+{% block mainContent %}
+  <div class="card card-ex">
+    {# <div class="card-header"><strong>Update Property Company</strong></div> #}
+    {% include '@Invoice/invoice/form/form.html.twig' with {action: 'Update'} %}
+  </div>
+{% endblock %}

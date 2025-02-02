@@ -1,0 +1,26 @@
+version: '3.2'
+services:
+  nginx:
+      image: nginx:1.15.3-alpine
+      restart: on-failure
+      volumes:
+        - ./:/usr/src/app
+        - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+        - ./docker/certs:/etc/nginx/certs
+      ports:
+        - 80:80
+        - 443:443
+      depends_on:
+        - php
+  php:
+      image: 127.0.0.1:5000/navibiz-php:latest
+      build:
+        context: .
+        dockerfile: docker/php/Dockerfile
+      restart: on-failure
+      env_file:
+        - .env
+      user: 1000:1000
+      volumes:
+        - .:/usr/src/app
+

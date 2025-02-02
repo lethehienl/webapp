@@ -1,0 +1,151 @@
+{% extends '@App/authentication/company/company-master.html.twig' %}
+
+
+{% block extra_stylesheets %}
+    {{ encore_entry_link_tags('company_contract') }}
+{% endblock %}
+
+{% block mainContent %}
+    <div class="company__button--container">
+        <input type="text" placeholder="Search course or contract here..." class="form-control">
+    </div>
+    <div class="company__card">
+        <div class="card-header">
+            <div class="left-content">
+                <h4 class="company__title--contract btn btn-dark">
+                    VLB-0000001
+                </h4>
+            </div>
+            <div class="right-content">
+                <span class="company__date--timeleft"> Còn 30 ngày sử dụng</span>
+                <p>Ngày tạo: 02/02/2020</p>
+            </div>
+        </div>
+        <div class="card-list">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-image">
+                        <img src="{{ asset('build/images/course-image.jpg') }}">
+                    </div>
+                    <div class="card-content">
+                        <p class="card-title">Kỹ Năng Phỏng Vấn Dành Cho IT Recruiter và Technical Manager</p>
+                        <p class="card-max-employee">Học viên tối đa: <span class="number">10</span></p>
+                    </div>
+                    <div class="card-footer">
+                        <a class="company__student--add btn btn-pill btn-outline-primary" data-toggle="modal"
+                           data-target="#addGroup" href="#"><i class="cil-plus"></i> Chỉ định</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-image">
+                        <img src="{{ asset('build/images/course-image.jpg') }}">
+                    </div>
+                    <div class="card-content">
+                        <p class="card-title">Kỹ Năng Phỏng Vấn Dành Cho IT Recruiter và Technical Manager</p>
+                        <p class="card-max-employee">Học viên tối đa: <span class="number">10</span></p>
+                    </div>
+                    <div class="card-footer">
+                        <a class="company__student--add btn btn-pill btn-outline-primary" href="#"><i
+                                    class="cil-plus"></i> Chỉ định</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="company__card">
+        <div class="card-header">
+            <div class="left-content">
+                <h4 class="company__title--contract btn btn-dark">
+                    VLB-0000002
+                </h4>
+            </div>
+            <div class="right-content">
+                <span class="company__date--timeleft"> Còn 30 ngày sử dụng</span>
+                <p>Ngày tạo: 02/02/2020</p>
+            </div>
+        </div>
+        <div class="card-list">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-image">
+                        <img src="{{ asset('build/images/course-image.jpg') }}">
+                    </div>
+                    <div class="card-content">
+                        <p class="card-title">Kỹ Năng Phỏng Vấn Dành Cho IT Recruiter và Technical Manager</p>
+                        <p class="card-max-employee">Học viên tối đa: <span class="number">10</span></p>
+                    </div>
+                    <div class="card-footer">
+                        <a class="company__student--add btn btn-pill btn-outline-primary" href="#"><i
+                                    class="cil-plus"></i> Chỉ định</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-image">
+                        <img src="{{ asset('build/images/course-image.jpg') }}">
+                    </div>
+                    <div class="card-content">
+                        <p class="card-title">Kỹ Năng Phỏng Vấn Dành Cho IT Recruiter và Technical Manager</p>
+                        <p class="card-max-employee">Học viên tối đa: <span class="number">10</span></p>
+                    </div>
+                    <div class="card-footer">
+                        <a class="company__student--add btn btn-pill btn-outline-primary" href="#"><i
+                                    class="cil-plus"></i> Chỉ định</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addGroup" tabindex="-1" role="dialog" aria-labelledby="addGroup" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addGroup">Chỉ định Group</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table borderless">
+                        <thead>
+                        <tr>
+                            <th>Nhóm</th>
+                            <th>Số lượng học viên</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <select class="form-control">
+                                    <option>-- Chọn Nhóm --</option>
+                                    <option>IT</option>
+                                    <option>Finance</option>
+                                    <option>Accountant</option>
+                                    <option>Sales</option>
+                                </select>
+                            </td>
+                            <td><input type="number" min="0" step="1" class="form-control"/></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="company__student--add--outline btn btn-pill" id="addMore"><i
+                                class="cil-plus"></i> Thêm nhóm
+                    </button>
+                    <button type="button" class="company__student--add btn btn-pill btn-outline-primary">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('company_contract_management') }}
+{% endblock %}

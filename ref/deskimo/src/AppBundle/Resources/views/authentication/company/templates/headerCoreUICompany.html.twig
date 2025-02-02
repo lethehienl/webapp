@@ -1,0 +1,39 @@
+<header class="c-header c-header-light c-header-fixed px-2 px-lg-0">
+    <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar"
+            data-class="c-sidebar-show">
+        <span class="hamburger hamburger--arrow">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+        </span>
+    </button>
+
+    <button class="c-header-toggler c-class-toggler mfs-3 d-md-down-none" type="button" data-target="#sidebar"
+            data-class="c-sidebar-lg-show" responsive="true">
+        <span class="hamburger hamburger--arrow">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+        </span>
+    </button>
+
+
+    {% include '@App/authentication/company/templates/breadcrumb.html.twig' %}
+
+    {# <ul class="c-header-nav mfs-auto"> #}
+
+    {# <li class="c-header-nav-item dropdown"><a class="c-header-nav-link" data-toggle="dropdown" href="#" #}
+    {# role="button" aria-haspopup="true" aria-expanded="false"> #}
+    {# <div class="c-avatar mr-2"><img class="c-avatar-img pl-1" #}
+    {# src="{{ asset('build/images/avatar-bk.png') }}" alt="User name"> #}
+    {# </div> #}
+    {# admin Navigos</a> #}
+
+    {# </li> #}
+    {# <a href="{{ url('user_logout_route') }}" class="c-header-logout c-header-nav-link mfe-md-4 ml-3"> #}
+    {# <i class="fas fa-power-off pb-1" data-toggle="tooltip" data-placement="bottom" title="Đăng xuất"></i> #}
+    {# </a> #}
+    {# </ul> #}
+
+
+</header>

@@ -1,0 +1,56 @@
+.breadcrumb-item {
+  height: 42px;
+  padding: 0 !important;
+  margin-right: .5rem;
+
+  &:before {
+    content: none !important;
+  }
+
+  &:not(:first-child) {
+  }
+
+  a {
+    position: relative;
+    font-weight: 500;
+    padding: .5rem 2rem;
+    height: 100% !important;
+
+    &.btn-secondary {
+      background: rgba(0, 0, 0, .15);
+    }
+
+    //&:after {
+    //  content: '';
+    //  position: absolute;
+    //  bottom: -6px;
+    //  left: 50%;
+    //  width: 100%;
+    //  height: 2px;
+    //  background: $grey;
+    //  transition: all .2s ease;
+    //  transform: translateX(-50%) scale(.2);
+    //  will-change: transform;
+    //}
+  }
+
+  &.active {
+    a {
+      color: white !important;
+
+      //&:after {
+      //  background: $black;
+      //  transform: translateX(-50%) scale(.75);
+      //}
+    }
+  }
+
+  &:hover {
+    a {
+      //&:after {
+      //  background: $black;
+      //  transform: translateX(-50%) scale(.75);
+      //}
+    }
+  }
+}

@@ -1,0 +1,73 @@
+<div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
+    <div class="c-sidebar-brand">
+        <a href="/admin" class="logo__text--normal">Deskimo</a>
+    </div>
+    <ul class="c-sidebar-nav">
+        <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="/admin"><i class="fal fa-tachometer-alt mr-3"></i>Overview</a>
+        </li>
+
+        <li class="c-sidebar-nav-title">Users</li>
+
+        {% if is_granted(constant('UserBundle\\Utils\\PermissionUtil::LIST_USER_ADMIN')) %}
+            <li class="c-sidebar-nav-item">
+                <a class="c-sidebar-nav-link" href="{{ url('admin_users_route') }}">
+                    <i class="fal fa-users mr-3"></i>Users</a>
+            </li>
+        {% endif %}
+
+        {% if is_granted(constant('UserBundle\\Utils\\PermissionUtil::MANAGE_COMPANY')) %}
+            <li class="c-sidebar-nav-dropdown">
+                <a class="c-sidebar-nav-dropdown-toggle" href="javascript:void(0)">
+                    <i class="fal fa-building mr-3"></i>
+                    Companies
+                </a>
+                {% if is_granted(constant('UserBundle\\Utils\\PermissionUtil::VIEW_COMPANY_PROPERTY')) %}
+                    <ul class="c-sidebar-nav-dropdown-items">
+                        <li class="c-sidebar-nav-item">
+                            <a class="c-sidebar-nav-link pl-5" href="{{ path('property_company_management_route') }}">
+                                <i class="fal fa-box-alt mr-3"></i>
+                                Property Company
+                            </a>
+                        </li>
+                    </ul>
+                {% endif %}
+            </li>
+        {% endif %}
+
+        {% if is_granted(constant('UserBundle\\Utils\\PermissionUtil::MANAGE_PROPERTY')) %}
+            <li class="c-sidebar-nav-dropdown">
+                <a class="c-sidebar-nav-dropdown-toggle" href="javascript:void(0)">
+                    <i class="fal fa-boxes mr-3"></i>
+                    Properties
+                </a>
+
+                {% if is_granted(constant('UserBundle\\Utils\\PermissionUtil::VIEW_PROPERTY')) %}
+                    <ul class="c-sidebar-nav-dropdown-items">
+                        <li class="c-sidebar-nav-item">
+                            <a class="c-sidebar-nav-link pl-5" href="{{ path('property_management_route') }}">
+                                <i class="fal fa-box-alt mr-3"></i>
+                                Properties
+                            </a>
+                        </li>
+
+                        {% if is_granted('ROLE_DESKIMO_ADMIN') %}
+                            <li class="c-sidebar-nav-item">
+                                <a class="c-sidebar-nav-link pl-5"
+                                   href="{{ path('property_benefit_management_route') }}">
+                                    <i class="fal fa-sparkles mr-3"></i>
+                                    Amenities
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endif %}
+    </ul>
+    <button class="manual-cta btn btn-warning" data-toggle="modal" data-target="#manualModal">
+        Manual Check-in
+    </button>
+</div>
+
+{% include '@App/authentication/admin/component/checkin_modal.html.twig' %}

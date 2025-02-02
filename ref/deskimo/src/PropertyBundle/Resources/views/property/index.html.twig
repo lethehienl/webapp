@@ -1,0 +1,71 @@
+{% extends '@App/authentication/admin/admin-master.html.twig' %}
+
+{% block prefix_title %} Properties {% endblock %}
+
+{% block extra_stylesheets %}
+  {{ encore_entry_link_tags('admin_property_management') }}
+{% endblock %}
+
+{% block mainContent %}
+  <div class="card card-ex">
+    <div class="card-body">
+      <div class="c-subheader justify-content-between">
+        <div id="form-search">
+          <div class="form-group row">
+            <div class="col-sm-6 pr-0">
+              <div class="form-group">
+                <input type="text" class="form-control form-control-ex"
+                       data-autoclose="true" id="keyword"
+                       placeholder="Search by property">
+              </div>
+            </div>
+            {#<div class="dropdown">
+              <a class="dropdown-toggle" href="#" role="button" id="cityDropdown"
+                 data-toggle="dropdown" aria-expanded="false"><span>All cities</span></a>
+
+              <div class="dropdown-menu" aria-labelledby="cityDropdown">
+                <a class="dropdown-item" href="#"><span>DreamPlex 1 DreamPlex 1 DreamPlex 1 DreamPlex 1 DreamPlex 1 DreamPlex 1</span></a>
+                <a class="dropdown-item" href="#"><span>DreamPlex 2</span></a>
+                <a class="dropdown-item" href="#"><span>DreamPlex 3</span></a>
+              </div>
+            </div>
+            <div class="dropdown">
+              <a class="dropdown-toggle" href="#" role="button" id="typeDropdown"
+                 data-toggle="dropdown" aria-expanded="false"><span>Property Type</span></a>
+
+              <div class="dropdown-menu" aria-labelledby="typeDropdown">
+                <a class="dropdown-item" href="#"><span>DreamPlex 1 DreamPlex 1 DreamPlex 1 DreamPlex 1 DreamPlex 1 DreamPlex 1</span></a>
+                <a class="dropdown-item" href="#"><span>DreamPlex 2</span></a>
+              </div>
+            </div>#}
+          </div>
+        </div>
+
+        {% if is_granted(constant('UserBundle\\Utils\\PermissionUtil::ADD_PROPERTY')) %}
+          <div class="c-subheader-nav d-md-down-none">
+            <div>
+              <a class="btn btn-primary" href="{{ path('property_management_create_route') }}">+ New Property</a>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="table-responsive">
+        <table id="bundle-table" class="table align-items-center table-flush">
+          <thead class="thead-light d-none">
+          <tr>
+          </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block extra_javascripts %}
+  {{ parent() }}
+  {{ encore_entry_script_tags('admin_property_management') }}
+{% endblock %}

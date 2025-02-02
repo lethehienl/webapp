@@ -1,0 +1,30 @@
+{% extends '@App/authentication/company/company-master.html.twig' %}
+
+ {% block mainContent %}
+     <button class="btn btn-primary">Thêm học viên</button>
+
+
+     <div class="modal fade" id="addCourse" tabindex="-1" role="dialog" aria-labelledby="addCourseModalLabel"
+          style="display: none;" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+             <div class="modal-content">
+                 <div class="modal-header">
+                     <h4 class="modal-title">Danh sách khoá học đang có </h4>
+                     <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
+                                 aria-hidden="true">×</span></button>
+                 </div>
+                 <form id="add-student-popup" method="post">
+                     <div class="modal-body">
+                         <div class="order-course-list">
+
+                         </div>
+
+                     </div>
+                     <div class="modal-footer">
+                         <button class="btn btn-primary" id="add-student">Gửi lời mời</button>
+                     </div>
+                 </form>
+             </div>
+         </div>
+     </div>
+ {% endblock %}

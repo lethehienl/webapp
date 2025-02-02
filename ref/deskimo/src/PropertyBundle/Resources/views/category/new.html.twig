@@ -1,0 +1,10 @@
+{% extends '@App/authentication/admin/admin-master.html.twig' %}
+
+
+{% block mainContent %}
+  <div class="card card-ex">
+{#    <div class="card-header"><strong>Create Property Category</strong></div>#}
+    {% include '@Property/category/form/category.html.twig' with {action: "Create"} %}
+
+  </div>
+{% endblock %}

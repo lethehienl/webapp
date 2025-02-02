@@ -1,0 +1,26 @@
+<div class="card form-section">
+    <div class="card-header"><strong>Section</strong>
+    </div>
+    {{ form_start(courseSectionForm) }}
+    <div class="card-body">
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label control-label" for="nameSection">Name</label>
+            <div class="col-md-9">
+                {{ form_widget(courseSectionForm.name, {'attr': {'class': 'required form-control', 'placeholder': "Enter section's name"}}) }}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="nameSection">Description</label>
+            <div class="col-md-9">
+                {{ form_widget(courseSectionForm.content, {'attr': {'class': 'form-control', 'placeholder': "Enter description"}}) }}
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        {{ form_widget(courseSectionForm.save, {'attr' : {'class': 'btn btn-submit btn-primary', 'type' : 'submit' }}) }}
+        {{ form_widget(courseSectionForm.delete, {'attr' : {'class': 'btn-delete btn btn-danger', 'type' : 'button' }}) }}
+        <a href="{{ url('admin_courses_route') }}" class="btn-link float-right align-middle">Back to list</a>
+    </div>
+    {{ form_end(courseSectionForm) }}
+</div>

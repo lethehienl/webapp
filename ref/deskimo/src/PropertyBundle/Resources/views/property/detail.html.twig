@@ -1,0 +1,418 @@
+{% extends '@App/authentication/admin/admin-master.html.twig' %}
+
+{% block extra_stylesheets %}
+    {{ encore_entry_link_tags('admin_property_detail') }}
+{% endblock %}
+
+{% block mainContent %}
+    <div class="card property-detail">
+        <div class="card-header">
+            <h2>Property Details</h2>
+            <a href="/admin/property/{{ property.id }}/update">
+                <button class="btn btn-primary">Edit</button>
+            </a>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-6 col-12 left-side">
+                    <h1>{{ property.name }}</h1>
+                    <h4>{{ data['country'] }} • {{ data['type'] }}</h4>
+                    <div class="card-section">
+                        <h2>About</h2>
+                        <div class="dataAbout">
+                            {{ data['about'] }}
+                        </div>
+                    </div>
+                    <div class="card-section schedule-list">
+                        <h2>Schedule</h2>
+                        <div class="nav-tabs-boxed">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home"
+                                                        role="tab" aria-controls="home" aria-selected="true">
+                                        <p class="main-schedule" style="font-size: 0.9rem">Open Hour</p>
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#profile" role="tab"
+                                                        aria-controls="profile" aria-selected="false">
+                                        <p class="main-schedule" style="font-size: 0.9rem">Community Team Operating Hours</p></a></li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#messages" role="tab"
+                                                        aria-controls="messages" aria-selected="false">
+                                        <p class="main-schedule" style="font-size: 0.9rem">Aircon Operating Hours</p></a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="home" role="tabpanel">
+                                    <ul class="list-group">
+                                        {% if data['schedule']['openHour'] is defined %}
+                                            {% for  key, day in data['schedule']['openHour'] %}
+                                                <li class="list-group-item">
+                                                    {% if day['24'] is defined and day['24'] == true %}
+                                                        <div class="row">
+                                                            <div class="col-md-5">
+                                                                <p class="main-schedule" style="font-size: 0.9rem">
+                                                                    <span>{{ key | capitalize }}:</span></p>
+                                                            </div>
+                                                            <div class="col-md-7">
+                                                                <span style="font-size: 0.9rem">Open 24 hours</span>
+                                                            </div>
+                                                        </div>
+                                                    {% elseif(day['close'] is defined  and day['close'] == true) %}
+                                                        <div class="row">
+                                                            <div class="col-md-5">
+                                                                <p class="main-schedule" style="font-size: 0.9rem">
+                                                                    <span>{{ key | capitalize }}:</span></p>
+                                                            </div>
+                                                            <div class="col-md-7" >
+                                                                <span style="font-size: 0.9rem">Closed</span>
+                                                            </div>
+                                                        </div>
+
+                                                    {% elseif( day['openHour'] is defined and day['closeHour'] is defined) %}
+                                                        <div class="row">
+                                                            <div class="col-md-5">
+                                                                <p class="main-schedule" style="font-size: 0.9rem">
+                                                                    <span>{{ key | capitalize }}:</span></p>
+                                                            </div>
+                                                            <div class="col-md-7">
+                                                                <span style="font-size: 0.9rem">{{ day['openHour'] }} - {{ day['closeHour'] }}</span>
+                                                            </div>
+                                                        </div>
+                                                    {% endif %}
+
+                                                </li>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                                <div class="tab-pane" id="profile" role="tabpanel">
+                                    <ul class="list-group">
+                                        {% if data['schedule']['community'] is defined %}
+                                            {% for  key, day in data['schedule']['community'] %}
+                                                <li class="list-group-item">
+                                                    {% if day['24'] is defined and day['24'] == true %}
+                                                        <div class="row">
+                                                            <div class="col-md-5">
+                                                                <p class="main-schedule"><span>{{ key | capitalize }}:</span>
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-md-7">
+                                                                <span>Open 24 hours</span>
+                                                            </div>
+                                                        </div>
+                                                    {% elseif(day['close'] is defined  and day['close'] == true) %}
+                                                        <div class="row">
+                                                            <div class="col-md-5">
+                                                                <p class="main-schedule"><span>{{ key | capitalize }}:</span>
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-md-7">
+                                                                <span>Closed</span>
+                                                            </div>
+                                                        </div>
+
+                                                    {% elseif( day['openHour'] is defined and day['closeHour'] is defined) %}
+                                                        <div class="row">
+                                                            <div class="col-md-5">
+                                                                <p class="main-schedule"><span>{{ key | capitalize }}:</span>
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-md-7">
+                                                                <span>{{ day['openHour'] }} - {{ day['closeHour'] }}</span>
+                                                            </div>
+                                                        </div>
+                                                    {% endif %}
+
+                                                </li>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                                <div class="tab-pane" id="messages" role="tabpanel">
+                                    <ul class="list-group">
+                                        {% if data['schedule']['aircon'] is defined %}
+                                            {% for  key, day in data['schedule']['aircon'] %}
+                                                <li class="list-group-item">
+                                                    {% if day['24'] is defined and day['24'] == true %}
+                                                        <div class="row">
+                                                            <div class="col-md-5">
+                                                                <p class="main-schedule"><span>{{ key | capitalize }}:</span>
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-md-7">
+                                                                <span>Open 24 hours</span>
+                                                            </div>
+                                                        </div>
+                                                    {% elseif(day['close'] is defined  and day['close'] == true) %}
+                                                        <div class="row">
+                                                            <div class="col-md-5">
+                                                                <p class="main-schedule"><span>{{ key | capitalize }}:</span>
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-md-7">
+                                                                <span>Closed</span>
+                                                            </div>
+                                                        </div>
+
+                                                    {% elseif( day['openHour'] is defined and day['closeHour'] is defined) %}
+                                                        <div class="row">
+                                                            <div class="col-md-5">
+                                                                <p class="main-schedule"><span>{{ key | capitalize }}:</span>
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-md-7">
+                                                                <span>{{ day['openHour'] }} - {{ day['closeHour'] }}</span>
+                                                            </div>
+                                                        </div>
+                                                    {% endif %}
+
+                                                </li>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="card-section">
+                        <h2>Amenities</h2>
+                        <div class="amenity__list">
+                            {% for amenity in data['amenity'] %}
+                                <div class="amenity__item">
+                                    <div class="amenity__item_inner">
+                                        <img src="" alt="">
+                                        <p>{{ amenity['name'] }}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            {#{% for amenity in data['amenity'] %}
+                              <div class="amenity__item">
+                                <div class="amenity__item_inner">
+                                  <img src="" alt="">
+                                  <p>{{ amenity['name'] }}</p>
+                                </div>
+                              </div>
+                            {% endfor %}
+                            {% for amenity in data['amenity'] %}
+                              <div class="amenity__item">
+                                <div class="amenity__item_inner">
+                                  <img src="" alt="">
+                                  <p>{{ amenity['name'] }}</p>
+                                </div>
+                              </div>
+                            {% endfor %}
+                            {% for amenity in data['amenity'] %}
+                              <div class="amenity__item">
+                                <div class="amenity__item_inner">
+                                  <img src="" alt="">
+                                  <p>{{ amenity['name'] }}</p>
+                                </div>
+                              </div>
+                            {% endfor %}#}
+                            {#{% for amenity in data['amenity'] %}
+                              <div class="amenity__item">
+                                <img src="" alt="">
+                                <p>{{ amenity['name'] }}</p>
+                              </div>
+                            {% endfor %}#}
+                            {#{% for amenity in data['amenity'] %}
+                              <div class="amenity__item">
+                                <img src="" alt="">
+                                <p>{{ amenity['name'] }}</p>
+                              </div>
+                            {% endfor %}
+                            {% for amenity in data['amenity'] %}
+                              <div class="amenity__item">
+                                <img src="" alt="">
+                                <p>{{ amenity['name'] }}</p>
+                              </div>
+                            {% endfor %}#}
+
+
+                            {#<div class="amenity__item">
+                              <img src="" alt="">
+                              <p>Meeting Rooms</p>
+                            </div>
+                            <div class="amenity__item">
+                              <img src="" alt="">
+                              <p>Printing Facilities</p>
+                            </div>#}
+                            {#<div class="amenity__item">
+                              <img src="" alt="">
+                              <p>Office Supplies</p>
+                            </div>
+                            <div class="amenity__item">
+                              <img src="" alt="">
+                              <p>Pantry</p>
+                            </div>
+                            <div class="amenity__item">
+                              <img src="" alt="">
+                              <p>Pantry</p>
+                            </div>
+                            <div class="amenity__item">
+                              <img src="" alt="">
+                              <p>Pantry</p>
+                            </div>
+                            <div class="amenity__item">
+                              <img src="" alt="">
+                              <p>Pantry</p>
+                            </div>
+                            <div class="amenity__item">
+                              <img src="" alt="">
+                              <p>Pantry</p>
+                            </div>
+                            <div class="amenity__item">
+                              <img src="" alt="">
+                              <p>Pantry</p>
+                            </div>
+                            <div class="amenity__item">
+                              <img src="" alt="">
+                              <p>Others</p>
+                            </div>#}
+                        </div>
+                    </div>
+                    <div class="card-section">
+                        <h2>Photos</h2>
+                        <div class="photo__list">
+                            {% for photo in data['photos'] %}
+                                <div class="photo__item">
+                                    <img src="{{ asset(photo) }}" alt="image-1">
+                                </div>
+                            {% endfor %}
+                            {#<div class="photo__item">
+                              <img src="{{ asset('build/images/image-example-1.jpeg') }}" alt="image-1">
+                            </div>
+                            <div class="photo__item">
+                              <img src="{{ asset('build/images/image-example-2.jpeg') }}" alt="">
+                            </div>
+                            <div class="photo__item">
+                              <img src="{{ asset('build/images/image-example-3.jpeg') }}" alt="">
+                            </div>
+                            <div class="photo__item">
+                              <img src="{{ asset('build/images/image-example-4.jpeg') }}" alt="">
+                            </div>#}
+                        </div>
+                        <div class="photo__thumb-list">
+                            {% for photo in data['photos'] %}
+                                <div class="photo__thumb-item">
+                                    <img src="{{ asset(photo) }}" alt="image-1">
+                                </div>
+                            {% endfor %}
+                            {#<div class="photo__thumb-item">
+                              <img src="{{ asset('build/images/image-example-1.jpeg') }}" alt="image-1">
+                            </div>
+                            <div class="photo__thumb-item">
+                              <img src="{{ asset('build/images/image-example-2.jpeg') }}" alt="">
+                            </div>
+                            <div class="photo__thumb-item">
+                              <img src="{{ asset('build/images/image-example-3.jpeg') }}" alt="">
+                            </div>
+                            <div class="photo__thumb-item">
+                              <img src="{{ asset('build/images/image-example-4.jpeg') }}" alt="">
+                            </div>#}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12 right-side">
+                    <div class="card-section price">
+                        <p class="price-amount"><span
+                                    class="amount">{{ data['patePerHour'] |number_format(2, '.', ',') }}</span><span
+                                    class="unit">SGD / HR</span></p>
+                    </div>
+                    {% if data['wifi']['pass'] is defined %}
+                    <div class="card-section">
+                        <h2>Wifi Info</h2>
+                        <p><span>Wifi name: </span>{{ data['wifi']['name'] }}</p>
+                        <p><span>Wifi pass: </span>{{ data['wifi']['pass'] }}</p>
+                    </div>
+                    {% endif %}
+                    <div class="card-section">
+                        <h2>Address</h2>
+                        <p>{{ data['address'] }}</p>
+                    </div>
+                    <div class="card-section">
+                        <h2>How to get there</h2>
+                        <div class="guide-to__list">
+                            {% if data['howToGetThere']['option1'] is defined and data['howToGetThere']['option1'] != "" %}
+                            <div class="guide-to__item">
+                                <i class="fal fa-car"></i>
+                                <div class="guide-to__content">
+                                    <p class="main-text">Car drop-off point</p>
+                                    <p class="sub-text">{{ data['howToGetThere']['option1'] }}</p>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% if data['howToGetThere']['option2'] is defined and data['howToGetThere']['option2'] != "" %}
+                            <div class="guide-to__item">
+                                <i class="fal fa-subway"></i>
+                                <div class="guide-to__content">
+                                    <p class="main-text">Nearest MRT station</p>
+                                    <p class="sub-text">{{ data['howToGetThere']['option2'] }}</p>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% if data['howToGetThere']['option3'] is defined and data['howToGetThere']['option3']  != "" %}
+                            <div class="guide-to__item">
+                                <i class="fal fa-building"></i>
+                                <div class="guide-to__content">
+                                    <p class="main-text">Front entrance of the space</p>
+                                    <p class="sub-text">{{ data['howToGetThere']['option3'] }}</p>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="card-section parking">
+                        <h2>Parking</h2>
+                        {% if data['parking']['address1'] is defined and data['parking']['address1'] != "" %}
+                        <div class="parking__item">
+                            <i class="fal fa-building"></i>
+                            <p>{{ data['parking']['address1'] }}</p>
+                        </div>
+                        {% endif %}
+                        {% if data['parking']['address2'] is defined and data['parking']['address2'] != "" %}
+                        <div class="parking__item">
+                            <i class="fal fa-building"></i>
+                            <p>{{ data['parking']['address2'] }}</p>
+                        </div>
+                        {% endif %}
+
+                        {#<div class="parking__item">
+                          <i class="fal fa-building"></i>
+                          <p>TheOffice • 189 Orchard Rd</p>
+                        </div>#}
+                    </div>
+                    <div class="card-section staff">
+                        <h2>Staff</h2>
+                        <div class="staff__list">
+                            <div class="staff__item">
+                                <img src="https://i.ibb.co/BG3ZTQm/businessman-character-avatar-isolated-vector-illustration-design.jpg"
+                                     alt="">
+                                <p class="staff__name">Robert Fox</p>
+                                <p class="staff__title">Property Admin</p>
+                            </div>
+                            <div class="staff__item">
+                                <img src="https://i.ibb.co/BG3ZTQm/businessman-character-avatar-isolated-vector-illustration-design.jpg"
+                                     alt="">
+                                <p class="staff__name">Leslie Alexander</p>
+                                <p class="staff__title">Staff</p>
+                            </div>
+                            <div class="staff__item">
+                                <img src="https://i.ibb.co/BG3ZTQm/businessman-character-avatar-isolated-vector-illustration-design.jpg"
+                                     alt="">
+                                <p class="staff__name">Dianne Russell</p>
+                                <p class="staff__title">Staff</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block extra_javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('admin_property_detail') }}
+{% endblock %}

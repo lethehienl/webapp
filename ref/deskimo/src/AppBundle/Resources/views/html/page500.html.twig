@@ -1,0 +1,18 @@
+{% extends '@App/anonymous/anonymous-master.html.twig' %}
+
+{% block title %} 500 | Deskimo | {% endblock %}
+
+{% block extra_stylesheets %}
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    {{ encore_entry_link_tags('page_error') }}
+{% endblock %}
+
+
+{% block body %}
+    <div class="container">
+        <h1>500</h1>
+        <p>Đã có lỗi xảy ra, vui lòng truy cập lại trang web sau ít phút</p>
+        <a href="#"><< Trở về trang chủ</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends '@App/authentication/admin/admin-master.html.twig' %}
+
+{% block mainContent %}
+    <div class="card card-ex">
+        <div class="card-body">
+            <div id="form-search">
+                <div class="form-group row mb-2">
+                    <div class="col-sm-6 mb-2">
+                        <input type="text" class="form-control form-control-ex" data-autoclose="true" id="keyword"
+                               placeholder="Search by course name/Kyna course ID">
+                    </div>
+                    <div class="col-sm-4 col-12">
+                        <div class="form-group mb-2 align-items-center">
+                            <label for="status" class="mr-2 ml-2 mb-0 align-middle d-none">Status</label>
+                            <div>
+                                <select name="status" id="status" class="form-control form-control-ex custom-select"
+                                        style="color: #8a93a2;">
+                                    <option value="-1" selected>-- Status --</option>
+                                    <option value="0">Inactive</option>
+                                    <option value="1">Active</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 mb-2">
+                        <div class="float-lg-right">
+                            <button type="button" id="sync-course-kyna" class="btn btn-outline-primary mb-4">Sync Kyna
+                                Course
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <div class="float-lg-right">
+                    <a class="btn btn-outline-primary mb-4" href="{{ path('admin_manage_course_route') }}">Create
+                        new</a>
+                </div>
+                <table id="course-table" class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Course name</th>
+                        <th scope="col">Trainer</th>
+                        <th scope="col">Categories</th>
+                        <th scope="col">Updated Date</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('admin_course_management') }}
+{% endblock %}
+
+

@@ -1,0 +1,27 @@
+parameters:
+  property_management_route: property_management_per
+  property_management_search_route: property_type_management_per
+  property_management_create_route: property_type_management_per
+  property_management_delete_route: property_type_management_per
+  property_management_edit_route: property_type_management_per
+
+  property_location_management_route: property_management_per
+  property_location_management_search_route: property_type_management_per
+  property_location_management_create_route: property_type_management_per
+  property_location_management_delete_route: property_type_management_per
+  property_location_management_edit_route: property_type_management_per
+
+  property_category_management_route: property_management_per
+  property_category_management_search_route: property_type_management_per
+  property_category_management_create_route: property_type_management_per
+  property_category_management_delete_route: property_type_management_per
+  property_category_management_edit_route: property_type_management_per
+
+  property_benefit_management_route: property_management_per
+  property_benefit_management_search_route: property_type_management_per
+  property_benefit_management_create_route: property_type_management_per
+  property_benefit_management_delete_route: property_type_management_per
+  property_benefit_management_edit_route: property_type_management_per
+
+
+

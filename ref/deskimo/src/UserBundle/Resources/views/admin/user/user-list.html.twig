@@ -1,0 +1,54 @@
+{% extends '@App/authentication/admin/admin-master.html.twig' %}
+
+{% block prefix_title %}Users{% endblock %}
+
+{% block mainContent %}
+    <div class="card card-ex">
+        <div class="card-body">
+            <div class="c-subheader justify-content-between">
+                <div id="form-search">
+                    <div class="form-group row mb-2">
+                        <div class="col-sm-6 mb-2">
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-ex" style="width: 400px"
+                                       data-autoclose="true" id="keyword"
+                                       placeholder="Search by full name, email or phone number">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="c-subheader-nav d-md-down-none mfe-2">
+                    <div class="float-lg-right">
+                        <a class="btn btn-outline-primary mb-4" href="{{ path('admin_user_create_route') }}">+ Create
+                            user</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table id="user-table" class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Full name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone number</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Updated at</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('admin_user_management') }}
+{% endblock %}
+

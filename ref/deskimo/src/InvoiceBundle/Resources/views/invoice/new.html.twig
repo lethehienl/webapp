@@ -1,0 +1,11 @@
+{% extends '@App/authentication/admin/admin-master.html.twig' %}
+
+{% block prefix_title %} Create Invoice {% endblock %}
+
+{% block mainContent %}
+  <div class="card card-ex">
+    {# <div class="card-header"><strong>Create Property Company</strong></div> #}
+    {% include '@Invoice/invoice/form/form.html.twig' with {action:"Create"} %}
+
+  </div>
+{% endblock %}

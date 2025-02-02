@@ -1,0 +1,11 @@
+{% extends '@App/authentication/admin/admin-master.html.twig' %}
+
+{% block prefix_title %} Create Amenity {% endblock %}
+
+{% block mainContent %}
+    <div class="card card-ex">
+{#        <div class="card-header"><strong>Create Property Amenity</strong></div>#}
+        {% include '@Property/benefit/form/benefit.html.twig' with {action: "Create"} %}
+
+    </div>
+{% endblock %}

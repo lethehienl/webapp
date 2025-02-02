@@ -12,11 +12,23 @@ class UserRepository  implements UserLoaderInterface
 
         return $entityManager->createQuery(
           'SELECT u
-                FROM App\Entity\User u
+                FROM App\Bundle\UserBundle\Entity\User u
                 WHERE u.username = :query
                 OR u.email = :query'
         )
           ->setParameter('query', $usernameOrEmail)
+          ->getOneOrNullResult();
+    }
+    public function findOneByEmail(string $email): ?User
+    {
+        $entityManager = $this->getEntityManager();
+
+        return $entityManager->createQuery(
+          'SELECT u
+                FROM App\Bundle\UserBundle\Entity\User u
+                WHERE u.email = :query'
+        )
+          ->setParameter('query', $email)
           ->getOneOrNullResult();
     }
 }

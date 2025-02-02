@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="vi" dir="ltr">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#ffffff"/>
+    <link rel="icon" sizes="16x16" href="{{ asset('/favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ asset('/apple-touch-icon.png') }}">
+    <title>{% block title %}Deskimo{% endblock %}</title>
+    {% block meta %}
+        {# Each template extends will declare meta tag #}
+    {% endblock %}
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.9.0/css/all.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.4.0/css/perfect-scrollbar.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/legit-ripple@1.1.0/dist/ripple.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,500;0,700;0,900;1,100;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    {{ encore_entry_link_tags('app') }}
+    {% block stylesheets %}
+    {% endblock %}
+    {% block extra_stylesheets %}
+    {% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/@babel/polyfill@7.6.0/dist/polyfill.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.4.0/perfect-scrollbar.min.js"></script>
+    <script src="https://unpkg.com/current-device/umd/current-device.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+</head>
+
+<body {% block idBody %}{% endblock %} {% block classBody %}{% endblock %} >
+<div class="ga-info" data-user-role="{{ app.user.RoleName()|default('ANONYMOUS') }}"></div>
+{% set isGuest = 1 %}
+{% if app.user is not null and app.user.password is not null %}
+    {% set isGuest = 0 %}
+{% endif %}
+<div class="guest-info" data-user-is-guest="{{ isGuest }}"></div>
+<div class="page-wrapper">
+    {# <div class="modal fade modal-banner-inform" id="banner-inform" tabindex="-1" role="dialog" aria-labelledby="banner-inform" #}
+    {# aria-hidden="true"> #}
+    {# <div class="modal-dialog animated jackInTheBox" role="document"> #}
+    {# <div class="modal-content"> #}
+    {# <div class="modal-body"> #}
+    {# <button type="button" class="close" data-dismiss="modal" aria-label="Close"> #}
+    {# <span aria-hidden="true">&times;</span> #}
+    {# </button> #}
+    {# <div class="banner-inform"> #}
+    {# <div class="banner-inform__image"> #}
+    {# <img src="{{ asset('build/images/banner-change-domain.jpg?v=2') }}" alt="banner-change-domain"> #}
+    {# </div> #}
+    {# </div> #}
+    {# </div> #}
+    {# </div> #}
+    {# </div> #}
+    {# </div> #}
+    {% block header %}{% endblock %}
+
+    {% block body %}{% endblock %}
+
+    {% block footer %}{% endblock %}
+</div>
+
+{{ encore_entry_script_tags('app') }}
+{% block javascripts %}
+{% endblock %}
+{% block extra_javascripts %}
+{% endblock %}
+<script src="https://cdn.jsdelivr.net/npm/legit-ripple@1.1.0/dist/ripple.min.js"></script>
+</body>
+</html>
+
+{# Jquery, Bootstrap need for any page, so it was declared in master.html.twig #}
+
+{# Add ID, class in body tag via idBody and classBody block #}
+
+{# Use {{ encore_entry_script_tags('nameEntry') }} or {{ encore_entry_link_tags('nameEntry') }} to add file JS, CSS was builded via WebpackEncore #}
+{# nameEntry was declared in webpack.config.js #}

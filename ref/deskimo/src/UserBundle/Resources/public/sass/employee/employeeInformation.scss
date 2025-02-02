@@ -1,0 +1,51 @@
+@import "../../../../../AppBundle/Resources/public/sass/utils";
+
+.c-main {
+  padding-bottom: px2rem(32);
+}
+
+.form-section {
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
+  border: solid 1px #e8e9eb;
+  background-color: #ffffff;
+  padding: px2rem(30);
+
+  .btn {
+    font-size: px2rem(16);
+    color: $employee-main-color;
+    font-weight: 600;
+  }
+
+  .btn-outline-primary {
+    &:hover, &:active, &:focus {
+      background-color: $employee-main-color;
+      color: white;
+    }
+  }
+
+  [data-toggle="collapse"] {
+
+    &:after {
+      content: '\f078';
+      @extend %fontAwesome;
+      font-weight: 300;
+      transition: transform .2s linear;
+    }
+
+    &[aria-expanded="true"] {
+      &:after {
+        transform: rotate(180deg);
+      }
+
+    }
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    > span {
+      padding-right: 12px;
+    }
+
+  }
+}

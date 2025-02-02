@@ -1,0 +1,40 @@
+{% extends '@App/master/master.html.twig' %}
+
+{% block title %}Admin{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@coreui/coreui@3.0.0-beta.0/dist/css/coreui.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/blue/pace-theme-minimal.min.css">
+    {{ encore_entry_link_tags('overrideCoreUI') }}
+{% endblock %}
+
+{% block classBody %}
+    class="admin"
+{% endblock %}
+
+{% block body %}
+    <div class="c-app">
+        {% include '@App/authentication/templates/sidebarCoreUI.html.twig' %}
+        {% include '@App/authentication/templates/sidebarRightCoreUI.html.twig' %}
+        <div class="c-wrapper">
+            {% include '@App/authentication/templates/headerCoreUI.html.twig' %}
+            <div class="c-body">
+                <main class="c-main">
+                    <div class="container-fluid">
+                        {% block mainContent %}{% endblock %}
+                    </div>
+                </main>
+
+            </div>
+            {% include '@App/authentication/templates/footerCoreUI.html.twig' %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@3.0.0-beta.3/dist/js/coreui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
+{% endblock %}
+

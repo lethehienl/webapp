@@ -1,0 +1,205 @@
+{% extends '@App/authentication/learning/learning-mater.html.twig' %}
+
+{% block extra_stylesheets %}
+    {{ encore_entry_link_tags('quiz') }}
+{% endblock %}
+
+{% block mainContent %}
+    <div id="clockdiv">
+        <div class="d-none">
+            <span class="days" id="day">0</span>
+            <div class="smalltext">Days</div>
+        </div>
+    </div>
+    <p id="timeup"></p>
+    <h2 class="text-center font-weight-bold">Trắc nghiệm chọn câu đúng nhất</h2>
+    <form class="w-75 mx-auto" id="form-quiz-1">
+        <div class="form-header">
+            <h4>Câu hỏi 1:</h4>
+            <h5>100 + 100 = ?</h5>
+        </div>
+        <div class="answer-row answer-radio-row">
+            <div class="checkbox-wrapper">
+                <input type="radio" class="form-control" value="1" name="radio-answer">
+                <span class="checkmark"></span>
+            </div>
+            <div class="answer-wrapper">
+                <p class="answer-content">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                    occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+            </div>
+        </div>
+        <div class="answer-row answer-radio-row">
+            <div class="checkbox-wrapper">
+                <input type="radio" class="form-control" value="2" name="radio-answer">
+                <span class="checkmark"></span>
+            </div>
+            <div class="answer-wrapper">
+                <p class="answer-content">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                    occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+            </div>
+        </div>
+        <div class="answer-row answer-radio-row">
+            <div class="checkbox-wrapper">
+                <input type="radio" class="form-control" value="3" name="radio-answer">
+                <span class="checkmark"></span>
+            </div>
+            <div class="answer-wrapper">
+                <p class="answer-content">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                    occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+            </div>
+        </div>
+        <div class="answer-row answer-radio-row">
+            <div class="checkbox-wrapper">
+                <input type="radio" class="form-control" value="4" name="radio-answer">
+                <span class="checkmark"></span>
+            </div>
+            <div class="answer-wrapper">
+                <p class="answer-content">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                    occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+            </div>
+        </div>
+    </form>
+    <h2 class="text-center font-weight-bold">Trắc nghiệm chọn các câu đúng</h2>
+    <form class="w-75 mx-auto" id="form-quiz-2">
+        <div class="form-header">
+            <h4>Câu hỏi 2:</h4>
+            <h5>Chọn các địa danh thuộc Việt Nam</h5>
+        </div>
+        <div class="answer-row answer-checkbox-row">
+            <div class="checkbox-wrapper">
+                <input type="checkbox" class="form-control" name="checkbox-answer" value="1">
+                <span class="checkbox-checkmark"></span>
+            </div>
+            <div class="answer-wrapper">
+                <p class="answer-content">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                    occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+            </div>
+        </div>
+        <div class="answer-row answer-checkbox-row">
+            <div class="checkbox-wrapper">
+                <input type="checkbox" class="form-control" name="checkbox-answer" value="2">
+                <span class="checkbox-checkmark"></span>
+            </div>
+            <div class="answer-wrapper">
+                <p class="answer-content">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                    occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+            </div>
+        </div>
+        <div class="answer-row answer-checkbox-row">
+            <div class="checkbox-wrapper">
+                <input type="checkbox" class="form-control" name="checkbox-answer" value="3">
+                <span class="checkbox-checkmark"></span>
+            </div>
+            <div class="answer-wrapper">
+                <p class="answer-content">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                    occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+            </div>
+        </div>
+        <div class="answer-row answer-checkbox-row">
+            <div class="checkbox-wrapper">
+                <input type="checkbox" class="form-control" name="checkbox-answer" value="4">
+                <span class="checkbox-checkmark"></span>
+            </div>
+            <div class="answer-wrapper">
+                <p class="answer-content">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                    occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+            </div>
+        </div>
+    </form>
+    <h2 class="text-center font-weight-bold">Điền vào chỗ trống</h2>
+    <form class="w-75 mx-auto" id="form-quiz-3">
+        <div class="form-header">
+            <h4>Câu hỏi 3:</h4>
+            <h5>Điền vào các chỗ trống</h5>
+        </div>
+        <div class="field-test text-justify">
+            <span>Questions 20 – 23<br>
+Complete the summary using the list of words, A-K, below.<br>
+Write the correct letter, A-K, in the blanks.<br>
+Some researchers believe that laughter first evolved out of 20
+            </span>
+            <input type="text" name="fill-answer" class="fill-test" data-value="1">
+            <span>
+                .Investigation has revealed that human and chimp laughter may have the same 21
+            </span>
+            <input type="text" name="fill-answer" class="fill-test" data-value="2">
+            <span>
+                . Besides, scientists have been aware that 22
+            </span>
+            <input type="text" name="fill-answer" class="fill-test" data-value="3">
+            <span>
+              laugh, however, it now seems that laughter might be more <br>
+widespread than once we thought. Although the reasons why humans started to laugh are still unknown, it seems that laughter may result from the 23
+            </span>
+            <input type="text" name="fill-answer" class="fill-test" data-value="4">
+            <span>we feel with another person</span>
+            <br>
+            <table class="w-100 mt-3">
+                <tr>
+                    <td>A evolution</td>
+                    <td>B chirps</td>
+                    <td>C origins</td>
+                    <td>D voice</td>
+                </tr>
+                <tr>
+                    <td>E confidence</td>
+                    <td>F rats</td>
+                    <td>G primates</td>
+                    <td>H response</td>
+                </tr>
+                <tr>
+                    <td>I play</td>
+                    <td>J children</td>
+                    <td>K tickling</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+    <h2 class="text-center font-weight-bold">Tự luận</h2>
+    <form class="w-75 mx-auto" id="form-quiz-4">
+        <div class="field-test text-justify">
+            <div class="form-group">
+                <label for="answer-essay-1">1. Trình bày tóm tắt 7 tư duy đúng của một nhà đầu tư chứng khoán thành
+                    công.</label>
+                <textarea class="form-control" id="answer-essay-1" name="essay-answer-1" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="answer-essay-2">2. Phân biệt Đầu tư và Đầu cơ theo cách hiểu của bạn.</label>
+                <textarea class="form-control" id="answer-essay-2" name="essay-answer-2" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="answer-essay-3">3. Trình bày vai trò của thị trường chứng khoán trong nền kinh tế</label>
+                <textarea class="form-control" id="answer-essay-3" name="essay-answer-3" rows="3"></textarea>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+{% block extra_javascripts %}
+    {{ encore_entry_script_tags('quiz') }}
+{% endblock %}

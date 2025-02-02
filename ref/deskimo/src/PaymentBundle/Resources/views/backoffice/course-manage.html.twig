@@ -1,0 +1,83 @@
+{% extends '@App/authentication/admin/admin-master.html.twig' %}
+
+{% form_theme courseForm _self %}
+
+{% block _course_courseAttachments_entry_widget %}
+    {% include '@Course/admin/course-inhouse-attachment-form.html.twig' with {'form': form} %}
+{% endblock %}
+
+{% block _company_course_courseAttachments_entry_widget %}
+    {% include '@Course/admin/course-company-attachment-form.html.twig' with {'form': form} %}
+{% endblock %}
+
+{% block extra_stylesheets %}
+    {{ encore_entry_link_tags('courseManage') }}
+{% endblock %}
+{% block mainContent %}
+    {% set isEdit = course is defined and course is not null and course.id is not null %}
+
+    {% if isEdit == true %}
+        {% include '@Course/admin/course-publish-toggler.html.twig' with {'label' : 'Status', 'checked' : course.status == constant('PaymentBundle\\Utils\\PaymentUtil::COURSE_ACTIVE'), 'id': course.id, 'endpoint': url('admin_ajax_course_publishment') } %}
+    {% endif %}
+    <div class="row">
+        <div class="col-md-12 col-lg-4 course-dir-tree-wrapper">
+            <div class="card" id="course-dir-tree" data-course-slug="{{ course.slug }}">
+                <div class="card-header"><strong class="mr-3">Please type course name</strong>
+                    {% if isEdit == true %}
+                        <div class="course-edit-js btn btn-link ml-3 px-0" data-toggle="tooltip" data-placement="top"
+                             title="Edit">Edit
+                        </div>
+                    {% endif %}
+
+                    {% if course is defined and course.slug is not null %}
+                        <div class="px-2">|</div>
+                        <div class="add-chapter-js btn btn-link px-0" data-toggle="tooltip" data-placement="top"
+                             title="Add chapter">Add Chapter
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="card-body">
+                    <div class="card-body-inner">
+                        <ul id="courseTree" role="tree">
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card card--loading" hidden>
+                <div class="card-header">
+                    <div class="item"></div>
+                </div>
+                <div class="card-body">
+                    <div class="item"></div>
+                    <div class="item"></div>
+                    <div class="item"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 col-lg-8">
+
+            {% if type == constant('PaymentBundle\\Utils\\PaymentUtil::COURSE_KYNA') %}
+                {% include '@Course/admin/course-form.html.twig' %}
+            {% else %}
+                {% include '@Course/admin/company-course-form.html.twig' %}
+            {% endif %}
+
+            {% include '@Course/admin/course-chapter-form.html.twig' %}
+
+            {% include '@Course/admin/course-section-form.html.twig' %}
+
+            {% include '@Course/admin/course-lesson-form.html.twig' %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_javascripts %}
+    {{ encore_entry_script_tags('courseManage') }}
+{% endblock %}
+
+
+

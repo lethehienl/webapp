@@ -1,0 +1,36 @@
+
+
+h1 {
+  font-size: $heading1FontSize;
+}
+
+h2 {
+  font-size: $heading2FontSize;
+}
+
+p {
+  font-size: $textFontSize;
+  margin-bottom: 0;
+}
+
+a {
+  color: $black;
+  transition: all .2s ease;
+
+  &:hover {
+    color: lighten($black, 10%);
+    text-decoration: none;
+  }
+}
+
+.logo__text--normal {
+  font-size: 1.5rem;
+  color: white;
+  font-weight: 100;
+  line-height: 1.4;
+  transition: all .2s ease;
+
+  &:hover {
+    color: white;
+  }
+}

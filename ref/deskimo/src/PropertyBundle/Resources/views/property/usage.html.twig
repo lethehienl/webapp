@@ -1,0 +1,83 @@
+{% extends '@App/authentication/admin/admin-master.html.twig' %}
+
+{% block prefix_title %} Property Usage {% endblock %}
+
+{% block extra_stylesheets %}
+  {{ encore_entry_link_tags('admin_property_usage') }}
+{% endblock %}
+
+{% block mainContent %}
+  <input type="hidden" value="{{ property_id }}" id="property-id">
+  <ul class="nav nav-tabs" id="usageTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="nav-active-usage" data-toggle="tab" href="#active-usage" role="tab"
+         aria-controls="active-usage" aria-selected="true">Active Usage</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="nav-history" data-toggle="tab" href="#history" role="tab" aria-controls="history"
+         aria-selected="false">History</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="usageTabContent">
+    <div class="tab-pane fade show active" id="active-usage" role="tabpanel" aria-labelledby="nav-active-usage">
+      <div class="card card-ex">
+        <div class="card-body">
+          <div class="c-subheader justify-content-between">
+          </div>
+
+          <div class="table-responsive">
+            <table id="active-usage-table" class="table align-items-center table-flush">
+              <thead class="thead-light">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Code</th>
+                <th scope="col">Visitor</th>
+                <th scope="col">Phone No.</th>
+                <th scope="col">Check-in</th>
+                <th scope="col">Usage(Min)</th>
+                <th scope="col">Rate Per Hour</th>
+                <th scope="col">Revenue</th>
+              </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="nav-history">
+      <div class="card card-ex">
+        <div class="card-body">
+          <div class="c-subheader justify-content-between">
+          </div>
+
+          <div class="table-responsive">
+            <table id="history-usage-table" class="table align-items-center table-flush">
+              <thead class="thead-light">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Code</th>
+                <th scope="col">Visitor</th>
+                <th scope="col">Phone No.</th>
+                <th scope="col">Check-in</th>
+                <th scope="col">Usage(Min)</th>
+                <th scope="col">Rate Per Hour</th>
+                <th scope="col">Revenue</th>
+              </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block extra_javascripts %}
+  {{ parent() }}
+  {{ encore_entry_script_tags('admin_property_usage') }}
+{% endblock %}

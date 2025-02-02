@@ -1,12 +1,22 @@
 # config/routes.yaml
-api_user_login_route:
-  path:       /api/login
-  controller: App\Bundle\UserBundle\Controller\Api\ApiUserController::login
+#api_user_login_route:
+#  path:       /api/login
+#  controller: App\Bundle\UserBundle\Controller\Api\ApiUserController::login
 
-user_login_route:
+user_login:
   path:       /user/login
+  controller: App\Bundle\UserBundle\Controller\User\UserController::login
+
+api_login:
+    path: /api/login
+    controller: App\Bundle\UserBundle\Controller\Api\UserController::login
+    methods: ['POST']
+
+admin_login:
+  path:       /admin/login
   controller: App\Bundle\UserBundle\Controller\Admin\UserController::login
 
-api_login_check:
-    path: /api/login
-    controller: App\Bundle\UserBundle\Controller\Anonymous\SecurityController::loginCheck
+api_register:
+  path: /api/register
+  controller: App\Bundle\UserBundle\Controller\Api\UserController::register
+  methods: POST

@@ -1,0 +1,136 @@
+<div class="card card-form">
+    <div class="card-header">Open Hours</div>
+    <div class="card-body">
+        {% set monday = default['monday'] is defined ? default['monday'] : [] %}
+        {% include '@Property/schedule/form/scheduleDay.html.twig' with {day: monday, 'prefix':'openHour', 'key': 'monday', 'camKey': "Monday"}%}
+
+        {% set tuesday = default['tuesday'] is defined ? default['tuesday'] : [] %}
+        {% include '@Property/schedule/form/scheduleDay.html.twig' with {day: tuesday, 'prefix':'openHour', 'key': 'tuesday', 'camKey': "Tuesday"}%}
+
+        {% set wednesday = default['wednesday'] is defined ? default['wednesday'] : [] %}
+        {% include '@Property/schedule/form/scheduleDay.html.twig' with {day: wednesday, 'prefix':'openHour', 'key': 'wednesday', 'camKey': "Wednesday"}%}
+
+        {% set thursday = default['thursday'] is defined ? default['thursday'] : [] %}
+        {% include '@Property/schedule/form/scheduleDay.html.twig' with {day: thursday, 'prefix':'openHour', 'key': 'thursday', 'camKey': "Thursday"}%}
+
+        {% set friday = default['friday'] is defined ? default['friday'] : [] %}
+        {% include '@Property/schedule/form/scheduleDay.html.twig' with {day: friday, 'prefix':'openHour', 'key': 'friday', 'camKey': "Friday"}%}
+
+        {% set saturday = default['saturday'] is defined ? default['saturday'] : [] %}
+        {% include '@Property/schedule/form/scheduleDay.html.twig' with {day: saturday, 'prefix':'openHour', 'key': 'saturday', 'camKey': "Saturday"}%}
+
+        {% set sunday = default['sunday'] is defined ? default['sunday'] : [] %}
+        {% include '@Property/schedule/form/scheduleDay.html.twig' with {day: sunday, 'prefix':'openHour', 'key': 'sunday', 'camKey': "Sunday"}%}
+        {# MOMDAY #}
+        {#{% set showMondayInput =  'show' %}
+
+        {% if(default['monday']['close'] is defined and default['monday']['close'] == true) %}
+            {% set showMondayInput = 'hide' %}
+        {% endif %}
+
+        <div class="form-group weekendDay">
+            <div class="row">
+                <div class="col-md-2">
+                    <label style="line-height: 44px" class="col-form-label control-label"
+                           for="order_company">Monday</label>
+                </div>
+
+                <div class="col-md-2 customActive" style="{{ showMondayInput == 'show' ? 'display: block;' : 'display: none;'}}"
+                >
+                    <div class="form-group">
+                        <input class="form-control" name="openHour[monday][openHour]" type="text" required
+                               value="{{ default['monday']['openHour'] is defined ? default['monday']['openHour'] : '6:00 AM' }}">
+                    </div>
+                </div>
+                <div class="col-md-2 customActive" style="{{ showMondayInput == 'show' ? 'display: block;' : 'display: none;'}}">
+                    <div class="form-group">
+                        <input class="form-control" name="openHour[monday][closeHour]" type="text" required
+                               value="{{ default['monday']['closeHour'] is defined ? default['monday']['closeHour'] : '10:00 AM' }}">
+                    </div>
+                </div>
+
+                <div class="col-md-1 customNotActive" style="
+                {{ showMondayInput == 'show' ? 'display: none;' : 'display: block;'}}
+                line-height: 44px;padding-right: 0px;">
+                    <label class="col-form-label control-label">{{ default['monday']['openHour'] is defined ? default['monday']['openHour'] : '6:00 AM' }}</label>
+                </div>
+                <div class="col-md-1 customNotActive" style="
+                {{ showMondayInput == 'show' ? 'display: none;' : 'display: block;'}}line-height: 44px;text-align: center;">
+                    <label class="col-form-label control-label">-</label>
+                </div>
+                <div class="col-md-2 customNotActive" style="
+                {{ showMondayInput == 'show' ? 'display: none;' : 'display: block;'}}line-height: 44px">
+                    <label class="col-form-label control-label">{{ default['monday']['CloseHour'] is defined ? default['monday']['CloseHour'] : '10:00 AM' }}</label>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group" style="line-height: 10px">
+                        <input class="custom-input-checkbox customCheckbox" type="checkbox"
+                               id="openHourMondayCustom"
+                               name="openHour[monday][custom]"
+                                {{ showMondayInput == 'show' ? 'checked' : ''}}
+
+                               value="true">
+                        <label class="col-form-label control-label label-checkbox"
+                               for="openHourMondayCustom">
+                            <div class="custom-checkbox">
+                                <div class="custom-checkbox__check"></div>
+                                <div class="custom-checkbox__content">Custom</div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group" style="line-height: 10px">
+                        <input class="custom-input-checkbox customCheckboxClose" type="checkbox" id="openHourMondayClose"
+                               name="openHour[monday][close]"
+                                {{ default['monday']['close'] is defined and default['monday']['close'] == true ? 'checked': '' }}
+                               value="true">
+                        <label class="col-form-label control-label label-checkbox"
+                               for="openHourMondayClose">
+                            <div class="custom-checkbox">
+                                <div class="custom-checkbox__check"></div>
+                                <div class="custom-checkbox__content">Closed</div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group" style="line-height: 10px">
+                        <input class="custom-input-checkbox" type="checkbox" id="openHourMonday24"
+                               name="openHour[monday][24]"
+                                {{ default['monday']['24'] is defined and default['monday']['24'] == true ? 'checked': '' }}
+                               value="true">
+                        <label class="col-form-label control-label label-checkbox"
+                               for="openHourMonday24">
+                            <div class="custom-checkbox">
+                                <div class="custom-checkbox__check"></div>
+                                <div class="custom-checkbox__content">Open 24 hours</div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+        </div>#}
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group" style="line-height: 10px">
+                    <input class="custom-input-checkbox" type="checkbox" id="openHourCLoseOnHolidays"
+                           name="openHour[cLoseOnHolidays]"
+                            {{ default['cLoseOnHolidays'] is defined and default['cLoseOnHolidays'] == true ? 'checked': '' }}
+                           value="true">
+                    <label class="col-form-label control-label label-checkbox"
+                           for="openHourCLoseOnHolidays">
+                        <div class="custom-checkbox">
+                            <div class="custom-checkbox__check"></div>
+                            <div class="custom-checkbox__content">Close on holidays</div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

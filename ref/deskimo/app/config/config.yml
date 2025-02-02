@@ -1,0 +1,226 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: en
+
+framework:
+    #esi: ~
+    #translator: { fallbacks: ['%locale%'] }
+    secret: '%secret%'
+    router:
+        resource: '%kernel.project_dir%/app/config/routing.yml'
+        strict_requirements: ~
+    form: ~
+    csrf_protection: ~
+    validation: { enabled: true, enable_annotations: true }
+    #serializer: { enable_annotations: true }
+    default_locale: '%locale%'
+    trusted_hosts: ~
+    session:
+        # https://symfony.com/doc/current/reference/configuration/framework.html#handler-id
+        handler_id: session.handler.native_file
+        save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
+    fragments: ~
+    http_method_override: true
+    assets: ~
+    php_errors:
+        log: true
+    templating:
+        engines: ['twig']
+
+# Twig Configuration
+twig:
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+    globals:
+        users: '@user.service'
+        google_api_key: '%google_api_key%'
+    form_themes:
+        - 'TetranzSelect2EntityBundle:Form:fields.html.twig'
+        - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver: pdo_mysql
+        host: '%database_host%'
+        port: '%database_port%'
+        dbname: '%database_name%'
+        user: '%database_user%'
+        password: '%database_password%'
+        charset: UTF8
+        # if using pdo_sqlite as your database driver:
+        #   1. add the path in parameters.yml
+        #     e.g. database_path: '%kernel.project_dir%/var/data/data.sqlite'
+        #   2. Uncomment database_path in parameters.yml.dist
+        #   3. Uncomment next line:
+        #path: '%database_path%'
+
+    orm:
+        auto_generate_proxy_classes: '%kernel.debug%'
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: '%mailer_transport%'
+    host: '%mailer_host%'
+    username: '%mailer_user%'
+    password: '%mailer_password%'
+    spool: { type: memory }
+
+sensio_framework_extra:
+   router:
+        annotations: false
+
+webpack_encore:
+    output_path: "%kernel.root_dir%/../web/build"
+
+knp_gaufrette:
+    adapters:
+        photo_storage:
+            local:
+                directory:  '%assets_folder%'
+                create:     true
+    filesystems:
+        photo_storage:
+            adapter:    photo_storage
+            alias:      photo_storage_filesystem
+
+fos_rest:
+    zone:
+      - { path: ^/api/* }
+      - { path: ^/oauth/* }
+    body_listener: ~
+    param_fetcher_listener: true
+    routing_loader: true
+    format_listener:
+        rules:
+          - { path: ^/oauth/, priorities: [ 'json', 'xml' ], fallback_format: json, prefer_extension: false }
+          - { path: ^/api/, prefer_extension: true, fallback_format: json, priorities: [ json, xml, html ] }
+    view:
+        view_response_listener: true
+
+fos_oauth_server:
+    db_driver:           orm
+    client_class:        UserBundle\Entity\Client
+    access_token_class:  UserBundle\Entity\AccessToken
+    refresh_token_class: UserBundle\Entity\RefreshToken
+    auth_code_class:     UserBundle\Entity\AuthCode
+    service:
+        user_provider: user.provider
+        options:
+            access_token_lifetime: 2592000
+            refresh_token_lifetime: 3888000
+            auth_code_lifetime: 30
+
+fos_ck_editor:
+  base_path: "build/ckeditor"
+  js_path:   "build/ckeditor/ckeditor.js"
+
+fos_elastica:
+  clients:
+    default:
+      transport: '%aws_es_transport%'
+      aws_access_key_id: '%aws_es_access_key_id%'
+      aws_secret_access_key: '%aws_es_secret_access_key%'
+      aws_region: '%aws_es_region%'
+      port: '%aws_es_port%'
+      host: '%aws_es_host%'
+      ssl: true
+  indexes:
+    deskimo_property:
+      index_name: property%suffix_index_environment%
+      types:
+        property:
+          properties:
+            id: ~
+            code: ~
+            type: ~
+            name: ~
+            about: ~
+            contactEmail: ~
+            status: ~
+            isOpen:
+              type: integer
+            address: ~
+            lat: ~
+            lng: ~
+            geoLocation:
+              type: geo_point
+            ratePerHour:
+              type: long
+            currencyCode: ~
+            countryCode: ~
+            countryName: ~
+            cityCode: ~
+            contactName: ~
+            contactPhone: ~
+            howToGetThereArr: ~
+            parkingAddressArr: ~
+            updatedAt:
+              type: 'date'
+            createdAt:
+              type: 'date'
+            benefit:
+              type: 'nested'
+              properties:
+                isFree: ~
+                amenity:
+                  type: 'nested'
+                  properties:
+                    id: ~
+                    name: ~
+                    iconName: ~
+                    iconKey: ~
+            pictures:
+              type: 'nested'
+              properties:
+                id: ~
+                fileKey: ~
+                weight: ~
+          persistence:
+            # the driver can be orm, mongodb or phpcr
+            driver: orm
+            model: PropertyBundle\Entity\Property
+            provider: ~
+            finder: ~
+
+aws:
+  version: latest
+  region: ap-southeast-1
+  credentials:
+    key: '%aws_s3_key%'
+    secret: '%aws_s3_secret%'
+  S3:
+    version: latest
+
+old_sound_rabbit_mq:
+  connections:
+    default:
+      host:     '%rabbit_mq_host%'
+      port:     '%rabbit_mq_port%'
+      user:     '%rabbit_mq_user%'
+      password: '%rabbit_mq_password%'
+      vhost:    '%rabbit_mq_vhost%'
+      lazy:     false
+      connection_timeout: 3
+      read_write_timeout: 3
+
+      # requires php-amqplib v2.4.1+ and PHP5.4+
+      keepalive: false
+
+      # requires php-amqplib v2.4.1+
+      heartbeat: 0
+
+      #requires php_sockets.dll
+      use_socket: true # default false
+  producers:
+    notification:
+      connection:       default
+      exchange_options: {name: '%rabbit_mq_email_notification_exchange%', type: fanout}

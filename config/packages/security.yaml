@@ -1,14 +1,14 @@
 security:
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
-        App\Bundle\UserBundle\Entity\User:
-            algorithm: auto
-#        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+#        App\Bundle\UserBundle\Entity\User:
+#            algorithm: auto
+        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
         app_user_provider:
             entity:
-                class: App\Bundle\UserBundle\Entity\User
+                class: App\Bundle\AppBundle\Security\Provider\UserProvider
                 property: email
         users_in_memory: { memory: null }
     firewalls:
@@ -28,15 +28,14 @@ security:
         login:
             pattern: ^/api/login
             stateless: true
-#            json_login:
-#                check_path: /api/login
-#                username_path: email
-#                password_path: password
-#                success_handler: lexik_jwt_authentication.handler.authentication_success
-#                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+            json_login:
+                check_path: /api/login
+                username_path: email
+                password_path: password
+            provider: app_user_provider
 
         api:
-            pattern: ^/api
+            pattern: ^/api/
             stateless: true
             provider: app_user_provider
             jwt: ~
@@ -44,9 +43,11 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-#        - { path: ^/api/login, roles: PUBLIC_ACCESS }
-        - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY  }
-        - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
+#        - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api/login, roles: PUBLIC_ACCESS }
+#        - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY  }
+        - { path: ^/api/,       roles: IS_AUTHENTICATED_FULLY }
 
 
 #    encoders:

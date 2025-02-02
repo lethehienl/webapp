@@ -5,4 +5,7 @@ parameters:
       autoconfigure: true
       App/Bundle/UserBundle/Controller/UserController: ~
 
+    App\Bundle\UserBundle\Services\UserService:
+      shared: true
+
 

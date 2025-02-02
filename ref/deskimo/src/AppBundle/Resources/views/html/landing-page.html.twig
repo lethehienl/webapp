@@ -1,0 +1,124 @@
+{% extends '@App/anonymous/anonymous-master.html.twig' %}
+
+
+{% block extra_stylesheets %}
+    {{ encore_entry_link_tags('landing_page') }}
+{% endblock %}
+
+{% block classBody %}
+{% endblock %}
+
+{% block body %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top c-fade-in" id="landing-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="#top"><img src="{{ asset('/build/images/vnwlLogo.png') }}" width="100px"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#problem">Giải pháp E-Learning</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="banner" id="top">
+        <img src="{{ asset('build/images/banner.png') }}" class="img-fluid d-none d-lg-block c-fade-in">
+        <div class="container banner-content">
+            <div class="title">
+                <h1>GIẢI PHÁP <span class="title-normal">PHÁT TRIỂN</span><br class="d-none d-md-block"><span
+                            class="title-normal">NGUỒN NHÂN LỰC CHẤT LƯỢNG CAO</span></h1>
+                <p class="title-sub">Chuyên Nghiệp - Nhanh Chóng - Hiệu Quả</p>
+                <img src="{{ asset('build/images/banner-sp.png') }}" class="img-fluid d-lg-none c-fade-in">
+                <div class="banner-action">
+                    <a class="btn btn-landing" href="{{ url('user_login_route') }}">Đăng nhập</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-content-1" id="problem">
+        <div class="container">
+            <h2>Doanh nghiệp của bạn đang lên kế hoạch xây dựng chương trình đào tạo bài bản nhưng:</h2>
+            <ul>
+                <li>
+                    <img src="{{ asset('build/images/redicon.png') }}">
+                    <h3>Thiếu hụt nhân lực đào tạo.</h3>
+                </li>
+                <li>
+                    <img src="{{ asset('build/images/redicon.png') }}">
+                    <h3>Chi phí cho nhân lực đào tạo tốn kém, mất thời gian.</h3>
+                </li>
+                <li>
+                    <img src="{{ asset('build/images/redicon.png') }}">
+                    <h3>Nhân viên đào tạo không có thời gian để đào tạo chuyên sâu.</h3>
+                </li>
+                <li>
+                    <img src="{{ asset('build/images/redicon.png') }}">
+                    <h3>Chưa có hệ thống đào tạo nhân sự bài bản.</h3>
+                </li>
+                <li>
+                    <img src="{{ asset('build/images/redicon.png') }}">
+                    <h3>Chất lượng đào tạo phụ thuộc vào nhân viên đào tạo.</h3>
+                </li>
+                <li>
+                    <img src="{{ asset('build/images/redicon.png') }}">
+                    <h3>Lo lắng về vấn đề bảo mật cho chương trình đào tạo.</h3>
+                </li>
+            </ul>
+            <img src="{{ asset('build/images/problem.png') }}" class="img-fluid d-none d-lg-block problem c-fade-in">
+        </div>
+    </section>
+    <section class="section-content-2" id="solution">
+        <div class="container">
+            <div class="wrapper">
+                <img src="{{ asset('build/images/solution.png') }}" class="img-fluid img-solution c-fade-in">
+                <h2>Giải pháp cho đào tạo thời đại số sẽ giúp doanh nghiệp bạn: </h2>
+                <ul class="solution-list">
+                    <li>
+                        <img src="{{ asset('build/images/group-icon1.png') }}">
+                        <h3>Tiết kiệm chi phí và thời gian đào tạo</h3>
+                    </li>
+                    <li>
+                        <img src="{{ asset('build/images/group-icon2.png') }}">
+                        <h3>Linh hoạt thời gian và không gian đào tạo</h3>
+                    </li>
+                    <li>
+                        <img src="{{ asset('build/images/group-icon3.png') }}">
+                        <h3>Hệ thống hóa chương trình đào tạo</h3>
+                    </li>
+                    <li>
+                        <img src="{{ asset('build/images/group-icon4.png') }}">
+                        <h3>Xây dựng khóa học chuyên sâu từ chuyên gia</h3>
+                    </li>
+                    <li>
+                        <img src="{{ asset('build/images/group-icon5.png') }}">
+                        <h3>Đo lường và đánh giá quá trình đào tạo</h3>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <p>© 2019 - Copyright of Viet Resources Training Company Limited (a subsidiary of Dream Viet
+                        Education Joint Stock Company)</p>
+                    <p> Headquarters: 6th Floor Bcons Building - 4A / 167A Nguyen Van Thuong (Old D1 Street), Ward 25,
+                        Binh Thanh District, Ho Chi Minh City</p>
+                    <p>Business Registration License No. 0315889657 issued by Ho Chi Minh City Department of Planning
+                        and Investment</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+{% endblock %}
+
+{% block extra_javascripts %}
+    {{ encore_entry_script_tags('landing_page') }}
+{% endblock %}

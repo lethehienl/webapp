@@ -1,0 +1,26 @@
+@mixin truncate($row) {
+  display: -webkit-box;
+  max-width: 100%;
+  -webkit-line-clamp: $row;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin absoluteCenter() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin flexRow() {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+@mixin flexColumn() {
+  display: flex;
+  flex-direction: column;
+}

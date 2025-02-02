@@ -1,0 +1,26 @@
+<div class="card card-form">
+    <div class="card-header">Community Team Operating Hours</div>
+    <div class="card-body">
+        {% set monday = default['monday'] is defined ? default['monday'] : [] %}
+        {% include '@Property/schedule/form/scheduleDay.html.twig' with {day: monday, 'prefix':'community', 'key': 'monday', 'camKey': "Monday"}%}
+
+        {% set tuesday = default['tuesday'] is defined ? default['tuesday'] : [] %}
+        {% include '@Property/schedule/form/scheduleDay.html.twig' with {day: tuesday, 'prefix':'community', 'key': 'tuesday', 'camKey': "Tuesday"}%}
+
+        {% set wednesday = default['wednesday'] is defined ? default['wednesday'] : [] %}
+        {% include '@Property/schedule/form/scheduleDay.html.twig' with {day: wednesday, 'prefix':'community', 'key': 'wednesday', 'camKey': "Wednesday"}%}
+
+        {% set thursday = default['thursday'] is defined ? default['thursday'] : [] %}
+        {% include '@Property/schedule/form/scheduleDay.html.twig' with {day: thursday, 'prefix':'community', 'key': 'thursday', 'camKey': "Thursday"}%}
+
+        {% set friday = default['friday'] is defined ? default['friday'] : [] %}
+        {% include '@Property/schedule/form/scheduleDay.html.twig' with {day: friday, 'prefix':'community', 'key': 'friday', 'camKey': "Friday"}%}
+
+        {% set saturday = default['saturday'] is defined ? default['saturday'] : [] %}
+        {% include '@Property/schedule/form/scheduleDay.html.twig' with {day: saturday, 'prefix':'community', 'key': 'saturday', 'camKey': "Saturday"}%}
+
+        {% set sunday = default['sunday'] is defined ? default['sunday'] : [] %}
+        {% include '@Property/schedule/form/scheduleDay.html.twig' with {day: sunday, 'prefix':'community', 'key': 'sunday', 'camKey': "Sunday"}%}
+
+    </div>
+</div>

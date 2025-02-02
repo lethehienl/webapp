@@ -1,0 +1,38 @@
+services:
+  property.service:
+    class: PropertyBundle\Services\PropertyService
+    autowire: true
+
+  property_category.service:
+    class: PropertyBundle\Services\PropertyCategoryService
+    autowire: true
+
+  property_benefit.service:
+    class: PropertyBundle\Services\PropertyBenefitService
+    autowire: true
+
+  property_location.service:
+    class: PropertyBundle\Services\PropertyLocationService
+    autowire: true
+
+  property_api.service:
+    class: PropertyBundle\Services\PropertyApiService
+    autowire: true
+
+  property_search.service:
+    class: PropertyBundle\Services\PropertySearchService
+    arguments:
+      - '@fos_elastica.finder.deskimo_property.property'
+
+  statistic.service:
+    class: PropertyBundle\Services\StatisticService
+    autowire: true
+
+  elastic.listener.property:
+    class: PropertyBundle\EventListener\ElasticsearchPropertyListener
+    arguments:
+      - '@fos_elastica.object_persister.deskimo_property.property'
+      - '@fos_elastica.indexable'
+      - ['PropertyBundle\Entity\PropertyPicture', 'PropertyBundle\Entity\PropertyAmenity']
+    tags:
+      - { name: doctrine.event_subscriber }

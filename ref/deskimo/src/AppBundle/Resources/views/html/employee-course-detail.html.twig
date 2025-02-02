@@ -1,0 +1,145 @@
+{% extends '@App/authentication/company/company-master.html.twig' %}
+{% block extra_stylesheets %}
+    {{ encore_entry_link_tags('employee_course_detail') }}
+{% endblock %}
+
+ {% block mainContent %}
+     <div class="container mb-2 d-flex justify-content-end">
+         <a class="btn btn-primary" href="#">Chỉ định học</a>
+     </div>
+     <div class="container">
+         <div class="row mb-3">
+             <div class="col-12 col-sm-6 col-md-8 mb-8 d-flex employee-info">
+                 <div>
+                     <img class="employee-avatar" src="{{ asset('build/images/avatar-profile.png') }}" width="80"
+                          height="80"/>
+                 </div>
+                 <div class="d-flex flex-column w-100 pt-0 pr-3 pl-2">
+                     <div class="employee-name-email">
+                         <p class="employee-name">Quách Minh Trí</p>
+                         <p class="employee-email">tri.quach@navigosgroup.com</p>
+                     </div>
+                     <div class="d-flex justify-content-between">
+                         <a class="employee-detail" href="#"><i class="fas fa-pen"></i>Thêm thông tin</a>
+                         <p class="employee-start-date">Tham gia từ 1/1/2018</p>
+                     </div>
+                 </div>
+             </div>
+             <div class="employee-process col-12 col-sm-6 col-md-4">
+                 <div class="process-item">
+                     <div class="number text-lima"><span class="count-js" data-number="25">0</span>%</div>
+                     <div class="title">Mức độ hoàn thành</div>
+                 </div>
+             </div>
+         </div>
+         <hr>
+         <div class="order-id">
+             <span>VLB-01</span>
+             <a class="btn btn-link text-danger" href="#">Ngừng kích hoạt</a>
+         </div>
+         <div class="course__description">
+             <div class="course__description--container">
+                 <div class="course__description--image">
+                     <img src="{{ asset('build/images/course-image.jpg') }}">
+                 </div>
+                 <div class="course__description--info">
+                     <p class="course__description--title">Đánh thức tư duy dịch vụ khách hàng</p>
+                     <p class="course__description--instructor">GV: Lê Lợi</p>
+                     <div class="course__description--length">
+                         <div class="course__description--time">
+                             <i class="cil-clock"></i>
+                             <span>2 giờ 34 phút</span>
+                         </div>
+                         <div class="course__description--video">
+                             <i class="cib-youtube" style="filter: invert(50%);"></i>
+                             <span>14 videos</span>
+                         </div>
+                     </div>
+                     <div class="course__description--dateinvite">
+                         <p>Ngày mời học <span>14/03/2018</span></p>
+                     </div>
+                 </div>
+             </div>
+             <div class="course__description--content">
+                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                     et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
+             </div>
+         </div>
+         <hr>
+         <div class="course__description--summary d-flex justify-content-between flex-wrap">
+             <table class="table table-borderless">
+                 <tr>
+                     <td style="min-width: 167px;">&bull; Ngày bắt đầu</td>
+                     <th>15/03/2018</th>
+                 </tr>
+                 <tr>
+                     <td>&bull; Tổng số lần</td>
+                     <th>5</th>
+                 </tr>
+             </table>
+             <table class="table table-borderless">
+                 <tr>
+                     <td>&bull; Lần học cuối</td>
+                     <th>12:30 chiều - 16/04/2018</th>
+                 </tr>
+                 <tr>
+                     <td style="min-width: 167px;">&bull; Video đã hoàn thành</td>
+                     <th>3/14 video</th>
+                 </tr>
+             </table>
+         </div>
+         <div class="course__description--videos mt-3">
+             <table class="table table-borderless table-hovered">
+                 <thead class="thead-light">
+                 <tr>
+                     <th>Tên video</th>
+                     <th>Trạng thái</th>
+                 </tr>
+                 </thead>
+                 <tbody>
+                 <tr>
+                     <td>Bài 1: Bài mở đầu</td>
+                     <td class="text-success">Đã xem</td>
+                 </tr>
+                 <tr>
+                     <td>Bài 2: Cài đặt editor và plugin javascript snippet</td>
+                     <td class="text-success">Đã xem</td>
+                 </tr>
+                 <tr>
+                     <td>Bài 3: Khởi động với hàm đầu tiên trong javasript</td>
+                     <td class="text-success">Đã xem</td>
+                 </tr>
+                 <tr>
+                     <td>Bài 4: Khái niệm về biến trong javascript</td>
+                     <td class="text-warning">Đang xem</td>
+                 </tr>
+                 <tr>
+                     <td>Bài 5: Toán tử và áp dụng trong viết hiệu ứng click</td>
+                     <td class="text-warning">Đang xem</td>
+                 </tr>
+                 <tr>
+                     <td>Bài 7: Định danh trong javascript</td>
+                     <td class="text-warning">Đang xem</td>
+                 </tr>
+                 </tbody>
+             </table>
+         </div>
+         <nav aria-label="Page navigation">
+             <ul class="pagination justify-content-end pagination-sm">
+                 <li class="page-item disabled">
+                     <a class="page-link" href="#" tabindex="-1">Previous</a>
+                 </li>
+                 <li class="page-item"><a class="page-link" href="#">1</a></li>
+                 <li class="page-item"><a class="page-link" href="#">2</a></li>
+                 <li class="page-item"><a class="page-link" href="#">3</a></li>
+                 <li class="page-item">
+                     <a class="page-link" href="#">Next</a>
+                 </li>
+             </ul>
+         </nav>
+     </div>
+ {% endblock %}
+
+{% block extra_javascripts %}
+    {{ encore_entry_script_tags('employee_course_detail') }}
+{% endblock %}

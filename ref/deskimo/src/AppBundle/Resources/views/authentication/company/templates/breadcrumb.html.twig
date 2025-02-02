@@ -1,0 +1,32 @@
+{% if breadcrumbs is defined and breadcrumbs is not empty %}
+    <ol class="c-header-nav d-md-down-none">
+        <li class="breadcrumb-item">
+            {{ breadcrumbs[""] }}
+        </li>
+    </ol>
+    {# {% set length = breadcrumbs|length %} #}
+    {# {% set index = length %} #}
+    {# <ol class="c-header-nav d-md-down-none"> #}
+    {# {% for key, breadcrumb in breadcrumbs %} #}
+    {# {% if index < length %} #}
+    {# <li class="breadcrumb-item"> #}
+    {# <a class="" href="{{ path(key) }}"> #}
+    {# {{ breadcrumb }} #}
+    {# </a> #}
+    {# </li> #}
+    {# {% else %} #}
+    {# <li class="breadcrumb-item"> #}
+    {# {{ breadcrumb }} #}
+    {# </li> #}
+    {# {% endif %} #}
+    {# {% set index = index + 1 %} #}
+    {# {% endfor %} #}
+    {# </ol> #}
+{% endif %}
+
+{# {% if breadcrumbs is not defined or breadcrumbs is empty %} #}
+{# <ul class="c-header-nav d-md-down-none"> #}
+{# <li class="c-header-nav-item px-3"><a class="c-header-nav-link breadcrumb-item" #}
+{# href="/company">Trang chủ</a></li> #}
+{# </ul> #}
+{# {% endif %} #}

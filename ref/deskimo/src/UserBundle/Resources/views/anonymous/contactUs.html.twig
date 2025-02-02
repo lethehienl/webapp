@@ -1,0 +1,53 @@
+{% extends '@App/anonymous/anonymous-master.html.twig' %}
+
+{% block prefix_title %}Contact Us{% endblock %}
+
+{% block extra_stylesheets %}
+  {{ encore_entry_link_tags('loginPage') }}
+{% endblock %}
+
+{% block classBody %}
+  class="app login"
+{% endblock %}
+
+{% block body %}
+  <div class="login">
+    <div class="container container--login">
+      <div class="login__inner">
+        <h1 class="logo-text"><a href="/">Deskimo</a></h1>
+        <div class="login__form">
+          <h3 class="login__title">Contact Us</h3>
+          <p class="login__subtext mb-4">Do you need help or assistance? Please reach out to the following contact to
+            support our
+            customer service desk.</p>
+          <div class="login__contact-us">
+            <i class="fal fa-phone-alt"></i>
+            <div class="login__contact-us-content">
+              <p class="main-text"><a href="tel:+65 897 234 22">+65 897 234 22</a></p>
+              <p class="sub-text">Available Mon - Sun (including public holidays)</br>
+                9:00 AM - 10:00 PM</p>
+            </div>
+          </div>
+          <div class="login__contact-us">
+            <i class="fal fa-envelope"></i>
+            <div class="login__contact-us-content">
+              <p class="main-text"><a href="mailto:support@deskimo.com">support@deskimo.com</a></p>
+              <p class="sub-text">We will reply to you within 1 to 2 days</p>
+            </div>
+          </div>
+        </div>
+        <div class="login__links">
+          <a class="login__link" href="{{ url('contact_us_route') }}">Contact Us</a>
+          <a class="login__link" href="javascript:void(0)">Privacy Policy</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+
+{% block extra_javascripts %}
+  {{ encore_entry_script_tags('loginPage') }}
+{% endblock %}

@@ -1,0 +1,138 @@
+<header class="c-header c-header-light c-header-fixed c-header-with-subheader">
+  <button class="c-header-toggler c-class-toggler d-lg-none" type="button" data-target="#sidebar"
+          data-class="c-sidebar-show"><span class="c-header-toggler-icon"></span></button>
+  <a class="c-header-brand d-sm-none" href="/">
+    <p class="logo__text--normal">Deskimo</p>
+  </a>
+  <button class="c-header-toggler c-class-toggler d-md-down-none" type="button" data-target="#sidebar"
+          data-class="c-sidebar-lg-show" responsive="true"><span class="c-header-toggler-icon"></span></button>
+  {% set currentCompany = app.session.get(constant('CompanyBundle\\Utils\\PropertyCompanyUtil::CURRENT_COMPANY_SESSION_KEY')) %}
+
+  <ul class="c-header-nav d-none d-md-flex">
+    <div class="dropdown c-header-nav-item">
+      <a class="dropdown-toggle c-header-nav-link" href="#" role="button" id="dropdownCompanyLink"
+         data-toggle="dropdown" aria-expanded="false">
+        <span>{% if (currentCompany != constant('CompanyBundle\\Utils\\PropertyCompanyUtil::ALL_COMPANIES_VALUE')) %}{{ currentCompany.name }}{% else %}All companies{% endif %}</span>
+      </a>
+      {% set companies = getCompaniesByUser(app.user) %}
+
+      {% if companies|length > 0 %}
+        <div class="dropdown-menu" aria-labelledby="dropdownCompanyLink">
+          <a class="dropdown-item" href="{{ url('property_company_change_current_route', {id: 0}) }}"><span>All companies</span></a>
+          {% for company in companies %}
+            <a class="dropdown-item"
+               href="{{ url('property_company_change_current_route', {id: company.id}) }}"><span>{{ company.name }}</span></a>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+    {% set currentProperty = app.session.get(constant('CompanyBundle\\Utils\\PropertyCompanyUtil::CURRENT_PROPERTY_SESSION_KEY')) %}
+    <div class="dropdown c-header-nav-item">
+      <a class="dropdown-toggle c-header-nav-link" href="#" role="button" id="dropdownCompanyLink"
+         data-toggle="dropdown" aria-expanded="false">
+        <span>{% if (currentProperty != constant('CompanyBundle\\Utils\\PropertyCompanyUtil::ALL_PROPERTIES_VALUE')) %}{{ currentProperty and currentProperty.name ? currentProperty.name : 'No property available' }}{% else %}All properties{% endif %}</span>
+      </a>
+      {% set properties = getPropertiesByCompany(app.session.get(constant('CompanyBundle\\Utils\\PropertyCompanyUtil::CURRENT_COMPANY_SESSION_KEY'))) %}
+
+      {% if properties|length > 0 %}
+        <div class="dropdown-menu" aria-labelledby="dropdownCompanyLink">
+          <a class="dropdown-item"
+             href="{{ url('property_change_current_route', {id: 0}) }}"><span>All properties</span></a>
+          {% for property in properties %}
+            <a class="dropdown-item"
+               href="{{ url('property_change_current_route', {id: property.id}) }}"><span>{{ property.name }}</span></a>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+    {% if currentCompany != constant('CompanyBundle\\Utils\\PropertyCompanyUtil::ALL_COMPANIES_VALUE') and currentProperty != constant('CompanyBundle\\Utils\\PropertyCompanyUtil::ALL_PROPERTIES_VALUE') %}
+      <div class="c-header-nav-item">
+        <div class="c-header-nav-link c-header-nav-link-toggle">
+          <p>Property Status</p>
+          <div class="property-status">
+             <a href="{{ url('property_change_status_route', {id: currentProperty.id, status: constant('AppBundle\\Utils\\StatusUtil::ACTIVE_CODE')}) }}"
+             class="btn btn-open {% if currentProperty.status == constant('AppBundle\\Utils\\StatusUtil::ACTIVE_CODE') %} active {% endif %}">Open</a>
+             <a href="{{ url('property_change_status_route', {id: currentProperty.id, status: constant('AppBundle\\Utils\\StatusUtil::INACTIVE_CODE')}) }}"
+             class="btn btn-close {% if currentProperty.status == constant('AppBundle\\Utils\\StatusUtil::INACTIVE_CODE') %} active {% endif %}">Close</a>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </ul>
+
+  <ul class="c-header-nav ml-auto">
+    <li class="c-header-nav-item dropdown">
+      <a class="c-header-nav-link dropdown-toggle" data-toggle="dropdown" href="#"
+         role="button" aria-haspopup="true" aria-expanded="false">
+        <div class="c-avatar">
+          <img src="https://i.ibb.co/BG3ZTQm/businessman-character-avatar-isolated-vector-illustration-design.jpg"
+               alt="avatar">
+          <span>Admin</span>
+        </div>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right pt-0">
+        <a class="dropdown-item" href="{{ url('user_logout_route') }}">
+          <i class="fal fa-sign-out mfe-2"></i>
+          <span>Logout</span></a>
+      </div>
+    </li>
+  </ul>
+
+  {% include '@App/authentication/admin/component/breadcrumb.html.twig' %}
+</header>
+
+<div class="sub-header d-flex d-md-none">
+  <ul class="c-header-nav">
+    <div class="dropdown c-header-nav-item">
+      <a class="dropdown-toggle c-header-nav-link" href="#" role="button" id="dropdownCompanyLinkMobile"
+         data-toggle="dropdown" aria-expanded="false">
+        <span>{% if (currentCompany != constant('CompanyBundle\\Utils\\PropertyCompanyUtil::ALL_COMPANIES_VALUE')) %}{{ currentCompany.name }}{% else %}All companies{% endif %}</span>
+      </a>
+      {% set companies = getCompaniesByUser(app.user) %}
+
+      {% if companies|length > 0 %}
+        <div class="dropdown-menu" aria-labelledby="dropdownCompanyLinkMobile">
+          <a class="dropdown-item" href="{{ url('property_company_change_current_route', {id: 0}) }}"><span>All companies</span></a>
+          {% for company in companies %}
+            <a class="dropdown-item"
+               href="{{ url('property_company_change_current_route', {id: company.id}) }}"><span>{{ company.name }}</span></a>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+    {% set currentProperty = app.session.get(constant('CompanyBundle\\Utils\\PropertyCompanyUtil::CURRENT_PROPERTY_SESSION_KEY')) %}
+    <div class="dropdown c-header-nav-item">
+      <a class="dropdown-toggle c-header-nav-link" href="#" role="button" id="dropdownCompanyPropertyLinkMobile"
+         data-toggle="dropdown" aria-expanded="false">
+        <span>{% if (currentProperty != constant('CompanyBundle\\Utils\\PropertyCompanyUtil::ALL_PROPERTIES_VALUE')) %}{{ currentProperty and currentProperty.name ? currentProperty.name : 'No property available' }}{% else %}All properties{% endif %}</span>
+      </a>
+      {% set properties = getPropertiesByCompany(app.session.get(constant('CompanyBundle\\Utils\\PropertyCompanyUtil::CURRENT_COMPANY_SESSION_KEY'))) %}
+
+      {% if properties|length > 0 %}
+        <div class="dropdown-menu" aria-labelledby="dropdownCompanyPropertyLinkMobile">
+          <a class="dropdown-item"
+             href="{{ url('property_change_current_route', {id: 0}) }}"><span>All properties</span></a>
+          {% for property in properties %}
+            <a class="dropdown-item"
+               href="{{ url('property_change_current_route', {id: property.id}) }}"><span>{{ property.name }}</span></a>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+    {% if currentCompany != constant('CompanyBundle\\Utils\\PropertyCompanyUtil::ALL_COMPANIES_VALUE') and currentProperty != constant('CompanyBundle\\Utils\\PropertyCompanyUtil::ALL_PROPERTIES_VALUE') %}
+      <div class="c-header-nav-item">
+        <div class="c-header-nav-link c-header-nav-link-toggle">
+          <p>Property Status</p>
+          <div class="property-status">
+            <a href="{{ url('property_change_status_route', {id: currentProperty.id, status: constant('AppBundle\\Utils\\StatusUtil::ACTIVE_CODE')}) }}"
+               class="btn btn-open {% if currentProperty.status == constant('AppBundle\\Utils\\StatusUtil::ACTIVE_CODE') %} active {% endif %}">Open</a>
+            <a href="{{ url('property_change_status_route', {id: currentProperty.id, status: constant('AppBundle\\Utils\\StatusUtil::INACTIVE_CODE')}) }}"
+               class="btn btn-close {% if currentProperty.status == constant('AppBundle\\Utils\\StatusUtil::INACTIVE_CODE') %} active {% endif %}">Close</a>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </ul>
+</div>

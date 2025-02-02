@@ -1,0 +1,263 @@
+<?php
+
+namespace CourseBundle\Controller\Employee;
+
+use AppBundle\Controller\NaviController;
+use AppBundle\Utils\ServiceUtil;
+use ContractBundle\Entity\ContractCourse;
+use CourseBundle\Services\CourseService;
+use CourseBundle\Services\EmployeeCourseService;
+use ContractBundle\Services\CourseInvitationService;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Cookie;
+use UserBundle\Entity\User;
+use UserBundle\Utils\PermissionUtil;
+
+class CourseController extends NaviController
+{
+  /**
+   * @Route("courses", name="learning_course_list_route")
+   */
+  public function listAction()
+  {
+    $this->denyAccessUnlessGranted(PermissionUtil::COURSE_MANAGE_MY_COURSE);
+    /** @var CourseInvitationService $inviteService */
+    $inviteService = $this->get(ServiceUtil::COURSE_INVITATION_SERVICE);
+
+    $loggedUser = $inviteService->getLoggedUser();
+    $currentEmployeeId = $loggedUser->getId();
+    $company = $loggedUser->getCompany();
+
+    $this->addBreadCrumb(
+      [
+      'employee_homepage_route' => 'Home',
+      '' => 'Khóa học của tôi'
+      ]
+    );
+
+    try {
+      if (!$currentEmployeeId || !$company) {
+        throw new \Exception('Không tìm thấy học viên hoặc công ty.', 1912);
+      }
+
+      $categories = $inviteService->getEmployeeCourses($currentEmployeeId);
+
+      /** @var EmployeeCourseService $eCourseService */
+      $eCourseService = $this->get(ServiceUtil::EMPLOYEE_COURSE_SERVICE);
+      $latestCourse = $eCourseService->getLatestCourseByEmployee($loggedUser);
+
+    } catch (\Exception $e) {
+      $this->writeLog(__FUNCTION__ . ' | ' . $e->getMessage());
+      return $this->renderTemplate('VisitBundle:employee:course-list.html.twig');
+    }
+
+    return $this->renderTemplate('VisitBundle:employee:course-list.html.twig', ['categories' => $categories, 'latestCourse' => $latestCourse]);
+  }
+
+  /**
+   * @Route("add-bookmark-ajax", name="learning_add_bookmark_ajax")
+   */
+  public function addBookmarkAjax(Request $request) {
+    if (!$request->isXmlHttpRequest()) {
+      throw new AccessDeniedHttpException();
+    }
+
+    $this->denyAccessUnlessGranted(PermissionUtil::COURSE_MANAGE_MY_COURSE);
+    /** @var EmployeeCourseService $eCourseService */
+    $eCourseService = $this->get(ServiceUtil::EMPLOYEE_COURSE_SERVICE);
+
+    $requestData = [
+      'note' => $eCourseService->getRequest()->get('note'),
+      'time' => $eCourseService->getRequest()->get('time'),
+      'bookmarkId' => $eCourseService->getRequest()->get('bookmark_id'),
+      'contractCourseId' => $eCourseService->getRequest()->get('contract_course_id'),
+      'inviteId' => $eCourseService->getRequest()->get('invite_id'),
+      'lessonId' => $eCourseService->getRequest()->get('lesson_id'),
+    ];
+
+    return $this->handleAjaxRequest(ServiceUtil::EMPLOYEE_COURSE_SERVICE, 'addBookmark', $requestData);
+  }
+
+  /**
+   * @Route("remove-bookmark-ajax", name="learning_remove_bookmark_ajax")
+   */
+  public function removeBookmarkAjax(Request $request) {
+    if (!$request->isXmlHttpRequest()) {
+      throw new AccessDeniedHttpException();
+    }
+
+    $this->denyAccessUnlessGranted(PermissionUtil::COURSE_MANAGE_MY_COURSE);
+    /** @var EmployeeCourseService $eCourseService */
+    $eCourseService = $this->get(ServiceUtil::EMPLOYEE_COURSE_SERVICE);
+
+    $requestData = [
+      'bookmarkId' => $eCourseService->getRequest()->get('bookmark_id'),
+    ];
+
+    return $this->handleAjaxRequest(ServiceUtil::EMPLOYEE_COURSE_SERVICE, 'removeBookmark', $requestData);
+  }
+
+  /**
+   * @Route("list-bookmark-ajax", name="learning_get_list_bookmark_ajax")
+   */
+  public function getBookmarksAjax(Request $request) {
+    if (!$request->isXmlHttpRequest()) {
+      throw new AccessDeniedHttpException();
+    }
+
+    $this->denyAccessUnlessGranted(PermissionUtil::COURSE_MANAGE_MY_COURSE);
+    /** @var EmployeeCourseService $eCourseService */
+    $eCourseService = $this->get(ServiceUtil::EMPLOYEE_COURSE_SERVICE);
+
+    $requestData = [
+      'contractCourseId' => $eCourseService->getRequest()->get('contract_course_id'),
+      'inviteId' => $eCourseService->getRequest()->get('invite_id'),
+    ];
+
+    return $this->handleAjaxRequest(ServiceUtil::EMPLOYEE_COURSE_SERVICE, 'getBookmarks', $requestData);
+  }
+
+  /**
+   * @Route("{courseSlug}/invite/{inviteId}", name="learning_order_course_details_route")
+   */
+  public function orderCourseDetailsAction($courseSlug = null, $inviteId = null)
+  {
+    $this->denyAccessUnlessGranted(PermissionUtil::COURSE_MANAGE_MY_COURSE);
+
+    try {
+      /** @var CourseService $courseService */
+      $courseService = $this->get(ServiceUtil::COURSE_SERVICE);
+      /** @var EmployeeCourseService $eCourseService */
+      $eCourseService = $this->get(ServiceUtil::EMPLOYEE_COURSE_SERVICE);
+
+      /** @var ContractCourse $contractCourse */
+      $contractCourse = $courseService->getContractCourseBySlug($courseSlug);
+      $course = $contractCourse->getCourse();
+      $expires = $this->get('learning.service')->getContentExpirationTime();
+
+      $firstVideo = $courseService->getFirstVideoFromAwsOfCourse($course);
+      $signedCookies = $this->get('learning.service')->signCookie($firstVideo, $expires);
+      $response = new Response();
+
+      foreach ($signedCookies as $key => $signedCookie) {
+        $response->headers->setCookie(new Cookie($key, $signedCookie, $expires, '/',$this->getParameter('video_cookie_domain')));
+      }
+
+      /** @var User $employee */
+      $employee = $this->getUser();
+      $playlist = $eCourseService->getEmployeeCoursePlaylist($contractCourse, $employee, $inviteId);
+      $response->sendHeaders();
+
+      /** @var EmployeeCourseService $courseService */
+      $courseService = $this->get(ServiceUtil::EMPLOYEE_COURSE_SERVICE);
+      $data = [
+        'course' => $course->_toArray(),
+        'playlist' => $playlist['data'],
+        'lasted_video_index' => $playlist['lasted_video_index'],
+        'contract_course_id' => $contractCourse->getId(),
+        'files' => $courseService->getAttachedAndDownloadFiles($course),
+        'invite_id' => $inviteId,
+      ];
+
+      return $this->render('@Course/employee/learning-course-detail.html.twig', $data);
+    } catch (\Exception $ex) {
+      $this->writeLog(__FUNCTION__ . ' | ' . $ex->getMessage());
+      return $this->redirectToRoute('learning_course_list_route');
+    }
+  }
+
+  /**
+   * @Route("/{token}/download-file", name="learning_download_file_route")
+   */
+  public function downloadAttachFile($token)
+  {
+    /** @var EmployeeCourseService $employeeCourseService */
+    $employeeCourseService = $this->get(ServiceUtil::EMPLOYEE_COURSE_SERVICE);
+
+    try {
+      $files = $employeeCourseService->downloadAttachFile($token);
+      return $this->redirect($files['file_url']);
+    } catch(\Exception $ex) {
+      $employeeCourseService->writeLog(__FUNCTION__ . $ex->getMessage());
+      throw new NotFoundHttpException();
+    }
+  }
+
+  /**
+   * @Route("/quiz/checking", name="course_quiz_checking_route", methods={"POST"})
+   */
+  public function checkQuizAction(Request $request)
+  {
+    $this->validateXmlHttpRequest($request);
+    return $this->handleAjaxRequest(ServiceUtil::COURSE_QUIZ_SERVICE, 'checkUserQuiz');
+  }
+
+  /**
+   * @Route("/quiz/information/{lessonId}/{quizId}", name="course_quiz_information_get_route", methods={"GET"})
+   */
+  public function getQuizAction(Request $request, $lessonId, $quizId)
+  {
+    $this->validateXmlHttpRequest($request);
+    $arguments = ['lesson_id' => $lessonId, 'quiz_id' => $quizId];
+    return $this->handleAjaxRequest(ServiceUtil::EMPLOYEE_COURSE_SERVICE, 'getUserQuiz', $arguments);
+  }
+
+  /**
+   * @Route("/quiz/submit", name="course_quiz_submit_route", methods={"POST"})
+   */
+  public function submitQuizAction(Request $request)
+  {
+    $this->validateXmlHttpRequest($request);
+    return $this->handleAjaxRequest(ServiceUtil::USER_QUIZ_SERVICE, 'scoreUserQuiz');
+  }
+
+  /**
+   * @Route("course-pool", name="course_pool_route")
+   */
+  public function coursePoolAction()
+  {
+    $this->denyAccessUnlessGranted(PermissionUtil::COURSE_MANAGE_COURSE_POOL);
+    $this->addBreadCrumb(
+      [
+        'employee_homepage_route' => 'Home',
+        '' => 'Danh sách khoá học'
+      ]
+    );
+
+    try {
+      /** @var EmployeeCourseService $eCourseService */
+      $eCourseService = $this->get(ServiceUtil::EMPLOYEE_COURSE_SERVICE);
+
+      $data = $eCourseService->getCoursePoolByEmployee();
+    } catch (\Exception $e) {
+      $this->writeLog(__FUNCTION__ . ' | ' . $e->getMessage());
+      return $this->renderTemplate('VisitBundle:employee:course-list.html.twig');
+    }
+
+    return $this->renderTemplate('VisitBundle:employee:course-pool.html.twig', $data);
+  }
+
+  /**
+   * @Route("course-pool/search", name="course_pool_search_route")
+   */
+  public function coursePoolSearchAction(Request $request) {
+    $this->denyAccessUnlessGranted(PermissionUtil::COURSE_MANAGE_COURSE_POOL);
+    $this->validateXmlHttpRequest($request);
+
+    return $this->handleAjaxRequest(ServiceUtil::EMPLOYEE_COURSE_SERVICE, 'getCoursePoolByEmployee');
+  }
+
+  /**
+   * @Route("course-pool/request", name="course_pool_request_route")
+   */
+  public function coursePoolRequireAction(Request $request) {
+    $this->denyAccessUnlessGranted(PermissionUtil::COURSE_MANAGE_COURSE_POOL);
+    $this->validateXmlHttpRequest($request);
+
+    return $this->handleAjaxRequest(ServiceUtil::EMPLOYEE_COURSE_SERVICE, 'requestCoursePoolByEmployee');
+  }
+}

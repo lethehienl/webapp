@@ -1,0 +1,78 @@
+parameters:
+  user.class: UserBundle\Entity\User
+  user.provider.class: AppBundle\Security\Provider\UserProvider
+  user_availability.class: AppBundle\EventListener\CheckUserAvailabilityListener
+
+services:
+  abstract.service:
+    class: AppBundle\Services\AbstractService
+    autowire: true
+
+  security.login_handler.success.service:
+    class: AppBundle\Services\AuthenticationSuccessHandler
+    arguments:
+      - '@router'
+      - '@user.service'
+
+  doctrine.entity_listener:
+    class: AppBundle\EventListener\DatabaseActivitySubscriber
+    autowire: true
+    tags:
+      - { name: 'doctrine.event_listener', event: preUpdate }
+      - { name: 'doctrine.event_listener', event: prePersist }
+      - { name: 'doctrine.event_listener', event: preRemove }
+
+  photo_upload.service:
+    class: AppBundle\Services\PhotoUploadService
+    arguments:
+      - '@gaufrette.photo_storage_filesystem'
+
+  user.provider:
+    class: '%user.provider.class%'
+    arguments:
+      - '@doctrine.orm.entity_manager'
+      - '%user.class%'
+
+  user_availability.listener:
+    class: '%user_availability.class%'
+    autowire: true
+    tags:
+      - { name: kernel.event_listener, event: kernel.request }
+
+  app.user_permissions:
+    class: AppBundle\Security\Voter\PermissionVoter
+    autowire: true
+    tags:
+      - { name: security.voter }
+    public: false
+
+  my.oauth.facebook_extension:
+    class: AppBundle\Security\Oauth\OtpGrantExtension
+    arguments:
+      - '@service_container'
+    tags:
+      - { name: fos_oauth_server.grant_extension, uri: 'https://deskimo.com/grants/otp' }
+
+  email_notification.service:
+    class: AppBundle\Services\EmailNotificationService
+    arguments:
+      - '@old_sound_rabbit_mq.notification_producer'
+      - 'email'
+
+  sms_notification.service:
+    class: AppBundle\Services\SmsNotificationService
+    arguments:
+      - '@old_sound_rabbit_mq.notification_producer'
+      - 'sms'
+
+  push_notification.service:
+    class: AppBundle\Services\PushNotificationService
+    arguments:
+      - '@old_sound_rabbit_mq.notification_producer'
+      - 'push_notification'
+
+  twig_app.extension:
+    class: AppBundle\Twig\AppExtension
+    arguments:
+      - '@service_container'
+
