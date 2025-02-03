@@ -1,0 +1,27 @@
+{% extends '@Html/thanhhuong/master.html.twig' %}
+
+{% block title %}Login{% endblock %}
+
+{% block MainContent %}
+	<div class="login-container">
+		<h2>Đăng nhập</h2>
+
+		{% if error %}
+			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+		{% endif %}
+
+		<form method="post">
+			<div class="form-group">
+				<label for="username">Email</label>
+				<input type="text" name="_username" id="username" class="form-control" value="{{ last_username }}" required autofocus>
+			</div>
+
+			<div class="form-group">
+				<label for="password">Mật khẩu</label>
+				<input type="password" name="_password" id="password" class="form-control" required>
+			</div>
+
+			<button type="submit" class="btn btn-primary">Đăng nhập</button>
+		</form>
+	</div>
+{% endblock %}

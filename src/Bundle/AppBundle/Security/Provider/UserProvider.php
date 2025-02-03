@@ -2,6 +2,8 @@
 
 namespace App\Bundle\AppBundle\Security\Provider;
 
+use App\Bundle\UserBundle\Entity\User;
+use Doctrine\ORM\EntityManager;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use App\Bundle\UserBundle\Repository\UserRepository;
@@ -9,16 +11,20 @@ use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UserNotFoundException;
 class UserProvider implements UserProviderInterface
 {
-    private UserRepository $userRepository;
+    protected $class;
 
-    public function __construct(UserRepository $userRepository)
+    protected $userRepository;
+
+    public function __construct(EntityManager $entityManager, $class = User::class)
     {
-        $this->userRepository = $userRepository;
+        $this->class = $class;
+        $this->userRepository = $entityManager->getRepository($class);
     }
+
 
     public function loadUserByIdentifier(string $identifier): UserInterface
     {
-        $user = $this->userRepository->findOneBy(['email' => $identifier]);
+        $user = $this->userRepository->loadUserByIdentifier($identifier);
 
         if (!$user) {
             throw new UserNotFoundException("User not found");

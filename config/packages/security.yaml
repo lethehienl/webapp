@@ -1,23 +1,19 @@
 security:
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
-#        App\Bundle\UserBundle\Entity\User:
-#            algorithm: auto
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
         app_user_provider:
             entity:
-                class: App\Bundle\AppBundle\Security\Provider\UserProvider
+                class: App\Bundle\UserBundle\Entity\User
                 property: email
         users_in_memory: { memory: null }
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        main:
-            lazy: true
-            provider: users_in_memory
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -26,39 +22,52 @@ security:
             # switch_user: true
 
         login:
-            pattern: ^/api/login
+            pattern: ^/user/login
+            provider: app_user_provider
+            form_login:
+                login_path: /user/login
+                check_path: /user/login
+                default_target_path: /admin
+            json_login:
+                check_path: /user/login
+                username_path: email
+                password_path: password
+                provider: app_user_provider
+            logout:
+                path: /user/logout
+                target: /user/login
+
+        api:
+            pattern: ^/api
             stateless: true
+            provider: app_user_provider
             json_login:
                 check_path: /api/login
                 username_path: email
                 password_path: password
-            provider: app_user_provider
-
-        api:
-            pattern: ^/api/
-            stateless: true
-            provider: app_user_provider
+                provider: app_user_provider
             jwt: ~
+
+
+        main:
+            lazy: true
+            provider: app_user_provider
+            form_login:
+                login_path: /user/login
+                check_path: /user/login
+            logout:
+                path: /user/logout
+                target: /user/login
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-#        - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-#        - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
+
         - { path: ^/api/login, roles: PUBLIC_ACCESS }
-#        - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY  }
+        - { path: ^/user/login, roles: PUBLIC_ACCESS }
         - { path: ^/api/,       roles: IS_AUTHENTICATED_FULLY }
-
-
-#    encoders:
-#        App\Bundle\UserBundle\Entity\User: # Replace with your User entity
-#            algorithm: bcrypt
-#
-#        providers:
-#            app_user_provider:
-#                entity:
-#                    class: App\Bundle\UserBundle\Entity\User
-#                    property: email # Adjust based on your User entity
+        - { path: ^/, roles: PUBLIC_ACCESS }
+#        - { path: ^/, roles: ROLE_USER }
 
 
 when@test:

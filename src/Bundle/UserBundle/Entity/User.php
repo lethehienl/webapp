@@ -5,6 +5,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity]
 #[ORM\Table(name: "th_user")]
@@ -19,12 +20,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $slug = null;
 
     #[ORM\Column(type: "string", length: 256)]
+    #[Assert\NotBlank]
     private string $username;
 
     #[ORM\Column(type: "string", length: 128, unique: true)]
+    #[Assert\Email]
+    #[Assert\NotBlank]
     private string $email;
 
     #[ORM\Column(type: "string", length: 256)]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 6)]
     private string $password;
 
     #[ORM\Column(type: "string", length: 256, nullable: true)]

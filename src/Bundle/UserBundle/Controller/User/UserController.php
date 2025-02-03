@@ -1,69 +1,78 @@
 <?php
 
-    namespace App\Bundle\UserBundle\Controller\User;
+namespace App\Bundle\UserBundle\Controller\User;
 
-    use ApiPlatform\Validator\ValidatorInterface;
-    use AppBundle\Utils\ServiceUtil;
-    use Doctrine\ORM\EntityManagerInterface;
-    use NotificationBundle\Util\NotificationUtil;
-    use Symfony\Component\HttpFoundation\JsonResponse;
-    use Symfony\Component\HttpFoundation\Response;
-    use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-    use Symfony\Component\Routing\Annotation\Route;
-    use UserBundle\Services\UserService;
-    use Symfony\Component\HttpFoundation\Request;
-    use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-    use UserBundle\Form\User\ForgotPasswordType;
-    use UserBundle\Form\User\ResetPasswordType;
-    use UserBundle\Entity\User;
-    use UserBundle\Utils\LandingPageUtil;
+use App\Bundle\AppBundle\Utils\StatusUtil;
+use App\Bundle\UserBundle\Form\RegistrationFormType;
+use AppBundle\Utils\ServiceUtil;
+use Doctrine\ORM\EntityManagerInterface;
+use NotificationBundle\Util\NotificationUtil;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Bundle\UserBundle\Entity\User;
+use Symfony\Component\Form\FormFactoryInterface;
 
-    class UserController extends AbstractController
+class UserController extends AbstractController
+{
+    private FormFactoryInterface $formFactory;
+    private EntityManagerInterface $entityManager;
+    private UserPasswordHasherInterface $passwordHasher;
+    public function __construct(FormFactoryInterface $formFactory, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher)
     {
+        $this->formFactory = $formFactory;
+        $this->entityManager = $entityManager;
+        $this->passwordHasher = $passwordHasher;
+    }
 
-        public function login(): Response
-        {
-            echo 'Anonymous > Login';die;
-            throw new \LogicException('This method can be blank - it will be intercepted by the "json_login" authenticator.');
+    public function login(AuthenticationUtils $authenticationUtils): Response
+    {
+        if ($this->getUser()) {
+            return $this->redirectToRoute('admin_home_route');
         }
 
+        $error = $authenticationUtils->getLastAuthenticationError();
+        $lastUsername = $authenticationUtils->getLastUsername();
 
-        public function register(
-          Request $request,
-          EntityManagerInterface $entityManager,
-          UserPasswordHasherInterface $passwordHasher,
-          ValidatorInterface $validator
-        ): JsonResponse {
-            $data = json_decode($request->getContent(), true);
+        return $this->render('@User/front_office/login.html.twig', [
+          'last_username' => $lastUsername,
+          'error' => $error,
+        ]);
+    }
 
-            if (!isset($data['email'], $data['username'], $data['password'])) {
-                return new JsonResponse(['error' => 'Missing required fields'], 400);
-            }
 
-            $user = new User();
-            $user->setEmail($data['email']);
-            $user->setUsername($data['username']);
-            $user->setStatus(1);
+    public function logout(): void
+    {
+        throw new \Exception('Don\'t forget to activate logout in security.yaml');
+    }
 
-            // Mã hóa mật khẩu
-            $hashedPassword = $passwordHasher->hashPassword($user, $data['password']);
+
+    public function register(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher,): Response
+    {
+
+        $user = new User();
+        $form = $this->formFactory->create(RegistrationFormType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $hashedPassword = $passwordHasher->hashPassword($user, $form->get('password')->getData());
             $user->setPassword($hashedPassword);
-
-            // Validate dữ liệu
-            $errors = $validator->validate($user);
-            if (count($errors) > 0) {
-                $errorMessages = [];
-                foreach ($errors as $error) {
-                    $errorMessages[] = $error->getMessage();
-                }
-                return new JsonResponse(['errors' => $errorMessages], 400);
-            }
-
+            $user->setStatus(StatusUtil::ACTIVE_CODE);
 
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return new JsonResponse(['message' => 'User registered successfully'], 201);
+            return $this->redirectToRoute('user_login');
         }
+
+        return $this->render('@User/front_office/register.html.twig', [
+          'registrationForm' => $form->createView(),
+        ]);
     }
+}
 
