@@ -1,39 +1,18 @@
-{% extends '@Html/thanhhuong/master.html.twig' %}
+{% extends '@App/front_office/master.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Đậu phộng rang, Đậu phộng sống - Đậu Phộng Thanh Hương{% endblock %}
+{% block description %}Khám phá ngay Đậu Phộng Thanh Hương, Mua Đậu Phộng Rang Ngon Nhất – Giao Hàng Tận Nơi, đậu phộng rang, công dụng của đậu phộng, đậu phộng có tác dụng gì đối với sức khỏe{% endblock %}
+{% block keywords %}Đậu Phộng Thanh Hương, Đậu Phộng Rang, Đậu phộng sống, Đậu phộng võ lụa, Đậu phộng nữa hạt, Đậu phộng  xay nhuyễn, Đậu phộng sạch{% endblock %}
+
+{% block TopHeader %}
+	{{ include('@Html/thanhhuong/partial/header_top.html.twig') }}
+{% endblock %}
+
+{% block Header %}
+	{{ include('@Html/thanhhuong/partial/header.html.twig') }}
+{% endblock %}
 
 {% block MainContent %}
-	<div class="container mt-5">
-		<h2>Register</h2>
-		{{ form_start(registrationForm) }}
-		<div class="form-group">
-			{{ form_label(registrationForm.fullName) }}
-			{{ form_widget(registrationForm.fullName, { 'attr': {'class': 'form-control'} }) }}
-		</div>
-
-		<div class="form-group">
-			{{ form_label(registrationForm.username) }}
-			{{ form_widget(registrationForm.username, { 'attr': {'class': 'form-control'} }) }}
-		</div>
-
-		<div class="form-group">
-			{{ form_label(registrationForm.email) }}
-			{{ form_widget(registrationForm.email, { 'attr': {'class': 'form-control'} }) }}
-		</div>
-
-		<div class="form-group">
-			{{ form_label(registrationForm.password.first) }}
-			{{ form_widget(registrationForm.password.first, { 'attr': {'class': 'form-control'} }) }}
-		</div>
-
-		<div class="form-group">
-			{{ form_label(registrationForm.password.second) }}
-			{{ form_widget(registrationForm.password.second, { 'attr': {'class': 'form-control'} }) }}
-		</div>
-
-		<button type="submit" class="btn btn-primary mt-3">{{ form_widget(registrationForm.submit) }}</button>
-		{{ form_end(registrationForm) }}
-
-		<p class="mt-3">Already have an account? <a href="{{ path('user_login') }}">Login here</a></p>
-	</div>
+	{{ include('@User/front_office/partial/register.html.twig') }}
 {% endblock %}
+

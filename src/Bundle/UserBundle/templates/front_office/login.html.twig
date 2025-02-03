@@ -1,27 +1,25 @@
-{% extends '@Html/thanhhuong/master.html.twig' %}
+{% extends '@App/front_office/master.html.twig' %}
 
-{% block title %}Login{% endblock %}
+{% block title %}Đậu phộng rang, Đậu phộng sống - Đậu Phộng Thanh Hương{% endblock %}
+{% block description %}Khám phá ngay Đậu Phộng Thanh Hương, Mua Đậu Phộng Rang Ngon Nhất – Giao Hàng Tận Nơi, đậu phộng rang, công dụng của đậu phộng, đậu phộng có tác dụng gì đối với sức khỏe{% endblock %}
+{% block keywords %}Đậu Phộng Thanh Hương, Đậu Phộng Rang, Đậu phộng sống, Đậu phộng võ lụa, Đậu phộng nữa hạt, Đậu phộng  xay nhuyễn, Đậu phộng sạch{% endblock %}
+
+{% block TopHeader %}
+	{{ include('@Html/thanhhuong/partial/header_top.html.twig') }}
+{% endblock %}
+
+{% block Header %}
+	{{ include('@Html/thanhhuong/partial/header.html.twig') }}
+{% endblock %}
 
 {% block MainContent %}
-	<div class="login-container">
-		<h2>Đăng nhập</h2>
+	{{ include('@User/front_office/partial/login.html.twig') }}
+{% endblock %}
 
-		{% if error %}
-			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-		{% endif %}
+{% block Footer %}
+	{#{% include '@Html/thanhhuong/partial/footer.html.twig' %}#}
+{% endblock %}
 
-		<form method="post">
-			<div class="form-group">
-				<label for="username">Email</label>
-				<input type="text" name="_username" id="username" class="form-control" value="{{ last_username }}" required autofocus>
-			</div>
-
-			<div class="form-group">
-				<label for="password">Mật khẩu</label>
-				<input type="password" name="_password" id="password" class="form-control" required>
-			</div>
-
-			<button type="submit" class="btn btn-primary">Đăng nhập</button>
-		</form>
-	</div>
+{% block jsonLd %}
+	{% include '@Html/thanhhuong/partial/jsonLd.html.twig' %}
 {% endblock %}

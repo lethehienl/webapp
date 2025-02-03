@@ -21,7 +21,7 @@
                 'attr' => ['placeholder' => 'Enter your full name']
               ])
               ->add('username', TextType::class, [
-                'label' => 'Username',
+                'label' => 'User Name',
                 'attr' => ['placeholder' => 'Choose a username']
               ])
               ->add('email', EmailType::class, [

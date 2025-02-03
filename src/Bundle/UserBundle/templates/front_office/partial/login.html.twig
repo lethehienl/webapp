@@ -1,0 +1,112 @@
+<style>
+    #loginPage {
+        margin-bottom: -80px;
+        background: url(/bundles/html/thanhhuong/imgs/bannerbg3.jpg) no-repeat center;
+        /*background: url(/bundles/html/thanhhuong/imgs/banner4.jpg) no-repeat center;*/
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    .loginPageInner{
+        padding-bottom: 50px;
+        text-align: center;
+        max-width: 604px;
+        margin: 0 auto;
+/*        background-color: #C4A484 ;*/
+        background-color: #223b05 ;
+        color: #ffffff;
+
+    }
+    .loginPageInner form {
+        padding: 25px 80px 0px;
+    }
+    .loginPageInner form .form-group {
+        text-align: left;
+    }
+    .loginPageInner form .form-group label {
+        padding-top: 3px;
+    }
+
+    .loginPageInner .btn-primary {
+        background-color: #223b05;
+        color: #ffffff;
+        border-radius: 4px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        line-height: 25px;
+    }
+</style>
+<div id="loginPage">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="loginPageInner">
+                    <div class="logo pt-5 pb-5">
+                        <div class="row">
+                            <div class="col-12">
+                                <img class="logo" width="300px"  src="/bundles/html/thanhhuong/imgs/logo.png">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="login-container">
+                        <h1>Đăng nhập</h1>
+                        {% if error %}
+                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+
+                        <form method="post">
+                            <div class="form-group">
+                                <label for="username">Email</label>
+                                <input type="text" name="_username" id="username" class="form-control" value="{{ last_username }}" required autofocus>
+                                <div class="invalid-tooltip">Please populate this field.</div>
+                            </div>
+
+                            <div class="form-group mt-1">
+                                <label for="password">Mật khẩu</label>
+                                <input type="password" name="_password" id="password" class="form-control" required>
+                                <div class="invalid-tooltip">Please populate this field.</div>
+                            </div>
+                            <div class="mt-4">
+                                <button type="submit" class="btn btn-lg btn-login btn-primary"><span class="fa fa-sign-in" aria-hidden="true"></span>&nbsp;&nbsp;Login</button>
+                            </div>
+                        </form>
+
+                        <br>
+                        <br>
+                        <div class="mobile-center">
+                            <label for=""><a class="forget-access" href="{{ path('user_login') }}">Đăng ký</a></label> &nbsp; / &nbsp;
+                            <label for=""><a class="forget-access" href="{{ path('user_login') }}">Quên mật khẩu</a></label>
+
+                        </div>
+                    </div>
+
+                    <div class="row form-footer">
+                        {#<div class="col-12 footer-inner">
+                            <a href="/imprint.php">Imprint</a>
+                            <span>&nbsp;|&nbsp;</span>
+                            <a href="/privacy.php">Privacy policy</a>
+                            <span>&nbsp;|&nbsp;</span>
+                            <a href="/gtc.php">GTC</a>
+                            <span class="last-text-pre">&nbsp;|&nbsp;</span>
+                            <a class="last-text" href="/advertising-terms-and-conditions.php">Advertising conditions</a>
+                        </div>#}
+                        <div class="col-12">©Est-2010 - Đậu Phộng Thanh Hương</div>
+                    </div>
+
+                    {#<div class="row hello">
+                        <div class="col-12 browsericon hidden-xs">
+                            <p class="browsericon-title hidden-xs">Supported browsers:</p>
+                            <a href="https://www.google.com/intl/de_ALL/chrome/" target="_blank"><p>Google Chrome</p></a>,&nbsp;
+                            <a href="https://www.mozilla.org/de/firefox/new/" target="_blank"><p>Mozilla Firefox</p></a>,&nbsp;
+                            <a href="https://www.opera.com/de/download/" target="_blank"><p>Opera</p></a>,&nbsp;
+                            <a href="https://support.apple.com/de_DE/downloads/safari" target="_blank"><p>Safari</p></a>
+                        </div>
+                    </div>#}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
