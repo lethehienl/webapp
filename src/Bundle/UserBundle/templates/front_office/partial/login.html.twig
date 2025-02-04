@@ -36,6 +36,13 @@
         -moz-border-radius: 4px;
         line-height: 25px;
     }
+    .alert {
+        margin-left: 80px;
+        margin-right: 80px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-top: 14px;
+    }
 </style>
 <div id="loginPage">
     <div class="container">
@@ -77,8 +84,8 @@
                         <br>
                         <br>
                         <div class="mobile-center">
-                            <label for=""><a class="forget-access" href="{{ path('user_login') }}">Đăng ký</a></label> &nbsp; / &nbsp;
-                            <label for=""><a class="forget-access" href="{{ path('user_login') }}">Quên mật khẩu</a></label>
+                            <label for=""><a class="forget-access" href="{{ path('user_register') }}">Đăng ký</a></label> &nbsp; / &nbsp;
+                            <label for=""><a class="forget-access" href="{{ path('user_forgot_password') }}">Quên mật khẩu</a></label>
 
                         </div>
                     </div>

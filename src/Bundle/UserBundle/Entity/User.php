@@ -8,6 +8,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity]
+//#[ORM\Entity(repositoryClass: App\Bundle\UserBundle\Repository\UserRepository::class)]
 #[ORM\Table(name: "th_user")]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -62,6 +63,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: "string", length: 512, nullable: true)]
     private ?string $avatar = null;
+
+    #[ORM\Column(type: "string", length: 256, nullable: true)]
+    private ?string $resetToken = null;
+
+    #[ORM\Column(type: "datetime", nullable: true)]
+    private ?\DateTimeInterface $resetTokenExpiresAt = null;
 
 
 
@@ -337,7 +344,32 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->expiredOtpAt = $expiredOtpAt;
     }
 
+    public function getResetToken(): ?string
+    {
+        return $this->resetToken;
+    }
 
+    public function setResetToken(?string $resetToken): self
+    {
+        $this->resetToken = $resetToken;
+        return $this;
+    }
+
+    public function getResetTokenExpiresAt(): ?\DateTimeInterface
+    {
+        return $this->resetTokenExpiresAt;
+    }
+
+    public function setResetTokenExpiresAt(?\DateTimeInterface $resetTokenExpiresAt): self
+    {
+        $this->resetTokenExpiresAt = $resetTokenExpiresAt;
+        return $this;
+    }
+
+    public function isResetTokenValid(): bool
+    {
+        return $this->resetTokenExpiresAt !== null && $this->resetTokenExpiresAt > new \DateTime();
+    }
 
 }
 

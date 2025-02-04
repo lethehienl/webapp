@@ -3,4 +3,7 @@ app_route:
   path:       /
   controller: App\Bundle\AppBundle\Controller\AppController::test
 
-
+email:
+  path:       /send-email
+  controller: App\Bundle\AppBundle\Controller\EmailController::sendEmail
+  methods: ['GET','POST']

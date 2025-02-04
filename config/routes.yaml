@@ -4,6 +4,10 @@ controllers:
         namespace: App\Controller
     type: attribute
 
+app:
+    resource: "@AppBundle/config/routes.yaml"
+    prefix:   /app
+
 html:
     resource: "@HtmlBundle/config/routes.yaml"
     prefix:   /html

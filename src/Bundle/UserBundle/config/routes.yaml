@@ -6,6 +6,7 @@
 user_login:
   path:       /user/login
   controller: App\Bundle\UserBundle\Controller\User\UserController::login
+  methods: ['GET','POST']
 
 user_logout:
   path:       /user/logout
@@ -15,6 +16,16 @@ user_register:
   path: /user/register
   controller: App\Bundle\UserBundle\Controller\User\UserController::register
   methods: ['GET','POST']
+
+user_forgot_password:
+  path: /user/forgot-password
+  controller: App\Bundle\UserBundle\Controller\User\UserController::forgotPassword
+  methods: [ 'GET','POST' ]
+
+user_reset_password:
+  path: /user/reset-password/{token}
+  controller: App\Bundle\UserBundle\Controller\User\UserController::resetPassword
+  methods: [ 'GET','POST' ]
 
 api_login:
     path: /api/login
