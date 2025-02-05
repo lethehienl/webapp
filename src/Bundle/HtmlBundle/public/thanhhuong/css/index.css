@@ -533,6 +533,7 @@ img {
   position: relative;
   overflow: hidden;
   background-color: #F4FADC;
+  margin-top: 40px;
 }
 #header .navbar #navbarleft {
   margin-left: 10px;

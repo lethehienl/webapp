@@ -95,7 +95,7 @@ class UserController extends AbstractController
                 $entityManager->flush();
 
                 // Gửi email đặt lại mật khẩu
-                $resetLink = $_ENV['DOMAIN']. $this->generateUrl('user_reset_password', ['token' => $token], true);
+                $resetLink = $_SERVER['REQUEST_SCHEME'] . '://' .  $_SERVER['HTTP_HOST'] . $this->generateUrl('user_reset_password', ['token' => $token], true);
 
                 $email = (new Email())
                   ->from(MailerService::MAIL_FORM)
