@@ -10,6 +10,7 @@ return [
     Symfony\Bundle\SecurityBundle\SecurityBundle::class => ['all' => true],
     Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle::class => ['all' => true],
     App\Bundle\AppBundle\AppBundle::class => ['all' => true],
+    App\Bundle\AgentBundle\AgentBundle::class => ['all' => true],
     App\Bundle\AdminBundle\AdminBundle::class => ['all' => true],
     App\Bundle\HtmlBundle\HtmlBundle::class => ['all' => true],
     App\Bundle\HomeBundle\HomeBundle::class => ['all' => true],
