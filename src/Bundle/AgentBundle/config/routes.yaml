@@ -1,0 +1,6 @@
+# config/routes.yaml
+agent_home_route:
+  path:       /
+  controller: App\Bundle\AgentBundle\Controller\AgentController::test
+
+
