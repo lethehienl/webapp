@@ -1,6 +1,9 @@
 # config/routes.yaml
 admin_home_route:
   path:       /
-  controller: App\Bundle\AdminBundle\Controller\AdminController::test
+  controller: App\Bundle\AdminBundle\Controller\AdminController::admin
 
+admin_home_coreui:
+  path:       /coreui
+  controller: App\Bundle\AdminBundle\Controller\AdminController::coreui
 

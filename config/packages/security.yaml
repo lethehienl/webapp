@@ -68,6 +68,7 @@ security:
         - { path: ^/api/,       roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/send-email, roles: PUBLIC_ACCESS }
         - { path: ^/, roles: PUBLIC_ACCESS }
+        - { path: ^/coreui, roles: PUBLIC_ACCESS }
 #        - { path: ^/, roles: ROLE_USER }
 
 

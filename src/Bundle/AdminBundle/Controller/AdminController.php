@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AdminController extends AbstractController
 {
-  public function test(): Response
+  public function admin(): Response
   {
       $number = random_int(0, 100);
 
@@ -18,4 +18,13 @@ class AdminController extends AbstractController
           'number' => $number,
       ]);
   }
+
+    public function coreui(): Response
+    {
+        $number = random_int(0, 100);
+
+        return $this->render('@Admin/back_office/coreui.html.twig', [
+          'number' => $number,
+        ]);
+    }
 }
